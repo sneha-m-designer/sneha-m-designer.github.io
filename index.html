@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="reader">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
@@ -9,560 +9,416 @@
   <meta name="theme-color" content="#0099ff" />
   <link rel="canonical" href="https://sneha-m.com/" />
   <meta property="og:title" content="Sneha M | Product Designer" />
-  <meta property="og:description" content="Product Designer turning research into intuitive products. Explore my portfolio canvas." />
+  <meta property="og:description" content="Hi, I'm Sneha 👋 — a Product Designer turning research into intuitive products. Come say hi." />
   <meta property="og:image" content="https://framerusercontent.com/images/PUOseOOuIhQYyte1bZlqY66GBYo.png" />
   <meta property="og:url" content="https://sneha-m.com/" />
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%230099ff'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-weight='700' font-size='34' fill='white'%3ES%3C/text%3E%3C/svg%3E" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Nanum+Pen+Script&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="stylesheet" href="assets/css/chat.css" />
 </head>
 <body>
-  <a class="skip" href="#hello">Skip to content</a>
+  <a class="skip" href="#thread">Skip to the conversation</a>
+
+  <!-- Hidden SVG sprite: shuttlecock -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="shuttle" viewBox="0 0 40 40">
+      <path d="M21 4 L33 13 L22 24 L16 18 Z" fill="#fff" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+      <path d="M21 4 L22 24 M27 8.5 L19 21 M33 13 L16 18" stroke="currentColor" stroke-width="1.2" opacity=".55"/>
+      <circle cx="12" cy="28" r="7" fill="currentColor"/>
+      <path d="M14.5 21.5 L18.5 25.5" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+    </symbol>
+  </svg>
 
   <!-- Top bar -->
-  <header class="topbar">
-    <a class="file" href="#hello" data-go="0" aria-label="Sneha M — back to start">
-      <img src="https://framerusercontent.com/images/PUOseOOuIhQYyte1bZlqY66GBYo.png?scale-down-to=128" alt="" width="32" height="32" />
-      <span><b>Sneha M</b><small>Portfolio.fig</small></span>
+  <header class="top">
+    <a class="who" href="#hello">
+      <span class="ava sm"><img src="https://framerusercontent.com/images/PUOseOOuIhQYyte1bZlqY66GBYo.png?scale-down-to=128" alt="" width="36" height="36" /><i class="online" aria-hidden="true"></i></span>
+      <span><b>Sneha M</b><small>Product Designer · Chennai</small></span>
     </a>
+    <div class="score" id="score" aria-label="Rally score">
+      <svg class="shuttle-ico" aria-hidden="true"><use href="#shuttle"/></svg>
+      <span class="s-side"><small>Sneha</small><b id="scoreSneha">0</b></span>
+      <span class="s-dash" aria-hidden="true">:</span>
+      <span class="s-side"><b id="scoreYou">0</b><small>You</small></span>
+    </div>
     <div class="top-actions">
-      <div class="seg" role="group" aria-label="View mode">
-        <button type="button" data-view="canvas" aria-pressed="true">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>
-          <span>Canvas</span>
-        </button>
-        <button type="button" data-view="reader" aria-pressed="false">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h10"/></svg>
-          <span>Reader</span>
-        </button>
-      </div>
       <button class="icon-btn" type="button" id="themeBtn" aria-label="Toggle dark mode">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
       </button>
-      <a class="share" href="#contact" data-go="8">Let's connect</a>
+      <a class="btn primary small" href="#talk">Let's talk</a>
     </div>
+    <div class="progress" aria-hidden="true"><i id="progress"></i></div>
   </header>
 
-  <!-- Canvas -->
-  <main id="viewport" class="viewport">
-    <div id="world" class="world">
-
-      <!-- 01 Hello -->
-      <section class="frame" id="hello" data-w="900" data-label="Hello" aria-labelledby="hello-h"
-        data-hint="Hi, I'm Sneha 👋 Drag the canvas, or press → to explore my board." data-hint-touch="Hi, I'm Sneha 👋 Drag to explore, or tap › for the next frame." data-hint-at=".cta">
-        <div class="hello">
-          <div class="hello-copy">
-            <span class="badge anim"><span class="dot"></span>Product Designer @ GoX.ai · Chennai, India</span>
-            <h1 id="hello-h" class="anim" style="--i:1">Turning <span class="hl">research</span> into <span class="scribble">intuitive products<svg viewBox="0 0 300 20" preserveAspectRatio="none" aria-hidden="true"><path d="M3 14 C 60 4, 120 4, 170 10 S 260 18, 297 6"/></svg></span></h1>
-            <p class="intro anim" style="--i:2">I'm an end-to-end Product Designer with a strong UX research foundation, working across B2B SaaS and B2C products in AI, marketing and hospitality — bridging user needs and business goals.</p>
-            <div class="cta anim" style="--i:3">
-              <button type="button" class="btn primary" data-action="tour">
-                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z" fill="currentColor" stroke="none"/></svg>
-                Take the tour
-              </button>
-              <button type="button" class="btn ghost" data-go="3">See featured work</button>
-            </div>
-            <p class="howto anim" style="--i:4"><kbd>Drag</kbd> to pan · <kbd>Ctrl</kbd>+<kbd>Scroll</kbd> to zoom · <kbd>←</kbd><kbd>→</kbd> to move</p>
-          </div>
-          <div class="hello-art anim" style="--i:2">
-            <figure class="portrait">
-              <img src="https://framerusercontent.com/images/PUOseOOuIhQYyte1bZlqY66GBYo.png" alt="Portrait of Sneha M" width="320" height="400" draggable="false" />
-              <figcaption class="dim">Sneha M · Product Designer</figcaption>
-            </figure>
-            <span class="float f1">AI products</span>
-            <span class="float f2">B2B SaaS</span>
-            <span class="float f3">B2C</span>
-            <span class="float f4">Marketing</span>
-            <span class="float f5">Hospitality</span>
-          </div>
-        </div>
-      </section>
-
-      <!-- 02 Story -->
-      <section class="frame" id="story" data-w="900" data-label="My story" aria-labelledby="story-h"
-        data-hint="Psst — these sticky notes are draggable. Rearrange my research!" data-hint-touch="Psst — press and hold a sticky note to drag it around." data-hint-at=".note">
-        <p class="eyebrow anim">my story</p>
-        <h2 id="story-h" class="anim" style="--i:1">Great products start with understanding people</h2>
-        <div class="board anim" style="--i:2">
-          <div class="zone research">
-            <span class="zone-tag">Where I started · Research</span>
-            <div class="notes">
-              <div class="note y" style="--r:-3deg">Talk to users</div>
-              <div class="note y" style="--r:2deg">Uncover pain points</div>
-              <div class="note y" style="--r:-1deg">Understand behaviours &amp; what influences decisions</div>
-            </div>
-          </div>
-          <div class="zone-arrow" aria-hidden="true">
-            <span>curious about <br>what comes next</span>
-            <svg viewBox="0 0 80 40"><path d="M4 30 C 25 4, 50 4, 72 22"/><path d="M62 22 L73 23 L69 12"/></svg>
-          </div>
-          <div class="zone design">
-            <span class="zone-tag">Where it led · Product design</span>
-            <div class="notes">
-              <div class="note b" style="--r:2deg">User flows</div>
-              <div class="note b" style="--r:-2deg">Wireframes</div>
-              <div class="note b" style="--r:3deg">Prototypes</div>
-              <div class="note g" style="--r:-2deg">Continuous validation</div>
-            </div>
-          </div>
-        </div>
-        <div class="story-copy">
-          <p class="anim" style="--i:3">My journey into design started with a simple belief: great products come from truly understanding the people who use them. I began in UX research, and that foundation still shapes how I design today.</p>
-          <p class="anim" style="--i:4">I've built products from the ground up and improved existing ones. I love finding friction points, simplifying workflows and making experiences more intuitive — and it's most rewarding when those improvements create measurable impact.</p>
-          <blockquote class="anim" style="--i:5">“End-to-end product design means staying close to the problem from start to finish — understanding users deeply, shaping solutions thoughtfully, and seeing ideas through until they become real products.”</blockquote>
-        </div>
-        <ol class="path anim" style="--i:6" aria-label="Career path">
-          <li>Computer Science</li><li>Cybersecurity @ HCL</li><li>UX Research Intern</li><li>UX Designer</li><li class="now">Product Designer</li>
-        </ol>
-      </section>
-
-      <!-- 03 Experience -->
-      <section class="frame" id="experience" data-w="1500" data-label="Experience" aria-labelledby="exp-h"
-        data-hint="Open any role to see what I worked on there." data-hint-at=".job">
-        <p class="eyebrow anim">experience</p>
-        <h2 id="exp-h" class="anim" style="--i:1">From cybersecurity to product design</h2>
-        <p class="lead anim" style="--i:2">Every step taught me something I bring into my work today — stakeholder management, Agile delivery and systems thinking from engineering; empathy and rigour from research.</p>
-        <ol class="track">
-          <li class="job anim" style="--i:3">
-            <span class="node" aria-hidden="true"></span>
-            <span class="when">Nov 2021 – Jan 2023</span>
-            <h3>Graduate Engineer Trainee</h3>
-            <p class="org">HCL Technologies</p>
-            <p class="meta">Chennai · Hybrid · Cybersecurity</p>
-            <p>Managed cybersecurity risk in OT environments and kept clients, stakeholders and teams aligned for on-time delivery.</p>
-            <button type="button" class="link-btn" data-inspect>View details <span aria-hidden="true">→</span></button>
-            <div class="details">
-              <p class="kicker">Full-time · Nov 2021 – Jan 2023 · Chennai, India · Hybrid</p>
-              <h3>Graduate Engineer Trainee — HCL Technologies</h3>
-              <p>Cybersecurity risk management, project execution and stakeholder communication — where I built the stakeholder management, Agile delivery and systems thinking I now bring into design.</p>
-              <h4>What I did</h4>
-              <ul>
-                <li>Managed cybersecurity risks in OT environments using Microsoft Defender for IoT.</li>
-                <li>Worked with clients, stakeholders and internal teams to deliver on time.</li>
-                <li>Analysed and resolved security incidents alongside senior colleagues.</li>
-                <li>Managed ServiceNow ticketing and prioritisation under tight deadlines.</li>
-                <li>Wrote documentation and applied Agile practices to improve team efficiency.</li>
-              </ul>
-              <div class="chips"><span>Stakeholder management</span><span>Agile</span><span>Systems thinking</span><span>ServiceNow</span></div>
-            </div>
-          </li>
-          <li class="job anim" style="--i:4">
-            <span class="node" aria-hidden="true"></span>
-            <span class="when">Sep 2023 – Jan 2024</span>
-            <h3>UX Researcher Intern</h3>
-            <p class="org">Lucify</p>
-            <p class="meta">Remote · Internship</p>
-            <p>Helped shape a hospitality SaaS product from the ground up through research and design.</p>
-            <button type="button" class="link-btn" data-inspect>View details <span aria-hidden="true">→</span></button>
-            <div class="details">
-              <p class="kicker">Internship · Sep 2023 – Jan 2024 · Remote</p>
-              <h3>UX Researcher Intern — Lucify</h3>
-              <p>Helped shape the product from the ground up through research and design.</p>
-              <h4>What I did</h4>
-              <ul>
-                <li>Ran secondary research, user interviews and competitor analysis; synthesised insights on user needs, pain points and market trends.</li>
-                <li>Created user flows and information architecture for intuitive navigation.</li>
-                <li>Designed low- and high-fidelity wireframes and interactive Figma prototypes for stakeholders.</li>
-                <li>Worked with developers and product managers to align user needs, technical feasibility and business goals.</li>
-              </ul>
-              <div class="chips"><span>User interviews</span><span>Competitor analysis</span><span>Information architecture</span><span>Figma</span></div>
-            </div>
-          </li>
-          <li class="job anim" style="--i:5">
-            <span class="node" aria-hidden="true"></span>
-            <span class="when">Jan 2024 – Oct 2024</span>
-            <h3>UX Designer</h3>
-            <p class="org">Lucify</p>
-            <p class="meta">Delhi · Remote · Hospitality SaaS</p>
-            <p>Owned research through high-fidelity design, built the design system and redesigned the website with motion.</p>
-            <button type="button" class="link-btn" data-inspect>View details <span aria-hidden="true">→</span></button>
-            <div class="details">
-              <p class="kicker">Full-time · Jan 2024 – Oct 2024 · Delhi, India · Remote</p>
-              <h3>UX Designer — Lucify</h3>
-              <p>SaaS product in the hospitality industry.</p>
-              <h4>What I did</h4>
-              <ul>
-                <li>Conducted primary and secondary research and documented findings.</li>
-                <li>Designed user flows, information architecture, high-fidelity wireframes and prototypes.</li>
-                <li>Built the product's design system for consistency and scalability.</li>
-                <li>Redesigned the website, including motion design animations to improve engagement.</li>
-              </ul>
-              <div class="chips"><span>Design systems</span><span>Motion design</span><span>Prototyping</span><span>Research</span></div>
-            </div>
-          </li>
-          <li class="job current anim" style="--i:6">
-            <span class="node" aria-hidden="true"></span>
-            <span class="when">Oct 2024 – Present</span>
-            <h3>Product Designer</h3>
-            <p class="org">Two Minute Reports | GoX.ai</p>
-            <p class="meta">Chennai · On-site · AI, B2B SaaS &amp; B2C</p>
-            <p>Leading design from research to delivery across multiple AI-powered B2B SaaS and B2C products.</p>
-            <button type="button" class="link-btn" data-inspect>View details <span aria-hidden="true">→</span></button>
-            <div class="details">
-              <p class="kicker">Full-time · Oct 2024 – Present · Chennai, India · On-site</p>
-              <h3>Product Designer — Two Minute Reports | GoX.ai</h3>
-              <p>I work across multiple AI-powered B2B SaaS and B2C products, leading design from research to delivery.</p>
-              <h4>What I work on</h4>
-              <ul>
-                <li><b>Illustrations AI</b> — secondary research and competitor analysis to define product direction; designed the landing page, web app, Figma plugin and marketing creatives; helped ship the product in 5 months.</li>
-                <li><b>AI Report Creator</b> — led end-to-end design of an AI-powered marketing hub built from scratch.</li>
-                <li><b>Two Minute Reports</b> — improved UX and supported churn reduction through research, experimentation, bounce-rate analysis and a cancellation-flow redesign.</li>
-                <li><b>Make Passport Photo</b> — driving UX strategy through behaviour, drop-off, friction and accessibility analysis, plus experiments.</li>
-              </ul>
-              <div class="chips"><span>AI products</span><span>End-to-end design</span><span>Experimentation</span><span>Research</span></div>
-            </div>
-          </li>
-        </ol>
-      </section>
-
-      <!-- 04 Featured work -->
-      <section class="frame" id="work" data-w="1400" data-label="Featured work" aria-labelledby="work-h"
-        data-hint="Click any project to open it in the inspector." data-hint-touch="Tap any project to open it in the inspector." data-hint-at=".case">
-        <p class="eyebrow anim">selected work</p>
-        <h2 id="work-h" class="anim" style="--i:1">Featured projects</h2>
-        <p class="lead anim" style="--i:2">Products I've designed end to end — from research and problem framing to shipped experiences.</p>
-        <div class="cases">
-          <article class="case big anim" style="--i:3">
-            <div class="cover c-report" aria-hidden="true">
-              <div class="ui">
-                <div class="ui-top"><i></i><i></i><i></i><span class="spark">✦ AI</span></div>
-                <div class="ui-body">
-                  <div class="lines"><b></b><b></b><b></b><b></b></div>
-                  <div class="bars"><i style="--h:45%"></i><i style="--h:70%"></i><i style="--h:55%"></i><i style="--h:85%"></i><i style="--h:65%"></i><i style="--h:95%"></i></div>
-                </div>
-              </div>
-            </div>
-            <div class="case-info">
-              <span class="tag">01 · GoX.ai · B2B SaaS · 0 → 1</span>
-              <h3>AI Report Creator</h3>
-              <p>An AI-powered marketing hub built from scratch — I led the design end to end.</p>
-            </div>
-            <button type="button" class="hit" data-inspect aria-label="Inspect AI Report Creator"></button>
-            <div class="details">
-              <p class="kicker">GoX.ai · B2B SaaS · Built from scratch</p>
-              <h3>AI Report Creator</h3>
-              <p>An AI-powered marketing hub built from the ground up. I led the design end to end, staying close to the problem from the first research session to the final prototypes.</p>
-              <h4>What I did</h4>
-              <ul>
-                <li>Primary and secondary research to understand users and the market.</li>
-                <li>Competitor analysis to find gaps and opportunities.</li>
-                <li>Information architecture and user flows for a new product.</li>
-                <li>Wireframes and interactive prototypes.</li>
-                <li>Iterative testing to validate and refine the experience.</li>
-              </ul>
-              <div class="chips"><span>User research</span><span>Competitor analysis</span><span>Information architecture</span><span>Prototyping</span><span>Iterative testing</span></div>
-            </div>
-          </article>
-
-          <article class="case anim" style="--i:4">
-            <div class="cover c-illus" aria-hidden="true">
-              <span class="blob b1"></span><span class="blob b2"></span><span class="blob b3"></span>
-              <div class="plugin"><div class="ui-top"><i></i><i></i><i></i></div><div class="tiles"><i></i><i></i><i></i><i></i></div></div>
-            </div>
-            <div class="case-info">
-              <span class="tag">02 · GoX.ai · B2C · Shipped in 5 months</span>
-              <h3>Illustrations AI</h3>
-              <p>Landing page, web app, Figma plugin and marketing creatives.</p>
-            </div>
-            <button type="button" class="hit" data-inspect aria-label="Inspect Illustrations AI"></button>
-            <div class="details">
-              <p class="kicker">GoX.ai · B2C · Shipped in 5 months</p>
-              <h3>Illustrations AI</h3>
-              <p>An AI illustration product where I helped define direction and designed every surface people touch — and helped ship it in 5 months.</p>
-              <h4>What I did</h4>
-              <ul>
-                <li>Secondary research and competitor analysis to define product direction.</li>
-                <li>Designed the landing page.</li>
-                <li>Designed the web app.</li>
-                <li>Designed the Figma plugin.</li>
-                <li>Designed marketing creatives.</li>
-              </ul>
-              <div class="chips"><span>Product direction</span><span>Landing page</span><span>Web app</span><span>Figma plugin</span><span>Marketing creatives</span></div>
-            </div>
-          </article>
-
-          <article class="case anim" style="--i:5">
-            <div class="cover c-churn" aria-hidden="true">
-              <div class="flow"><span>1</span><i></i><span>2</span><i></i><span class="end">♥</span></div>
-              <div class="flow ghost"><span>1</span><i></i><span>2</span><i></i><span>3</span><i></i><span>4</span></div>
-            </div>
-            <div class="case-info">
-              <span class="tag">03 · GoX.ai · B2B SaaS · Retention</span>
-              <h3>Two Minute Reports — Churn &amp; cancellation</h3>
-              <p>Research and experimentation to support churn reduction.</p>
-            </div>
-            <button type="button" class="hit" data-inspect aria-label="Inspect Two Minute Reports churn and cancellation project"></button>
-            <div class="details">
-              <p class="kicker">GoX.ai · B2B SaaS · Retention</p>
-              <h3>Two Minute Reports — Churn &amp; cancellation flow</h3>
-              <p>Improving the experience of an established product and supporting churn reduction by understanding why users leave.</p>
-              <h4>What I did</h4>
-              <ul>
-                <li>User research to understand frustrations and reasons for leaving.</li>
-                <li>Experimentation to test improvements.</li>
-                <li>Bounce-rate analysis to spot where users drop off.</li>
-                <li>Redesigned the cancellation flow to reduce user frustration.</li>
-              </ul>
-              <div class="chips"><span>User research</span><span>Experimentation</span><span>Bounce-rate analysis</span><span>Flow redesign</span></div>
-            </div>
-          </article>
-
-          <article class="case anim" style="--i:6">
-            <div class="cover c-passport" aria-hidden="true">
-              <div class="photo"><span class="head"></span><span class="body"></span><span class="scan"></span></div>
-              <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
-            </div>
-            <div class="case-info">
-              <span class="tag">04 · GoX.ai · B2C · Conversion</span>
-              <h3>Make Passport Photo</h3>
-              <p>UX strategy for conversion, engagement and error prevention.</p>
-            </div>
-            <button type="button" class="hit" data-inspect aria-label="Inspect Make Passport Photo"></button>
-            <div class="details">
-              <p class="kicker">GoX.ai · B2C · Conversion</p>
-              <h3>Make Passport Photo</h3>
-              <p>A consumer utility where I'm driving UX strategy to make the experience smoother and more forgiving.</p>
-              <h4>What I'm doing</h4>
-              <ul>
-                <li>Analysing user behaviour, drop-offs and friction points.</li>
-                <li>Identifying and addressing accessibility issues.</li>
-                <li>Running experiments to improve conversion and engagement.</li>
-                <li>Designing for error prevention.</li>
-              </ul>
-              <div class="chips"><span>Behaviour analysis</span><span>Accessibility</span><span>Experiments</span><span>Conversion</span></div>
-            </div>
-          </article>
-
-          <article class="case anim" style="--i:7">
-            <div class="cover c-lucify" aria-hidden="true">
-              <div class="tokens">
-                <div class="sw"><i></i><i></i><i></i><i></i><i></i></div>
-                <div class="row"><span class="aa">Aa</span><span class="pill">Button</span><span class="toggle"><i></i></span></div>
-              </div>
-            </div>
-            <div class="case-info">
-              <span class="tag">05 · Lucify · Hospitality SaaS</span>
-              <h3>Lucify</h3>
-              <p>Design system and website redesign with motion.</p>
-            </div>
-            <button type="button" class="hit" data-inspect aria-label="Inspect Lucify"></button>
-            <div class="details">
-              <p class="kicker">Lucify · Hospitality SaaS · Web &amp; mobile</p>
-              <h3>Lucify</h3>
-              <p>I joined Lucify as a UX Research Intern and helped shape the product from the ground up, then grew into the UX Designer role.</p>
-              <h4>What I did</h4>
-              <ul>
-                <li>Research, user flows and information architecture for intuitive navigation.</li>
-                <li>High-fidelity wireframes and prototypes.</li>
-                <li>Built the product's design system for consistency and scalability.</li>
-                <li>Redesigned the website, including motion design animations to improve engagement.</li>
-              </ul>
-              <div class="chips"><span>Design system</span><span>Motion design</span><span>Website redesign</span><span>Research</span></div>
-            </div>
-          </article>
-        </div>
-      </section>
-
-      <!-- 05 More work -->
-      <section class="frame" id="more" data-w="1300" data-label="More work" aria-labelledby="more-h"
-        data-hint="Filter by type — each project opens on Behance." data-hint-at=".filters">
-        <p class="eyebrow anim">explorations</p>
-        <h2 id="more-h" class="anim" style="--i:1">More work</h2>
-        <p class="lead anim" style="--i:2">Case studies, landing pages and design challenges from my Behance.</p>
-        <div class="filters anim" style="--i:3" role="group" aria-label="Filter projects">
-          <button type="button" aria-pressed="true" data-filter="all">All</button>
-          <button type="button" aria-pressed="false" data-filter="case">Case studies</button>
-          <button type="button" aria-pressed="false" data-filter="landing">Landing pages</button>
-          <button type="button" aria-pressed="false" data-filter="other">Other</button>
-        </div>
-        <div class="shots" id="shots"></div>
-      </section>
-
-      <!-- 06 Toolkit -->
-      <section class="frame" id="toolkit" data-w="760" data-label="Toolkit" aria-labelledby="tool-h"
-        data-hint="Switch the variant to see each skill set." data-hint-at="[role=tablist]">
-        <p class="eyebrow anim">skills &amp; tools</p>
-        <h2 id="tool-h" class="anim" style="--i:1">My toolkit</h2>
-        <div class="variant anim" style="--i:2">
-          <div class="variant-head">
-            <span class="comp">◆ Skill set</span>
-            <span class="prop">Property</span>
-          </div>
-          <div class="tabs" role="tablist" aria-label="Skill categories">
-            <button type="button" role="tab" id="t-research" aria-controls="p-research" aria-selected="true">Research</button>
-            <button type="button" role="tab" id="t-design" aria-controls="p-design" aria-selected="false" tabindex="-1">Design</button>
-            <button type="button" role="tab" id="t-process" aria-controls="p-process" aria-selected="false" tabindex="-1">Process</button>
-            <button type="button" role="tab" id="t-soft" aria-controls="p-soft" aria-selected="false" tabindex="-1">Soft skills</button>
-          </div>
-          <div class="panel-chips" role="tabpanel" id="p-research" aria-labelledby="t-research">
-            <span>User research</span><span>User interviews</span><span>Competitor analysis</span><span>Heuristic evaluation</span><span>Usability testing</span><span>Behaviour &amp; bounce-rate analysis</span><span>Experimentation</span>
-          </div>
-          <div class="panel-chips" role="tabpanel" id="p-design" aria-labelledby="t-design" hidden>
-            <span>Information architecture</span><span>User flows</span><span>Wireframing</span><span>Prototyping</span><span>Design systems</span><span>Motion design</span><span>Accessibility</span>
-          </div>
-          <div class="panel-chips" role="tabpanel" id="p-process" aria-labelledby="t-process" hidden>
-            <span>Design thinking</span><span>Agile</span><span>Lean UX</span>
-          </div>
-          <div class="panel-chips" role="tabpanel" id="p-soft" aria-labelledby="t-soft" hidden>
-            <span>Problem-solving</span><span>Leadership</span><span>Collaboration</span><span>Task prioritisation</span><span>Project management</span><span>Willingness to learn</span>
-          </div>
-        </div>
-        <h3 class="sub anim" style="--i:3">Tools I live in</h3>
-        <ul class="dock anim" style="--i:4" aria-label="Tools">
-          <li style="--c:#a259ff"><b>Fi</b><span>Figma</span></li>
-          <li style="--c:#ff7262"><b>Fj</b><span>FigJam</span></li>
-          <li style="--c:#ff61f6"><b>Xd</b><span>Adobe XD</span></li>
-          <li style="--c:#cc3131"><b>Bq</b><span>Balsamiq</span></li>
-          <li style="--c:#31a8ff"><b>Ps</b><span>Photoshop</span></li>
-          <li style="--c:#f5b300"><b>Mi</b><span>Miro</span></li>
-          <li style="--c:#2684ff"><b>Ji</b><span>Jira</span></li>
-          <li style="--c:#111"><b>v0</b><span>v0</span></li>
+  <div class="layout">
+    <!-- Profile / scannable summary -->
+    <aside class="profile" aria-label="About Sneha at a glance">
+      <div class="profile-card">
+        <div class="ava lg"><img src="https://framerusercontent.com/images/PUOseOOuIhQYyte1bZlqY66GBYo.png" alt="Portrait of Sneha M" width="120" height="120" /><i class="online" aria-hidden="true"></i></div>
+        <h1>Sneha M</h1>
+        <p class="role">Product Designer @ <b>GoX.ai</b></p>
+        <p class="tagline">Turning research into intuitive products.</p>
+        <ul class="facts">
+          <li><span aria-hidden="true">🔍</span>UX research foundation</li>
+          <li><span aria-hidden="true">🧩</span>End-to-end product design</li>
+          <li><span aria-hidden="true">🤖</span>AI · Marketing · Hospitality</li>
+          <li><span aria-hidden="true">💼</span>B2B SaaS &amp; B2C</li>
+          <li><span aria-hidden="true">📍</span>Chennai, India</li>
         </ul>
-      </section>
-
-      <!-- 07 Certifications -->
-      <section class="frame" id="certs" data-w="900" data-label="Certifications" aria-labelledby="cert-h"
-        data-hint="Every badge links to its certificate." data-hint-at=".cert">
-        <p class="eyebrow anim">always learning</p>
-        <h2 id="cert-h" class="anim" style="--i:1">Certifications</h2>
-        <ul class="certs">
-          <li class="anim" style="--i:2"><a class="cert" style="--c:#0f62fe;--r:-2deg" href="https://www.credly.com/badges/405c08e3-d6cc-433b-9f37-c1b3c0017074/public_url" target="_blank" rel="noopener"><span class="seal">IBM</span><span><b>Enterprise Design Thinking — Team Essentials for AI</b><small>IBM · Aug 2024</small></span></a></li>
-          <li class="anim" style="--i:3"><a class="cert" style="--c:#0f62fe;--r:1.5deg" href="https://www.credly.com/badges/6e40f5f9-d671-4f6c-aac5-d0db50a27cfe/linked_in_profile" target="_blank" rel="noopener"><span class="seal">IBM</span><span><b>Enterprise Design Thinking Practitioner</b><small>IBM · Jun 2024</small></span></a></li>
-          <li class="anim" style="--i:4"><a class="cert" style="--c:#34a853;--r:-1deg" href="https://www.coursera.org/account/accomplishments/specialization/certificate/4QNXCMT67CFF" target="_blank" rel="noopener"><span class="seal">G</span><span><b>Google UX Design Specialization</b><small>Coursera · Nov 2023</small></span></a></li>
-          <li class="anim" style="--i:5"><a class="cert" style="--c:#0056d2;--r:2deg" href="https://www.coursera.org/account/accomplishments/certificate/6UJFZ3ZKRK7Z" target="_blank" rel="noopener"><span class="seal">AI</span><span><b>Introduction to Generative AI</b><small>Coursera · Nov 2023</small></span></a></li>
-          <li class="anim" style="--i:6"><a class="cert" style="--c:#ff6a3d;--r:-2deg" href="https://adplist.org/certifications/122568" target="_blank" rel="noopener"><span class="seal">AD</span><span><b>1 Mentorship Session</b><small>ADPList · Jul 2023</small></span></a></li>
-          <li class="anim" style="--i:7"><a class="cert" style="--c:#a435f0;--r:1deg" href="https://www.udemy.com/certificate/UC-73b4b8dd-8c0a-415d-bbcc-4756e2c7f88c/" target="_blank" rel="noopener"><span class="seal">U</span><span><b>Motion Design with Figma: Animations, Motion Graphics, UI/UX</b><small>Udemy · May 2023</small></span></a></li>
-          <li class="anim" style="--i:8"><a class="cert" style="--c:#7d00ff;--r:-1.5deg" href="https://www.futurelearn.com/certificates/cf6zq7b" target="_blank" rel="noopener"><span class="seal">Ac</span><span><b>Digital Skills: User Experience</b><small>Accenture · Apr 2023</small></span></a></li>
-          <li class="anim" style="--i:9"><a class="cert" style="--c:#00a86b;--r:2deg" href="https://api.growthschool.io/certificate/b1b756e5-8ae5-4a67-881c-f662fd1d6c5b" target="_blank" rel="noopener"><span class="seal">GS</span><span><b>UX Design Kickstarter Workshop</b><small>GrowthSchool · Jan 2023</small></span></a></li>
-          <li class="anim" style="--i:10"><a class="cert" style="--c:#008bdc;--r:-1deg" href="https://trainings.internshala.com/s/v/2368668/5af15928" target="_blank" rel="noopener"><span class="seal">IS</span><span><b>UI/UX Design</b><small>Internshala</small></span></a></li>
-        </ul>
-      </section>
-
-      <!-- 08 Background -->
-      <section class="frame" id="about" data-w="1100" data-label="Background" aria-labelledby="about-h"
-        data-hint="A little about where I come from." data-hint-at=".edu">
-        <p class="eyebrow anim">background</p>
-        <h2 id="about-h" class="anim" style="--i:1">Education &amp; wins</h2>
-        <div class="bg-grid">
-          <div class="card edu anim" style="--i:2">
-            <span class="label">Education</span>
-            <h3>B.E., Computer Science Engineering</h3>
-            <p class="muted">Kamaraj College of Engineering and Technology · 2017 – 2021</p>
-            <p class="cgpa"><b>8.25</b> CGPA</p>
-            <ul class="medals">
-              <li><span aria-hidden="true">🏅</span>Sports House Captain (1× overall championship)</li>
-              <li><span aria-hidden="true">🥉</span>3rd place, Anna University zonal tournament — Ball Badminton</li>
-              <li><span aria-hidden="true">🏸</span>4th place, state-level inter-college tournament — Badminton</li>
-            </ul>
-          </div>
-          <div class="wins">
-            <a class="card win anim" style="--i:3" href="https://www.linkedin.com/posts/sneha14m_opentonewopportunities-designhackathon-uiuxdesign-activity-7080409624671129600-iFkI" target="_blank" rel="noopener">
-              <span class="trophy" aria-hidden="true">🏆</span>
-              <span><b>Winner, Design Hackathon</b><small>Nobel Transformation Hub</small></span>
-              <span class="arr" aria-hidden="true">↗</span>
-            </a>
-            <a class="card win anim" style="--i:4" href="https://drive.google.com/file/d/1BfENFpgX8q5tZxBSlgYKuOjqqmGcrwW2/view" target="_blank" rel="noopener">
-              <span class="trophy" aria-hidden="true">🎨</span>
-              <span><b>Winner, Graphic Design Competition</b><small>Adetive Solutions Pvt. Ltd.</small></span>
-              <span class="arr" aria-hidden="true">↗</span>
-            </a>
-            <div class="card glance anim" style="--i:5">
-              <span class="label">At a glance</span>
-              <dl>
-                <div><dt>Currently</dt><dd>Product Designer, GoX.ai</dd></div>
-                <div><dt>Based in</dt><dd>Chennai, Tamil Nadu, India</dd></div>
-                <div><dt>Domains</dt><dd>AI · Marketing &amp; analytics SaaS · Hospitality SaaS · Consumer utilities</dd></div>
-              </dl>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- 09 Contact -->
-      <section class="frame" id="contact" data-w="1600" data-label="Let's connect" aria-labelledby="contact-h"
-        data-hint="Thanks for exploring my canvas — I'd love to hear from you!" data-hint-at=".mail">
-        <div class="contact">
-          <p class="eyebrow anim">let's connect!</p>
-          <h2 id="contact-h" class="anim" style="--i:1">Let's build something <span class="hl">meaningful</span></h2>
-          <p class="lead anim" style="--i:2">If you enjoy building products that solve meaningful problems and put users at the centre, I'd love to connect.</p>
-          <div class="mail-row anim" style="--i:3">
-            <a class="mail" href="mailto:snehauxdesigner@gmail.com">snehauxdesigner@gmail.com</a>
-            <button type="button" class="btn ghost small" data-copy="snehauxdesigner@gmail.com">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg>
-              Copy email
-            </button>
-          </div>
-          <ul class="socials anim" style="--i:4">
-            <li><a href="https://www.linkedin.com/in/sneha14m/" target="_blank" rel="noopener">LinkedIn</a></li>
-            <li><a href="https://www.behance.net/sneha_m14" target="_blank" rel="noopener">Behance</a></li>
-            <li><a href="https://medium.com/@snehauxdesigner" target="_blank" rel="noopener">Medium</a></li>
-            <li><a href="https://x.com/Sneha_m_ux" target="_blank" rel="noopener">X / Twitter</a></li>
-            <li><a href="https://www.instagram.com/sne_deshine/" target="_blank" rel="noopener">Instagram</a></li>
-          </ul>
-          <div class="note ps p anim" style="--i:5;--r:3deg">P.S. Thanks for exploring my canvas! — Sneha</div>
-        </div>
-        <footer class="foot">© <span id="year">2026</span> Sneha M · Designed with care in Chennai</footer>
-      </section>
-
-      <!-- Collaborator cursor -->
-      <div class="buddy" id="buddy" aria-hidden="true">
-        <div class="buddy-inner">
-          <svg viewBox="0 0 24 24"><path d="M3 2l7.5 19 2.6-7.9L21 10.5z"/></svg>
-          <span class="buddy-name">Sneha</span>
-          <span class="buddy-say" id="buddySay"></span>
+        <div class="profile-cta">
+          <a class="btn primary" href="#work">See my work</a>
+          <a class="btn ghost" href="https://www.linkedin.com/in/sneha14m/" target="_blank" rel="noopener">LinkedIn</a>
         </div>
       </div>
-    </div>
-  </main>
+      <nav class="ask" aria-label="Questions you can ask">
+        <p class="ask-title">Ask me about…</p>
+        <ul id="askList">
+          <li><a href="#story">How I got into design</a></li>
+          <li><a href="#now">What I'm building now</a></li>
+          <li><a href="#work">My best work</a></li>
+          <li><a href="#process">How I work</a></li>
+          <li><a href="#journey">Where I've worked</a></li>
+          <li><a href="#toolkit">My toolkit</a></li>
+          <li><a href="#court">Life off the screen</a></li>
+          <li><a href="#talk">Working together</a></li>
+        </ul>
+      </nav>
+    </aside>
 
-  <!-- Bottom toolbar -->
-  <nav class="toolbar" aria-label="Canvas navigation">
-    <div class="tb-group">
-      <button type="button" class="tb" id="menuBtn" aria-haspopup="true" aria-expanded="false" aria-controls="menu" aria-label="All frames">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 3v18M15 3v18M3 9h18M3 15h18"/></svg>
-      </button>
-      <button type="button" class="tb nav-only" id="prevBtn" aria-label="Previous frame">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg>
-      </button>
-      <button type="button" class="tb label nav-only" id="frameLabel" aria-label="Current frame — open frame list"><span id="frameNum">1/9</span><b id="frameName">Hello</b></button>
-      <button type="button" class="tb nav-only" id="nextBtn" aria-label="Next frame">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
-      </button>
-      <button type="button" class="tb tour nav-only" id="tourBtn" aria-pressed="false" aria-label="Play guided tour">
-        <svg class="i-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z" fill="currentColor" stroke="none"/></svg>
-        <svg class="i-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5h3v14H8zM13 5h3v14h-3z" fill="currentColor" stroke="none"/></svg>
-        <span class="tour-txt">Tour</span>
+    <!-- Conversation -->
+    <main class="thread" id="thread">
+
+      <!-- Opening serve -->
+      <section class="turn" id="hello" aria-label="Introduction">
+        <div class="reply">
+          <span class="ava xs"><img src="https://framerusercontent.com/images/PUOseOOuIhQYyte1bZlqY66GBYo.png?scale-down-to=128" alt="" width="34" height="34" /></span>
+          <div class="msgs">
+            <p class="bubble big">Hi, I'm Sneha 👋</p>
+            <p class="bubble">I'm a Product Designer at <b>Two Minute Reports | GoX.ai</b>. I turn research into intuitive products — across B2B SaaS and B2C, in AI, marketing and hospitality.</p>
+            <div class="bubble card tldr">
+              <p class="card-k">TL;DR — the 10-second version</p>
+              <ul>
+                <li><b>Now:</b> Product Designer at GoX.ai, leading design from research to delivery on AI-powered products</li>
+                <li><b>Before:</b> UX Designer &amp; UX Researcher at Lucify (hospitality SaaS), and cybersecurity at HCL</li>
+                <li><b>Strengths:</b> user research, IA &amp; flows, prototyping, design systems, experimentation</li>
+                <li><b>Shipped:</b> Illustrations AI — landing page, web app, Figma plugin — in 5 months</li>
+              </ul>
+            </div>
+            <p class="bubble">Ask me anything — or just keep scrolling and we'll have a little rally 🏸</p>
+          </div>
+        </div>
+        <div class="quick" role="group" aria-label="Suggested questions">
+          <a href="#work">Show me your work</a>
+          <a href="#now">What are you building?</a>
+          <a href="#process">How do you work?</a>
+          <a href="#talk">Let's talk</a>
+        </div>
+      </section>
+
+      <!-- Story -->
+      <section class="turn" id="story" aria-labelledby="q-story">
+        <h2 class="ask-bubble" id="q-story">Nice to meet you! How did you get into design?</h2>
+        <div class="reply">
+          <span class="ava xs"><img src="https://framerusercontent.com/images/PUOseOOuIhQYyte1bZlqY66GBYo.png?scale-down-to=128" alt="" width="34" height="34" /></span>
+          <div class="msgs">
+            <p class="bubble">It started with a simple belief: <b>great products come from truly understanding the people who use them.</b></p>
+            <p class="bubble">I began in UX research — talking to users, uncovering pain points, and understanding the behaviours and influences behind their decisions. That still shapes how I design today.</p>
+            <p class="bubble">Then I got curious about what happens <i>after</i> research. I wanted to solve the problems I was uncovering — so I moved into product design: flows, wireframes, prototypes and continuous validation.</p>
+            <div class="bubble card">
+              <p class="card-k">My path so far</p>
+              <ol class="path">
+                <li>Computer Science</li><li>Cybersecurity @ HCL</li><li>UX Research Intern</li><li>UX Designer</li><li class="now">Product Designer</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Now -->
+      <section class="turn" id="now" aria-labelledby="q-now">
+        <h2 class="ask-bubble" id="q-now">What are you working on right now?</h2>
+        <div class="reply">
+          <span class="ava xs"><img src="https://framerusercontent.com/images/PUOseOOuIhQYyte1bZlqY66GBYo.png?scale-down-to=128" alt="" width="34" height="34" /></span>
+          <div class="msgs">
+            <p class="bubble">At GoX.ai I lead design from research to delivery across several AI-powered products — both B2B SaaS and B2C:</p>
+            <div class="bubble card">
+              <ul class="products">
+                <li><span class="p-ico" style="--c:#7c5cff" aria-hidden="true">✦</span><span><b>Illustrations AI</b><small>Landing page, web app, Figma plugin &amp; creatives · shipped in 5 months</small></span></li>
+                <li><span class="p-ico" style="--c:#0099ff" aria-hidden="true">▤</span><span><b>AI Report Creator</b><small>An AI-powered marketing hub, designed end to end from scratch</small></span></li>
+                <li><span class="p-ico" style="--c:#10b981" aria-hidden="true">↺</span><span><b>Two Minute Reports</b><small>Research &amp; experiments to support churn reduction</small></span></li>
+                <li><span class="p-ico" style="--c:#ff8a3d" aria-hidden="true">◉</span><span><b>Make Passport Photo</b><small>UX strategy for conversion, engagement &amp; error prevention</small></span></li>
+              </ul>
+            </div>
+            <p class="bubble">My favourite part? Finding the friction points, simplifying them — and seeing those improvements make a real difference.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Work -->
+      <section class="turn" id="work" aria-labelledby="q-work">
+        <h2 class="ask-bubble" id="q-work">Can I see some of your best work?</h2>
+        <div class="reply">
+          <span class="ava xs"><img src="https://framerusercontent.com/images/PUOseOOuIhQYyte1bZlqY66GBYo.png?scale-down-to=128" alt="" width="34" height="34" /></span>
+          <div class="msgs">
+            <p class="bubble">Of course! Here are a few I'm proud of — open any of them for the details 👇</p>
+            <div class="cases">
+              <details class="case" style="--c1:#0077ff;--c2:#49c2ff">
+                <summary>
+                  <span class="case-art" aria-hidden="true">▤</span>
+                  <span class="case-txt"><small>GoX.ai · B2B SaaS · 0 → 1</small><b>AI Report Creator</b><span>An AI-powered marketing hub I designed end to end, from scratch.</span></span>
+                  <span class="chev" aria-hidden="true"></span>
+                </summary>
+                <div class="case-body">
+                  <p>I stayed close to this one from the first research session to the final prototypes.</p>
+                  <ul>
+                    <li>Primary and secondary research</li>
+                    <li>Competitor analysis</li>
+                    <li>Information architecture and user flows</li>
+                    <li>Wireframes and interactive prototypes</li>
+                    <li>Iterative testing to refine the experience</li>
+                  </ul>
+                </div>
+              </details>
+              <details class="case" style="--c1:#6b4dff;--c2:#ff7ac6">
+                <summary>
+                  <span class="case-art" aria-hidden="true">✦</span>
+                  <span class="case-txt"><small>GoX.ai · B2C · Shipped in 5 months</small><b>Illustrations AI</b><span>Landing page, web app, Figma plugin and marketing creatives.</span></span>
+                  <span class="chev" aria-hidden="true"></span>
+                </summary>
+                <div class="case-body">
+                  <p>I helped define the direction, then designed every surface people touch.</p>
+                  <ul>
+                    <li>Secondary research and competitor analysis to define product direction</li>
+                    <li>Designed the landing page and the web app</li>
+                    <li>Designed the Figma plugin</li>
+                    <li>Designed marketing creatives</li>
+                    <li>Helped ship the product in 5 months</li>
+                  </ul>
+                </div>
+              </details>
+              <details class="case" style="--c1:#00a37a;--c2:#7be3b9">
+                <summary>
+                  <span class="case-art" aria-hidden="true">↺</span>
+                  <span class="case-txt"><small>GoX.ai · B2B SaaS · Retention</small><b>Two Minute Reports — churn &amp; cancellation</b><span>Understanding why users leave, and making leaving less frustrating.</span></span>
+                  <span class="chev" aria-hidden="true"></span>
+                </summary>
+                <div class="case-body">
+                  <p>Improving an established product and supporting churn reduction.</p>
+                  <ul>
+                    <li>User research into frustrations and reasons for leaving</li>
+                    <li>Experimentation to test improvements</li>
+                    <li>Bounce-rate analysis to find where users drop off</li>
+                    <li>Redesigned the cancellation flow to reduce user frustration</li>
+                  </ul>
+                </div>
+              </details>
+              <details class="case" style="--c1:#ff8a3d;--c2:#ffc46b">
+                <summary>
+                  <span class="case-art" aria-hidden="true">◉</span>
+                  <span class="case-txt"><small>GoX.ai · B2C · Conversion</small><b>Make Passport Photo</b><span>Making a consumer utility smoother and more forgiving.</span></span>
+                  <span class="chev" aria-hidden="true"></span>
+                </summary>
+                <div class="case-body">
+                  <p>I'm driving the UX strategy for this product.</p>
+                  <ul>
+                    <li>Analysing user behaviour, drop-offs and friction points</li>
+                    <li>Identifying and fixing accessibility issues</li>
+                    <li>Running experiments to improve conversion and engagement</li>
+                    <li>Designing for error prevention</li>
+                  </ul>
+                </div>
+              </details>
+              <details class="case" style="--c1:#312e81;--c2:#6366f1">
+                <summary>
+                  <span class="case-art" aria-hidden="true">◆</span>
+                  <span class="case-txt"><small>Lucify · Hospitality SaaS</small><b>Lucify</b><span>From research intern to building the design system.</span></span>
+                  <span class="chev" aria-hidden="true"></span>
+                </summary>
+                <div class="case-body">
+                  <p>I helped shape this product from the ground up, then grew into the UX Designer role.</p>
+                  <ul>
+                    <li>Research, user flows and information architecture</li>
+                    <li>High-fidelity wireframes and prototypes</li>
+                    <li>Built the product's design system for consistency and scalability</li>
+                    <li>Redesigned the website with motion design animations</li>
+                  </ul>
+                </div>
+              </details>
+            </div>
+            <p class="bubble">There's more on my Behance too — case studies, landing pages and design challenges:</p>
+            <div class="bubble card shots-card">
+              <div class="shots" id="shots" tabindex="0" aria-label="More projects on Behance, scrollable"></div>
+              <a class="more-link" href="https://www.behance.net/sneha_m14" target="_blank" rel="noopener">See everything on Behance ↗</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Process -->
+      <section class="turn" id="process" aria-labelledby="q-process">
+        <h2 class="ask-bubble" id="q-process">How do you approach a new problem?</h2>
+        <div class="reply">
+          <span class="ava xs"><img src="https://framerusercontent.com/images/PUOseOOuIhQYyte1bZlqY66GBYo.png?scale-down-to=128" alt="" width="34" height="34" /></span>
+          <div class="msgs">
+            <p class="bubble">To me, end-to-end design means <b>staying close to the problem from start to finish</b>. It's a bit like a good rally — read the play first, then make the shot.</p>
+            <div class="bubble card">
+              <ol class="steps">
+                <li><span class="n">1</span><span><b>Understand people</b><small>User research, interviews, competitor analysis</small></span></li>
+                <li><span class="n">2</span><span><b>Find the friction</b><small>Heuristic evaluation, behaviour &amp; drop-off analysis</small></span></li>
+                <li><span class="n">3</span><span><b>Shape the solution</b><small>Information architecture, flows, wireframes, prototypes, design systems</small></span></li>
+                <li><span class="n">4</span><span><b>Validate &amp; ship</b><small>Usability testing, experiments, iteration</small></span></li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Journey -->
+      <section class="turn" id="journey" aria-labelledby="q-journey">
+        <h2 class="ask-bubble" id="q-journey">Where have you worked?</h2>
+        <div class="reply">
+          <span class="ava xs"><img src="https://framerusercontent.com/images/PUOseOOuIhQYyte1bZlqY66GBYo.png?scale-down-to=128" alt="" width="34" height="34" /></span>
+          <div class="msgs">
+            <p class="bubble">Here's my journey so far:</p>
+            <div class="bubble card">
+              <ol class="jobs">
+                <li class="now">
+                  <span class="when">Oct 2024 – Present</span>
+                  <b>Product Designer · Two Minute Reports | GoX.ai</b>
+                  <small>Chennai · On-site — leading design across AI-powered B2B SaaS &amp; B2C products</small>
+                </li>
+                <li>
+                  <span class="when">Jan 2024 – Oct 2024</span>
+                  <b>UX Designer · Lucify</b>
+                  <small>Remote · Hospitality SaaS — research, flows, IA, prototypes, design system, website redesign with motion</small>
+                </li>
+                <li>
+                  <span class="when">Sep 2023 – Jan 2024</span>
+                  <b>UX Researcher Intern · Lucify</b>
+                  <small>Remote — interviews, competitor analysis, flows, IA, Figma prototypes</small>
+                </li>
+                <li>
+                  <span class="when">Nov 2021 – Jan 2023</span>
+                  <b>Graduate Engineer Trainee · HCL Technologies</b>
+                  <small>Chennai · Hybrid — cybersecurity risk management in OT environments</small>
+                </li>
+              </ol>
+            </div>
+            <p class="bubble">Before design, I spent over a year in cybersecurity at HCL. It taught me stakeholder management, Agile delivery and systems thinking — and I bring all three into my design work.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Toolkit -->
+      <section class="turn" id="toolkit" aria-labelledby="q-toolkit">
+        <h2 class="ask-bubble" id="q-toolkit">What's in your toolkit?</h2>
+        <div class="reply">
+          <span class="ava xs"><img src="https://framerusercontent.com/images/PUOseOOuIhQYyte1bZlqY66GBYo.png?scale-down-to=128" alt="" width="34" height="34" /></span>
+          <div class="msgs">
+            <div class="bubble card">
+              <dl class="skills">
+                <div><dt>Research</dt><dd><span>User research</span><span>Interviews</span><span>Competitor analysis</span><span>Heuristic evaluation</span><span>Usability testing</span><span>Behaviour &amp; bounce-rate analysis</span><span>Experimentation</span></dd></div>
+                <div><dt>Design</dt><dd><span>Information architecture</span><span>User flows</span><span>Wireframing</span><span>Prototyping</span><span>Design systems</span><span>Motion design</span><span>Accessibility</span></dd></div>
+                <div><dt>Process</dt><dd><span>Design thinking</span><span>Agile</span><span>Lean UX</span></dd></div>
+                <div><dt>Tools</dt><dd class="tools"><span>Figma</span><span>FigJam</span><span>Adobe XD</span><span>Balsamiq</span><span>Photoshop</span><span>Miro</span><span>Jira</span><span>v0</span></dd></div>
+              </dl>
+            </div>
+            <p class="bubble">And I never stop learning — here are my certifications:</p>
+            <details class="bubble card certs">
+              <summary><span><b>9 certifications</b><small>IBM · Google · Coursera · Accenture · Udemy · ADPList…</small></span><span class="chev" aria-hidden="true"></span></summary>
+              <ul>
+                <li><a href="https://www.credly.com/badges/405c08e3-d6cc-433b-9f37-c1b3c0017074/public_url" target="_blank" rel="noopener">Enterprise Design Thinking — Team Essentials for AI</a><small>IBM · Aug 2024</small></li>
+                <li><a href="https://www.credly.com/badges/6e40f5f9-d671-4f6c-aac5-d0db50a27cfe/linked_in_profile" target="_blank" rel="noopener">Enterprise Design Thinking Practitioner</a><small>IBM · Jun 2024</small></li>
+                <li><a href="https://www.coursera.org/account/accomplishments/specialization/certificate/4QNXCMT67CFF" target="_blank" rel="noopener">Google UX Design Specialization</a><small>Coursera · Nov 2023</small></li>
+                <li><a href="https://www.coursera.org/account/accomplishments/certificate/6UJFZ3ZKRK7Z" target="_blank" rel="noopener">Introduction to Generative AI</a><small>Coursera · Nov 2023</small></li>
+                <li><a href="https://adplist.org/certifications/122568" target="_blank" rel="noopener">1 Mentorship Session</a><small>ADPList · Jul 2023</small></li>
+                <li><a href="https://www.udemy.com/certificate/UC-73b4b8dd-8c0a-415d-bbcc-4756e2c7f88c/" target="_blank" rel="noopener">Motion Design with Figma: Animations, Motion Graphics, UI/UX</a><small>Udemy · May 2023</small></li>
+                <li><a href="https://www.futurelearn.com/certificates/cf6zq7b" target="_blank" rel="noopener">Digital Skills: User Experience</a><small>Accenture · Apr 2023</small></li>
+                <li><a href="https://api.growthschool.io/certificate/b1b756e5-8ae5-4a67-881c-f662fd1d6c5b" target="_blank" rel="noopener">UX Design Kickstarter Workshop</a><small>GrowthSchool · Jan 2023</small></li>
+                <li><a href="https://trainings.internshala.com/s/v/2368668/5af15928" target="_blank" rel="noopener">UI/UX Design</a><small>Internshala</small></li>
+              </ul>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <!-- Off the court -->
+      <section class="turn" id="court" aria-labelledby="q-court">
+        <h2 class="ask-bubble" id="q-court">So… what's with the shuttlecock? 🏸</h2>
+        <div class="reply">
+          <span class="ava xs"><img src="https://framerusercontent.com/images/PUOseOOuIhQYyte1bZlqY66GBYo.png?scale-down-to=128" alt="" width="34" height="34" /></span>
+          <div class="msgs">
+            <p class="bubble">Ha, you noticed! Sport has always been a big part of me. In college I was <b>Sports House Captain</b>, and badminton was my game.</p>
+            <div class="bubble card court">
+              <div class="court-lines" aria-hidden="true"><i></i><i></i><i></i></div>
+              <p class="card-k">Scoreboard</p>
+              <ul class="board">
+                <li><span class="medal" aria-hidden="true">🏆</span><span><b>Overall championship</b><small>As Sports House Captain</small></span></li>
+                <li><span class="medal" aria-hidden="true">🥉</span><span><b>3rd place — Ball Badminton</b><small>Anna University zonal tournament</small></span></li>
+                <li><span class="medal" aria-hidden="true">🏸</span><span><b>4th place — Badminton</b><small>State-level inter-college tournament</small></span></li>
+              </ul>
+            </div>
+            <p class="bubble">I still love a good competition — just in design now:</p>
+            <div class="bubble card">
+              <ul class="board">
+                <li><span class="medal" aria-hidden="true">🥇</span><span><a href="https://www.linkedin.com/posts/sneha14m_opentonewopportunities-designhackathon-uiuxdesign-activity-7080409624671129600-iFkI" target="_blank" rel="noopener"><b>Winner — Design Hackathon</b></a><small>Nobel Transformation Hub</small></span></li>
+                <li><span class="medal" aria-hidden="true">🎨</span><span><a href="https://drive.google.com/file/d/1BfENFpgX8q5tZxBSlgYKuOjqqmGcrwW2/view" target="_blank" rel="noopener"><b>Winner — Graphic Design Competition</b></a><small>Adetive Solutions Pvt. Ltd.</small></span></li>
+              </ul>
+            </div>
+            <p class="bubble">Oh, and I studied <b>Computer Science Engineering</b> at Kamaraj College of Engineering and Technology (2017–2021, CGPA 8.25) 🎓</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Talk -->
+      <section class="turn" id="talk" aria-labelledby="q-talk">
+        <h2 class="ask-bubble" id="q-talk">I'd love to work with you. How can I reach you?</h2>
+        <div class="reply">
+          <span class="ava xs"><img src="https://framerusercontent.com/images/PUOseOOuIhQYyte1bZlqY66GBYo.png?scale-down-to=128" alt="" width="34" height="34" /></span>
+          <div class="msgs">
+            <p class="bubble big">Yay! 💙</p>
+            <p class="bubble">If you enjoy building products that solve meaningful problems and put users at the centre, I'd love to connect.</p>
+            <div class="bubble card contact">
+              <a class="mail" href="mailto:snehauxdesigner@gmail.com">snehauxdesigner@gmail.com</a>
+              <button type="button" class="btn ghost small" data-copy="snehauxdesigner@gmail.com">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg>
+                Copy email
+              </button>
+              <ul class="socials">
+                <li><a href="https://www.linkedin.com/in/sneha14m/" target="_blank" rel="noopener">LinkedIn</a></li>
+                <li><a href="https://www.behance.net/sneha_m14" target="_blank" rel="noopener">Behance</a></li>
+                <li><a href="https://medium.com/@snehauxdesigner" target="_blank" rel="noopener">Medium</a></li>
+                <li><a href="https://x.com/Sneha_m_ux" target="_blank" rel="noopener">X</a></li>
+                <li><a href="https://www.instagram.com/sne_deshine/" target="_blank" rel="noopener">Instagram</a></li>
+              </ul>
+            </div>
+            <p class="bubble">Or just send me a message right here — it opens in your email app 👇</p>
+          </div>
+        </div>
+        <p class="signoff">Game, set, match 🏸 — thanks for rallying with me!</p>
+      </section>
+
+      <footer class="foot">© <span id="year">2026</span> Sneha M · Designed with care in Chennai · <a href="canvas/">Try the canvas version</a></footer>
+    </main>
+  </div>
+
+  <!-- Composer -->
+  <form class="composer" id="composer" aria-label="Send Sneha a message">
+    <div class="composer-chips" id="composerChips" role="group" aria-label="Suggested questions"></div>
+    <div class="composer-row">
+      <label class="sr-only" for="msg">Message to Sneha</label>
+      <input id="msg" name="msg" type="text" autocomplete="off" placeholder="Write to Sneha…" />
+      <button type="submit" class="send" aria-label="Send message by email">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12l16-8-6 16-2.5-6.5z"/></svg>
       </button>
     </div>
-    <div class="tb-group zoom-group">
-      <button type="button" class="tb" id="zoomOut" aria-label="Zoom out"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/></svg></button>
-      <button type="button" class="tb pct" id="zoomPct" aria-label="Fit current frame">100%</button>
-      <button type="button" class="tb" id="zoomIn" aria-label="Zoom in"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button>
-      <button type="button" class="tb" id="fitAll" aria-label="Zoom out to see the whole board"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></button>
-    </div>
-    <ol class="menu" id="menu" hidden></ol>
-  </nav>
+  </form>
 
-  <div class="minimap" id="minimap" aria-hidden="true"><div class="mm-world" id="mmWorld"></div></div>
-
-  <!-- Inspector -->
-  <div class="scrim" id="scrim" hidden></div>
-  <aside class="inspector" id="inspector" role="dialog" aria-modal="true" aria-labelledby="inspTitle" hidden>
-    <div class="insp-head">
-      <span class="insp-tabs"><b>Inspect</b><span id="inspTitle">Details</span></span>
-      <button type="button" class="icon-btn" id="inspClose" aria-label="Close details">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
-      </button>
-    </div>
-    <div class="insp-body" id="inspBody"></div>
-  </aside>
-
-  <div class="you" id="you" aria-hidden="true"><span>You</span></div>
+  <div class="flyer" id="flyer" aria-hidden="true"><svg><use href="#shuttle"/></svg></div>
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
-  <div class="sr-only" id="live" aria-live="polite"></div>
 
-  <script src="assets/js/main.js"></script>
+  <script src="assets/js/chat.js"></script>
 </body>
 </html>
