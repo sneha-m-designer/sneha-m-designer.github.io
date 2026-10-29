@@ -4,11 +4,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Sneha M | Product Designer</title>
-  <meta name="description" content="Sneha M — Product Designer with 2+ years of experience designing intuitive digital experiences across B2B and B2C SaaS platforms in AI, hospitality and marketing." />
+  <meta name="description" content="Sneha M — Product Designer at GoX.ai, Chennai. Turning research into intuitive products across B2B SaaS and B2C in AI, marketing and hospitality." />
   <meta name="keywords" content="product designer, ux designer, ux research, portfolio, Sneha M" />
   <link rel="canonical" href="https://sneha-m.com/" />
   <meta property="og:title" content="Sneha M | Product Designer" />
-  <meta property="og:description" content="Product Designer crafting accessible, user-centered SaaS experiences." />
+  <meta property="og:description" content="Product Designer turning research into intuitive products." />
   <meta property="og:image" content="https://framerusercontent.com/images/PUOseOOuIhQYyte1bZlqY66GBYo.png" />
   <meta property="og:url" content="https://sneha-m.com/" />
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%230099ff'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-weight='700' font-size='34' fill='white'%3ES%3C/text%3E%3C/svg%3E" />
@@ -202,6 +202,41 @@
     .project.featured { grid-column: span 1; }
     .project[hidden] { display: none; }
 
+    /* Featured case studies */
+    .featured-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; margin-bottom: 72px; }
+    @media (max-width: 820px) { .featured-grid { grid-template-columns: 1fr; } }
+    .case { display: flex; flex-direction: column; gap: 12px; }
+    .case:first-child { grid-column: 1 / -1; background: linear-gradient(140deg, var(--accent-soft), var(--card) 70%); }
+    .case .num { font-family: "Nanum Pen Script", cursive; font-size: 30px; line-height: 1; color: var(--accent); }
+    .case h3 { font-size: 22px; letter-spacing: -.01em; }
+    .case .where { color: var(--muted); font-size: 14px; font-weight: 500; }
+    .case p { margin: 0; color: var(--muted); }
+    .case .chips { margin-top: auto; padding-top: 8px; }
+    .case .chip { font-size: 13px; padding: 6px 12px; }
+    .subhead { font-size: 22px; margin: 0 0 8px; letter-spacing: -.01em; }
+
+    /* Story */
+    .story p { color: var(--muted); font-size: 17px; margin: 0 0 18px; max-width: 680px; }
+    .story p.big { color: var(--text); font-size: 22px; line-height: 1.45; font-weight: 600; letter-spacing: -.01em; }
+    .path { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin-top: 8px; }
+    .path .chip { font-size: 13px; }
+    .path i { color: var(--muted); font-style: normal; }
+    .facts { list-style: none; margin: 0 0 4px; padding: 0; display: grid; gap: 10px; }
+    .facts li { display: flex; justify-content: space-between; gap: 12px; font-size: 14px; }
+    .facts li span:first-child { color: var(--muted); }
+    .facts li span:last-child { font-weight: 600; text-align: right; }
+    .edu ul { margin: 10px 0 0; padding-left: 18px; color: var(--muted); font-size: 14px; }
+
+    /* Achievements */
+    .wins { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; margin-top: 24px; }
+    @media (max-width: 820px) { .wins { grid-template-columns: 1fr; } }
+    .win { display: flex; gap: 16px; align-items: center; text-decoration: none; transition: transform .2s; }
+    .win:hover { transform: translateY(-2px); }
+    .win .trophy { flex: none; width: 48px; height: 48px; border-radius: 14px; display: grid; place-items: center; background: var(--accent-soft); font-size: 24px; }
+    .win b { display: block; }
+    .win span { color: var(--muted); font-size: 14px; }
+    .skill-group + .skill-group { margin-top: 24px; }
+
     /* Skills */
     .skills-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
     @media (max-width: 820px) { .skills-grid { grid-template-columns: 1fr; } }
@@ -266,20 +301,20 @@
     <section class="hero">
       <div class="wrap hero-grid">
         <div>
-          <span class="badge"><span class="dot"></span>Available for projects</span>
-          <h1>Hey 👋, I'm <span class="accent">Sneha</span></h1>
-          <p class="role">Product Designer</p>
-          <p class="intro">I design intuitive, accessible digital experiences for B2B and B2C SaaS platforms — across AI, hospitality and marketing — owning the process end to end, from research to high‑fidelity design.</p>
+          <span class="badge"><span class="dot"></span>Product Designer @ GoX.ai · Chennai, India</span>
+          <h1>Turning research into <span class="accent">intuitive products</span></h1>
+          <p class="role">Hey 👋, I'm Sneha</p>
+          <p class="intro">I'm an end-to-end Product Designer with a strong UX research foundation, working across B2B SaaS and B2C products in AI, marketing and hospitality — bridging user needs and business goals.</p>
           <div class="cta">
             <a class="btn btn-primary" href="#work">View my work
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
             </a>
-            <a class="btn btn-ghost" href="mailto:snehauxdesigner@gmail.com">Contact me</a>
+            <a class="btn btn-ghost" href="#contact">Let's connect</a>
           </div>
           <div class="stats">
-            <div><b>2+ yrs</b><span>Product design</span></div>
-            <div><b>B2B · B2C</b><span>SaaS, web &amp; mobile</span></div>
-            <div><b>8</b><span>Certifications</span></div>
+            <div><b>4</b><span>AI-powered products at GoX.ai</span></div>
+            <div><b>5 months</b><span>To ship Illustrations AI</span></div>
+            <div><b>B2B · B2C</b><span>SaaS &amp; consumer</span></div>
           </div>
         </div>
         <div class="portrait reveal">
@@ -291,26 +326,45 @@
     <!-- About -->
     <section id="about" class="soft">
       <div class="wrap">
-        <p class="eyebrow">about me</p>
-        <h2>Designing with data, empathy and craft</h2>
+        <p class="eyebrow">my story</p>
+        <h2>Great products start with understanding people</h2>
         <div class="about-grid">
-          <div class="reveal">
-            <p class="lead" style="margin-bottom:24px">Results-driven Product Designer with 2+ years of experience in SaaS, AI-driven platforms, and B2B/B2C applications. Skilled in user research, information architecture, wireframing, prototyping, and usability testing to craft intuitive, scalable, and visually compelling experiences.</p>
-            <p class="lead" style="margin-bottom:28px">Passionate about solving complex design challenges through data-driven decisions and user-centered design, with strong expertise in building design systems, motion UI, and cross-functional collaboration.</p>
-            <div class="chips">
-              <span class="chip accent">UX Research</span>
-              <span class="chip accent">Design Systems</span>
-              <span class="chip accent">Motion UI</span>
-              <span class="chip accent">Accessibility</span>
+          <div class="story reveal">
+            <p class="big">My journey into design started with a simple belief: great products come from truly understanding the people who use them.</p>
+            <p>I began in UX research — talking to users, uncovering pain points, and understanding the behaviours and influences behind their decisions. That foundation still shapes how I design today.</p>
+            <p>Over time I grew curious about what happens after research. I wanted to solve the problems I was uncovering, which led me into product design: user flows, wireframes, prototypes and continuous validation.</p>
+            <p>I've built products from the ground up and improved existing ones. I love finding friction points, simplifying workflows and making experiences more intuitive — and it's most rewarding when those improvements create measurable impact.</p>
+            <p>To me, end-to-end product design means staying close to the problem from start to finish: understanding users deeply, shaping solutions thoughtfully, and seeing ideas through until they become real products.</p>
+            <div class="path" aria-label="Career path">
+              <span class="chip">Computer Science</span><i>→</i>
+              <span class="chip">Cybersecurity @ HCL</span><i>→</i>
+              <span class="chip">UX Research Intern</span><i>→</i>
+              <span class="chip">UX Designer</span><i>→</i>
+              <span class="chip accent">Product Designer</span>
             </div>
           </div>
-          <div class="card edu reveal">
-            <h4>Education</h4>
-            <b>Kamaraj College of Engineering and Technology</b>
-            <span>B.E. — Computer Science Engineering · 2017 – 2021 · CGPA 8.25</span>
-            <h4 style="margin-top:24px">Industries</h4>
-            <div class="chips">
-              <span class="chip">AI</span><span class="chip">Marketing</span><span class="chip">Hospitality</span><span class="chip">Cybersecurity</span>
+          <div style="display:grid;gap:24px;align-content:start">
+            <div class="card reveal">
+              <h4>At a glance</h4>
+              <ul class="facts">
+                <li><span>Currently</span><span>Product Designer, GoX.ai</span></li>
+                <li><span>Based in</span><span>Chennai, Tamil Nadu, India</span></li>
+                <li><span>Focus</span><span>Research-led, end-to-end design</span></li>
+              </ul>
+              <h4 style="margin-top:22px">Domains</h4>
+              <div class="chips">
+                <span class="chip">AI products</span><span class="chip">Marketing &amp; analytics SaaS</span><span class="chip">Hospitality SaaS</span><span class="chip">Consumer utilities</span>
+              </div>
+            </div>
+            <div class="card edu reveal">
+              <h4>Education</h4>
+              <b>B.E., Computer Science Engineering</b>
+              <span>Kamaraj College of Engineering and Technology · 2017 – 2021 · CGPA 8.25</span>
+              <ul>
+                <li>Sports House Captain (1× overall championship)</li>
+                <li>3rd place, Anna University zonal tournament — Ball Badminton</li>
+                <li>4th place, state-level inter-college tournament — Badminton</li>
+              </ul>
             </div>
           </div>
         </div>
@@ -322,83 +376,72 @@
       <div class="wrap">
         <p class="eyebrow">experience</p>
         <h2>Where I've worked</h2>
-        <p class="lead">From OT cybersecurity to leading end-to-end product design for AI and SaaS products.</p>
+        <p class="lead">From managing cybersecurity risk to leading design for AI products — every step taught me something I bring into my work today.</p>
         <div class="timeline">
           <details class="card job reveal" open>
             <summary>
-              <span class="title">Product Designer · <span class="company">GOX AI</span></span>
+              <span class="title">Product Designer · <span class="company">Two Minute Reports | GoX.ai</span></span>
               <span class="date">Oct 2024 – Present <svg class="chev" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></span>
-              <span class="meta">Marketing industry · SaaS (B2B &amp; B2C) · Web application</span>
+              <span class="meta">Full-time · Chennai, India · On-site</span>
             </summary>
             <div class="job-body">
-              <p>Handled end-to-end design and project management for two products — a B2B marketing platform and a B2C AI illustration generator — from research to high-fidelity design, ensuring smooth delivery and iteration based on user feedback.</p>
-              <h5>B2B SaaS · Marketing Platform</h5>
+              <p>I work across multiple AI-powered B2B SaaS and B2C products, leading design from research to delivery.</p>
               <ul>
-                <li>Conducted secondary research, survey analysis, and competitor benchmarking to uncover user needs.</li>
-                <li>Defined information architecture, user flows, and user stories to create structured, scalable experiences.</li>
-                <li>Designed low- and high-fidelity wireframes and interactive prototypes for desktop and mobile.</li>
-                <li>Managed continuous feedback iterations based on usability testing and stakeholder input.</li>
-                <li>Collaborated with developers and PMs to align business and technical goals.</li>
-              </ul>
-              <h5>B2C SaaS · AI Illustration Generator</h5>
-              <ul>
-                <li>Designed a landing page from scratch, including secondary research, IA, and user story mapping.</li>
-                <li>Created low- and high-fidelity wireframes for web and mobile.</li>
-                <li>Ran usability tests and iterated to streamline UI flows.</li>
-                <li>Led continuous UX improvements for a structured, user-friendly interface.</li>
+                <li><b>Illustrations AI</b> — Ran secondary research and competitor analysis to define product direction. Designed the landing page, web app, Figma plugin and marketing creatives, and helped ship the product in <b>5 months</b>.</li>
+                <li><b>AI Report Creator</b> — Led end-to-end design of an AI-powered marketing hub built from scratch: primary and secondary research, competitor analysis, information architecture, user flows, wireframes, prototypes and iterative testing.</li>
+                <li><b>Two Minute Reports</b> — Improved UX and supported churn reduction through user research, experimentation, bounce-rate analysis, and a redesign of the cancellation flow to reduce user frustration.</li>
+                <li><b>Make Passport Photo</b> — Driving UX strategy by analysing user behaviour, drop-offs, friction points and accessibility issues, and running experiments to improve conversion, engagement and error prevention.</li>
               </ul>
             </div>
           </details>
 
           <details class="card job reveal">
             <summary>
-              <span class="title">UX Designer · <span class="company">Lucify Labs</span></span>
+              <span class="title">UX Designer · <span class="company">Lucify</span></span>
               <span class="date">Jan 2024 – Oct 2024 <svg class="chev" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></span>
-              <span class="meta">Hospitality industry · B2B SaaS · Web &amp; mobile application</span>
+              <span class="meta">Full-time · Delhi, India · Remote · Hospitality SaaS</span>
             </summary>
             <div class="job-body">
-              <p>Led end-to-end UX design for a B2B SaaS product in the hospitality industry, focusing on usability, accessibility, and cross-functional collaboration.</p>
               <ul>
-                <li>Conducted field research, user interviews, and usability testing to inform design decisions.</li>
-                <li>Improved navigation, workflows, and interactions through iterative design.</li>
-                <li>Refined user flows and IA; redesigned key areas for accessibility and cross-platform consistency.</li>
-                <li>Expanded the design system with responsive UI components and micro-interactions.</li>
-                <li>Worked with developers, PMs, and stakeholders in an Agile environment for smooth handoff.</li>
-                <li>Designed the marketing website landing page with engaging motion animation.</li>
+                <li>Conducted primary and secondary research and documented findings.</li>
+                <li>Designed user flows, information architecture, high-fidelity wireframes and prototypes.</li>
+                <li>Built the product's design system for consistency and scalability.</li>
+                <li>Redesigned the website, including motion design animations to improve engagement.</li>
               </ul>
             </div>
           </details>
 
           <details class="card job reveal">
             <summary>
-              <span class="title">UX Researcher Intern · <span class="company">Lucify Labs</span></span>
+              <span class="title">UX Researcher Intern · <span class="company">Lucify</span></span>
               <span class="date">Sep 2023 – Jan 2024 <svg class="chev" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></span>
-              <span class="meta">Hospitality industry · B2B SaaS · Web &amp; mobile application</span>
+              <span class="meta">Internship · Remote</span>
             </summary>
             <div class="job-body">
-              <p>Contributed to the early-stage product foundation by conducting research, shaping design direction, and collaborating closely with cross-functional teams.</p>
+              <p>Helped shape the product from the ground up through research and design.</p>
               <ul>
-                <li>Ran secondary research, competitor analysis, heuristic evaluation, and user interviews.</li>
-                <li>Developed personas, information architecture, and user flows to improve navigation.</li>
-                <li>Created low- and high-fidelity wireframes and interactive prototypes in Figma.</li>
-                <li>Supported <b>30% of product enhancements</b> through research-backed design iterations.</li>
+                <li>Ran secondary research, user interviews and competitor analysis; synthesised insights on user needs, pain points and market trends.</li>
+                <li>Created user flows and information architecture for intuitive navigation.</li>
+                <li>Designed low- and high-fidelity wireframes and interactive Figma prototypes for stakeholders.</li>
+                <li>Worked with developers and product managers to align user needs, technical feasibility and business goals.</li>
               </ul>
             </div>
           </details>
 
           <details class="card job reveal">
             <summary>
-              <span class="title">Graduate Engineer Trainee · <span class="company">HCL</span></span>
+              <span class="title">Graduate Engineer Trainee · <span class="company">HCL Technologies</span></span>
               <span class="date">Nov 2021 – Jan 2023 <svg class="chev" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></span>
-              <span class="meta">Cybersecurity (OT Security) · Risk mitigation · Agile</span>
+              <span class="meta">Full-time · Chennai, India · Hybrid · Cybersecurity</span>
             </summary>
             <div class="job-body">
+              <p>Cybersecurity risk management, project execution and stakeholder communication — where I built the stakeholder management, Agile delivery and systems thinking I now bring into design.</p>
               <ul>
-                <li>Monitored and mitigated cybersecurity risks across <b>60+ OT sites</b> using <b>Microsoft Defender for IoT</b>.</li>
-                <li>Handled and prioritized incident tickets via <b>ServiceNow</b> for timely resolution.</li>
-                <li>Collaborated with cross-functional teams following Agile methodologies.</li>
-                <li>Conducted threat analysis and delivered actionable presentations to clients and leads.</li>
-                <li>Ran daily stand-ups and MoMs to keep workflow and communication smooth.</li>
+                <li>Managed cybersecurity risks in OT environments using <b>Microsoft Defender for IoT</b>.</li>
+                <li>Worked with clients, stakeholders and internal teams to deliver on time.</li>
+                <li>Analysed and resolved security incidents alongside senior colleagues.</li>
+                <li>Managed <b>ServiceNow</b> ticketing and prioritisation under tight deadlines.</li>
+                <li>Wrote documentation and applied Agile practices to improve team efficiency.</li>
               </ul>
             </div>
           </details>
@@ -410,9 +453,49 @@
     <section id="work" class="soft">
       <div class="wrap">
         <p class="eyebrow">selected work</p>
-        <h2>Projects</h2>
-        <p class="lead">Case studies, landing pages, and heuristic evaluations that show how I solve user problems through thoughtful design.</p>
-        <div class="filters" role="group" aria-label="Filter projects">
+        <h2>Featured projects</h2>
+        <p class="lead">Products I've designed end to end — from research and problem framing to shipped experiences.</p>
+        <div class="featured-grid">
+          <article class="card case reveal">
+            <span class="num">01</span>
+            <h3>AI Report Creator</h3>
+            <span class="where">GoX.ai · B2B SaaS · 0 → 1</span>
+            <p>An AI-powered marketing hub built from scratch. I led the design end to end — primary and secondary research, competitor analysis, information architecture, user flows, wireframes, prototypes and iterative testing.</p>
+            <div class="chips"><span class="chip">User research</span><span class="chip">Information architecture</span><span class="chip">Prototyping</span><span class="chip">Iterative testing</span></div>
+          </article>
+          <article class="card case reveal">
+            <span class="num">02</span>
+            <h3>Illustrations AI</h3>
+            <span class="where">GoX.ai · B2C · Shipped in 5 months</span>
+            <p>Defined product direction through secondary research and competitor analysis, then designed the landing page, web app, Figma plugin and marketing creatives.</p>
+            <div class="chips"><span class="chip">Landing page</span><span class="chip">Web app</span><span class="chip">Figma plugin</span></div>
+          </article>
+          <article class="card case reveal">
+            <span class="num">03</span>
+            <h3>Two Minute Reports — Churn &amp; cancellation</h3>
+            <span class="where">GoX.ai · B2B SaaS · Retention</span>
+            <p>Supported churn reduction through user research, experimentation and bounce-rate analysis, and redesigned the cancellation flow to reduce user frustration.</p>
+            <div class="chips"><span class="chip">Experimentation</span><span class="chip">Behaviour analysis</span><span class="chip">Flow redesign</span></div>
+          </article>
+          <article class="card case reveal">
+            <span class="num">04</span>
+            <h3>Make Passport Photo</h3>
+            <span class="where">GoX.ai · B2C · Conversion</span>
+            <p>Driving UX strategy by analysing user behaviour, drop-offs, friction points and accessibility issues, and running experiments to improve conversion, engagement and error prevention.</p>
+            <div class="chips"><span class="chip">Conversion</span><span class="chip">Accessibility</span><span class="chip">Experiments</span></div>
+          </article>
+          <article class="card case reveal">
+            <span class="num">05</span>
+            <h3>Lucify</h3>
+            <span class="where">Hospitality SaaS · Web &amp; mobile</span>
+            <p>Helped shape the product from the ground up as a researcher, then built its design system for consistency and scalability and redesigned the website with motion design animations.</p>
+            <div class="chips"><span class="chip">Design system</span><span class="chip">Motion design</span><span class="chip">Website redesign</span></div>
+          </article>
+        </div>
+
+        <h3 class="subhead">More work</h3>
+        <p class="lead" style="margin-bottom:28px">Case studies, landing pages and explorations on Behance.</p>
+        <div class="filters" role="group" aria-label="Filter projects" style="margin-top:0">
           <button aria-pressed="true" data-filter="all">All</button>
           <button aria-pressed="false" data-filter="case">Case studies</button>
           <button aria-pressed="false" data-filter="landing">Landing pages</button>
@@ -427,34 +510,67 @@
       <div class="wrap">
         <p class="eyebrow">skills &amp; tools</p>
         <h2>What I bring to the table</h2>
-        <p class="lead">Hands-on project experience in research, wireframing, prototyping, heuristic evaluation, information architecture, user flows and stories — backed by certifications in UX design.</p>
+        <p class="lead">A research-first toolkit, backed by hands-on product work and certifications in UX and design thinking.</p>
         <div class="skills-grid">
           <div class="card reveal">
-            <h4>Skills</h4>
-            <div class="chips">
-              <span class="chip">UX Research</span><span class="chip">User Flows</span><span class="chip">Motion Design</span>
-              <span class="chip">Heuristic Evaluation</span><span class="chip">User Centered Design</span><span class="chip">Usability Testing</span>
-              <span class="chip">Agile Project Management</span><span class="chip">Wireframing</span><span class="chip">Design Thinking</span>
-              <span class="chip">Information Architecture</span><span class="chip">Prototyping</span><span class="chip">Visual Design</span>
+            <div class="skill-group">
+              <h4>Research</h4>
+              <div class="chips">
+                <span class="chip">User research</span><span class="chip">User interviews</span><span class="chip">Competitor analysis</span>
+                <span class="chip">Heuristic evaluation</span><span class="chip">Usability testing</span><span class="chip">Behaviour &amp; bounce-rate analysis</span><span class="chip">Experimentation</span>
+              </div>
             </div>
-            <h4 style="margin-top:28px">Tools</h4>
-            <div class="chips">
-              <span class="chip accent">Figma</span><span class="chip accent">FigJam</span><span class="chip accent">Photoshop</span><span class="chip accent">Adobe XD</span>
+            <div class="skill-group">
+              <h4>Design</h4>
+              <div class="chips">
+                <span class="chip">Information architecture</span><span class="chip">User flows</span><span class="chip">Wireframing</span>
+                <span class="chip">Prototyping</span><span class="chip">Design systems</span><span class="chip">Motion design</span><span class="chip">Accessibility</span>
+              </div>
+            </div>
+            <div class="skill-group">
+              <h4>Process</h4>
+              <div class="chips"><span class="chip">Design thinking</span><span class="chip">Agile</span><span class="chip">Lean UX</span></div>
+            </div>
+            <div class="skill-group">
+              <h4>Tools</h4>
+              <div class="chips">
+                <span class="chip accent">Figma</span><span class="chip accent">FigJam</span><span class="chip accent">Adobe XD</span><span class="chip accent">Balsamiq</span>
+                <span class="chip accent">Photoshop</span><span class="chip accent">Miro</span><span class="chip accent">Jira</span><span class="chip accent">v0</span>
+              </div>
+            </div>
+            <div class="skill-group">
+              <h4>Soft skills</h4>
+              <div class="chips">
+                <span class="chip">Problem-solving</span><span class="chip">Leadership</span><span class="chip">Collaboration</span>
+                <span class="chip">Task prioritisation</span><span class="chip">Project management</span><span class="chip">Willingness to learn</span>
+              </div>
             </div>
           </div>
           <div class="card reveal">
             <h4>Certifications</h4>
             <ul class="certs">
-              <li><a href="https://www.credly.com/badges/405c08e3-d6cc-433b-9f37-c1b3c0017074/public_url" target="_blank" rel="noopener">Enterprise Design Thinking — Team Essentials for AI <small>IBM · 2024</small></a></li>
-              <li><a href="https://www.credly.com/badges/6e40f5f9-d671-4f6c-aac5-d0db50a27cfe/linked_in_profile" target="_blank" rel="noopener">Enterprise Design Thinking Practitioner <small>IBM</small></a></li>
-              <li><a href="https://www.coursera.org/account/accomplishments/specialization/certificate/4QNXCMT67CFF" target="_blank" rel="noopener">Google UX Design Specialization <small>Coursera · 2023</small></a></li>
-              <li><a href="https://www.coursera.org/account/accomplishments/certificate/6UJFZ3ZKRK7Z" target="_blank" rel="noopener">Introduction to Generative AI <small>Coursera</small></a></li>
-              <li><a href="https://www.udemy.com/certificate/UC-73b4b8dd-8c0a-415d-bbcc-4756e2c7f88c/" target="_blank" rel="noopener">Motion Design with Figma <small>Udemy</small></a></li>
-              <li><a href="https://www.futurelearn.com/certificates/cf6zq7b" target="_blank" rel="noopener">Digital Skills: User Experience <small>FutureLearn</small></a></li>
-              <li><a href="https://api.growthschool.io/certificate/b1b756e5-8ae5-4a67-881c-f662fd1d6c5b" target="_blank" rel="noopener">UX Design Kickstarter Workshop <small>GrowthSchool</small></a></li>
-              <li><a href="https://trainings.internshala.com/s/v/2368668/5af15928" target="_blank" rel="noopener">UI/UX Design <small>Internshala · 2022</small></a></li>
+              <li><a href="https://www.credly.com/badges/405c08e3-d6cc-433b-9f37-c1b3c0017074/public_url" target="_blank" rel="noopener">Enterprise Design Thinking — Team Essentials for AI <small>IBM · Aug 2024</small></a></li>
+              <li><a href="https://www.credly.com/badges/6e40f5f9-d671-4f6c-aac5-d0db50a27cfe/linked_in_profile" target="_blank" rel="noopener">Enterprise Design Thinking Practitioner <small>IBM · Jun 2024</small></a></li>
+              <li><a href="https://www.coursera.org/account/accomplishments/specialization/certificate/4QNXCMT67CFF" target="_blank" rel="noopener">Google UX Design Specialization <small>Coursera · Nov 2023</small></a></li>
+              <li><a href="https://www.coursera.org/account/accomplishments/certificate/6UJFZ3ZKRK7Z" target="_blank" rel="noopener">Introduction to Generative AI <small>Coursera · Nov 2023</small></a></li>
+              <li><a href="https://adplist.org/certifications/122568" target="_blank" rel="noopener">1 Mentorship Session <small>ADPList · Jul 2023</small></a></li>
+              <li><a href="https://www.udemy.com/certificate/UC-73b4b8dd-8c0a-415d-bbcc-4756e2c7f88c/" target="_blank" rel="noopener">Motion Design with Figma: Animations, Motion Graphics, UI/UX <small>Udemy · May 2023</small></a></li>
+              <li><a href="https://www.futurelearn.com/certificates/cf6zq7b" target="_blank" rel="noopener">Digital Skills: User Experience <small>Accenture · Apr 2023</small></a></li>
+              <li><a href="https://api.growthschool.io/certificate/b1b756e5-8ae5-4a67-881c-f662fd1d6c5b" target="_blank" rel="noopener">UX Design Kickstarter Workshop <small>GrowthSchool · Jan 2023</small></a></li>
+              <li><a href="https://trainings.internshala.com/s/v/2368668/5af15928" target="_blank" rel="noopener">UI/UX Design <small>Internshala</small></a></li>
             </ul>
           </div>
+        </div>
+
+        <div class="wins">
+          <a class="card win reveal" href="https://www.linkedin.com/posts/sneha14m_opentonewopportunities-designhackathon-uiuxdesign-activity-7080409624671129600-iFkI" target="_blank" rel="noopener">
+            <span class="trophy" aria-hidden="true">🏆</span>
+            <span><b>Winner, Design Hackathon</b><span>Nobel Transformation Hub</span></span>
+          </a>
+          <a class="card win reveal" href="https://drive.google.com/file/d/1BfENFpgX8q5tZxBSlgYKuOjqqmGcrwW2/view" target="_blank" rel="noopener">
+            <span class="trophy" aria-hidden="true">🎨</span>
+            <span><b>Winner, Graphic Design Competition</b><span>Adetive Solutions Pvt. Ltd.</span></span>
+          </a>
         </div>
       </div>
     </section>
@@ -464,8 +580,8 @@
       <div class="wrap">
         <div class="contact reveal">
           <p class="eyebrow">let's connect!</p>
-          <h2>Have a project in mind?</h2>
-          <p>Whether it's brainstorming a new project, discussing design optimizations, or just sharing creative insights, I'm always excited to collaborate. Reach out and let's craft something exceptional — together!</p>
+          <h2>Let's build something meaningful</h2>
+          <p>If you enjoy building products that solve meaningful problems and put users at the centre, I'd love to connect.</p>
           <a class="mail" href="mailto:snehauxdesigner@gmail.com">snehauxdesigner@gmail.com</a>
           <div class="socials">
             <a class="btn btn-ghost" href="https://www.linkedin.com/in/sneha14m/" target="_blank" rel="noopener">LinkedIn</a>
