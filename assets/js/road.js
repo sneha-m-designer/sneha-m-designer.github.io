@@ -39,8 +39,7 @@
   var saved = store.get('theme');
   if (saved) root.dataset.theme = saved;
   $('#themeBtn').addEventListener('click', function () {
-    var dark = root.dataset.theme ? root.dataset.theme === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
-    root.dataset.theme = dark ? 'light' : 'dark';
+    root.dataset.theme = root.dataset.theme === 'light' ? 'dark' : 'light';
     store.set('theme', root.dataset.theme);
   });
   var toastEl = $('#toast'), toastT = 0;
@@ -154,7 +153,7 @@
 
     // Speech bubble while crossing between stops.
     var say = '';
-    if (py < bands[0].top) say = 'Let’s go! 🚗';
+    if (py < bands[0].top) say = 'Vroom! Let’s go 🚗';
     bands.forEach(function (bd) { if (py >= bd.top - 10 && py <= bd.bottom + 30) say = bd.stop.dataset.say; });
     if (py >= endY - 2) say = 'We made it! 🏁';
     if (say) carSay.textContent = say;
