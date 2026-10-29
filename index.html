@@ -1,667 +1,568 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="reader">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>Sneha M | Product Designer</title>
   <meta name="description" content="Sneha M — Product Designer at GoX.ai, Chennai. Turning research into intuitive products across B2B SaaS and B2C in AI, marketing and hospitality." />
-  <meta name="keywords" content="product designer, ux designer, ux research, portfolio, Sneha M" />
+  <meta name="keywords" content="product designer, ux designer, ux research, portfolio, Sneha M, Chennai" />
+  <meta name="theme-color" content="#0099ff" />
   <link rel="canonical" href="https://sneha-m.com/" />
   <meta property="og:title" content="Sneha M | Product Designer" />
-  <meta property="og:description" content="Product Designer turning research into intuitive products." />
+  <meta property="og:description" content="Product Designer turning research into intuitive products. Explore my portfolio canvas." />
   <meta property="og:image" content="https://framerusercontent.com/images/PUOseOOuIhQYyte1bZlqY66GBYo.png" />
   <meta property="og:url" content="https://sneha-m.com/" />
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%230099ff'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-weight='700' font-size='34' fill='white'%3ES%3C/text%3E%3C/svg%3E" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Nanum+Pen+Script&display=swap" rel="stylesheet" />
-  <style>
-    :root {
-      --bg: #ffffff;
-      --bg-soft: #f6f8fb;
-      --card: #ffffff;
-      --text: #0b0d12;
-      --muted: #5b6270;
-      --line: #e6e8ee;
-      --accent: #0099ff;
-      --accent-soft: #e6f5ff;
-      --ok: #00c46a;
-      --shadow: 0 1px 2px rgba(16, 24, 40, .04), 0 8px 24px rgba(16, 24, 40, .06);
-      --radius: 18px;
-      --max: 1120px;
-    }
-    @media (prefers-color-scheme: dark) {
-      :root:not([data-theme="light"]) {
-        --bg: #0b0d12; --bg-soft: #11141b; --card: #151923; --text: #f2f4f8;
-        --muted: #9aa3b2; --line: #232836; --accent-soft: #0b2a40;
-        --shadow: 0 1px 2px rgba(0,0,0,.3), 0 8px 24px rgba(0,0,0,.35);
-      }
-    }
-    :root[data-theme="dark"] {
-      --bg: #0b0d12; --bg-soft: #11141b; --card: #151923; --text: #f2f4f8;
-      --muted: #9aa3b2; --line: #232836; --accent-soft: #0b2a40;
-      --shadow: 0 1px 2px rgba(0,0,0,.3), 0 8px 24px rgba(0,0,0,.35);
-    }
-
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; scroll-padding-top: 80px; }
-    body {
-      margin: 0; background: var(--bg); color: var(--text);
-      font-family: Inter, system-ui, -apple-system, "Segoe UI", sans-serif;
-      font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased;
-    }
-    img { max-width: 100%; display: block; }
-    a { color: inherit; }
-    .wrap { max-width: var(--max); margin: 0 auto; padding: 0 20px; }
-    section { padding: 88px 0; }
-    section.soft { background: var(--bg-soft); }
-    .eyebrow {
-      font-family: "Nanum Pen Script", cursive; color: var(--accent);
-      font-size: 28px; line-height: 1; margin: 0 0 6px;
-    }
-    h2 { font-size: clamp(28px, 4vw, 40px); line-height: 1.15; margin: 0 0 16px; letter-spacing: -.02em; }
-    h3 { margin: 0; line-height: 1.3; }
-    .lead { color: var(--muted); max-width: 680px; margin: 0 0 40px; font-size: 17px; }
-
-    /* Nav */
-    header {
-      position: sticky; top: 0; z-index: 50;
-      background: color-mix(in srgb, var(--bg) 82%, transparent);
-      backdrop-filter: saturate(180%) blur(12px); -webkit-backdrop-filter: saturate(180%) blur(12px);
-      border-bottom: 1px solid var(--line);
-    }
-    .nav { display: flex; align-items: center; justify-content: space-between; height: 64px; gap: 16px; }
-    .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; font-weight: 700; }
-    .brand img { width: 34px; height: 34px; border-radius: 50%; object-fit: cover; background: var(--accent-soft); }
-    .brand small { display: block; font-weight: 500; color: var(--muted); font-size: 12px; line-height: 1.1; }
-    .links { display: flex; gap: 4px; align-items: center; }
-    .links a {
-      text-decoration: none; color: var(--muted); font-size: 14px; font-weight: 500;
-      padding: 8px 12px; border-radius: 999px; transition: color .2s, background .2s;
-    }
-    .links a:hover { color: var(--text); background: var(--bg-soft); }
-    .icon-btn {
-      width: 38px; height: 38px; border-radius: 50%; border: 1px solid var(--line);
-      background: var(--card); color: var(--text); cursor: pointer; display: grid; place-items: center;
-    }
-    .menu-btn { display: none; }
-    @media (max-width: 820px) {
-      .menu-btn { display: grid; }
-      .links {
-        position: absolute; top: 64px; left: 0; right: 0; flex-direction: column; align-items: stretch;
-        background: var(--bg); border-bottom: 1px solid var(--line); padding: 8px 16px 16px; display: none;
-      }
-      .links.open { display: flex; }
-      .links a { padding: 12px; }
-    }
-
-    /* Buttons */
-    .btn {
-      display: inline-flex; align-items: center; gap: 8px; text-decoration: none; font-weight: 600;
-      font-size: 15px; padding: 12px 20px; border-radius: 999px; border: 1px solid transparent;
-      transition: transform .15s, box-shadow .2s, background .2s;
-    }
-    .btn:hover { transform: translateY(-1px); }
-    .btn-primary { background: var(--accent); color: #fff; box-shadow: 0 6px 20px rgba(0,153,255,.3); }
-    .btn-ghost { border-color: var(--line); background: var(--card); color: var(--text); }
-
-    /* Hero */
-    .hero { padding: 72px 0 88px; }
-    .hero-grid { display: grid; grid-template-columns: 1.3fr 1fr; gap: 48px; align-items: center; }
-    .badge {
-      display: inline-flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 600;
-      padding: 6px 12px; border-radius: 999px; background: var(--card); border: 1px solid var(--line);
-    }
-    .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--ok); box-shadow: 0 0 0 4px color-mix(in srgb, var(--ok) 22%, transparent); animation: pulse 2s infinite; }
-    @keyframes pulse { 50% { box-shadow: 0 0 0 7px color-mix(in srgb, var(--ok) 5%, transparent); } }
-    .hero h1 { font-size: clamp(40px, 6.5vw, 72px); line-height: 1.02; letter-spacing: -.035em; margin: 20px 0 8px; }
-    .hero h1 .accent { color: var(--accent); }
-    .hero .role { font-family: "Nanum Pen Script", cursive; font-size: 34px; color: var(--muted); margin: 0 0 20px; }
-    .hero p.intro { font-size: 18px; color: var(--muted); max-width: 580px; margin: 0 0 28px; }
-    .cta { display: flex; flex-wrap: wrap; gap: 12px; }
-    .portrait {
-      position: relative; aspect-ratio: 4/5; border-radius: 28px; overflow: hidden;
-      background: linear-gradient(160deg, var(--accent-soft), var(--bg-soft)); box-shadow: var(--shadow);
-    }
-    .portrait img { width: 100%; height: 100%; object-fit: cover; }
-    .stats { display: flex; gap: 32px; margin-top: 40px; flex-wrap: wrap; }
-    .stats b { display: block; font-size: 28px; letter-spacing: -.02em; }
-    .stats span { color: var(--muted); font-size: 14px; }
-    @media (max-width: 820px) {
-      .hero-grid { grid-template-columns: 1fr; }
-      .portrait { max-width: 360px; order: -1; }
-    }
-
-    /* Chips */
-    .chips { display: flex; flex-wrap: wrap; gap: 10px; }
-    .chip {
-      font-size: 14px; font-weight: 500; padding: 8px 14px; border-radius: 999px;
-      background: var(--card); border: 1px solid var(--line);
-    }
-    .chip.accent { background: var(--accent-soft); border-color: transparent; color: var(--accent); }
-
-    /* About */
-    .about-grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: 40px; }
-    .card { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 24px; box-shadow: var(--shadow); }
-    .card h4 { margin: 0 0 14px; font-size: 13px; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); }
-    .edu b { display: block; }
-    .edu span { color: var(--muted); font-size: 14px; }
-    @media (max-width: 820px) { .about-grid { grid-template-columns: 1fr; } }
-
-    /* Experience */
-    .timeline { display: grid; gap: 16px; }
-    .job { padding: 0; overflow: hidden; }
-    .job summary {
-      list-style: none; cursor: pointer; padding: 22px 24px; display: grid;
-      grid-template-columns: 1fr auto; gap: 4px 16px; align-items: center;
-    }
-    .job summary::-webkit-details-marker { display: none; }
-    .job .title { font-weight: 700; font-size: 18px; }
-    .job .company { color: var(--accent); }
-    .job .date { color: var(--muted); font-size: 14px; white-space: nowrap; }
-    .job .meta { color: var(--muted); font-size: 14px; grid-column: 1 / -1; }
-    .job .chev { transition: transform .2s; }
-    .job[open] .chev { transform: rotate(180deg); }
-    .job-body { padding: 0 24px 24px; border-top: 1px solid var(--line); }
-    .job-body > p { color: var(--muted); }
-    .job-body h5 { margin: 18px 0 8px; font-size: 14px; color: var(--text); }
-    .job-body ul { margin: 0; padding-left: 20px; color: var(--muted); }
-    .job-body li { margin: 4px 0; }
-    .job-body li b { color: var(--text); font-weight: 600; }
-    @media (max-width: 560px) {
-      .job summary { grid-template-columns: 1fr; }
-      .job .date { white-space: normal; }
-    }
-
-    /* Projects */
-    .filters { display: flex; gap: 8px; flex-wrap: wrap; margin: -12px 0 32px; }
-    .filters button {
-      font: inherit; font-size: 14px; font-weight: 600; padding: 8px 16px; border-radius: 999px; cursor: pointer;
-      border: 1px solid var(--line); background: var(--card); color: var(--muted);
-    }
-    .filters button[aria-pressed="true"] { background: var(--text); color: var(--bg); border-color: var(--text); }
-    .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-    @media (max-width: 960px) { .grid { grid-template-columns: repeat(2, 1fr); } }
-    @media (max-width: 600px) { .grid { grid-template-columns: 1fr; } }
-    .project {
-      text-decoration: none; display: flex; flex-direction: column; border-radius: var(--radius); overflow: hidden;
-      background: var(--card); border: 1px solid var(--line); box-shadow: var(--shadow);
-      transition: transform .25s, box-shadow .25s;
-    }
-    .project:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0, 153, 255, .15); }
-    .project .thumb { aspect-ratio: 4/3; overflow: hidden; background: var(--bg-soft); }
-    .project .thumb img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s; }
-    .project:hover .thumb img { transform: scale(1.04); }
-    .project .info { padding: 18px 20px 20px; display: flex; justify-content: space-between; align-items: center; gap: 12px; }
-    .project .info span { color: var(--muted); font-size: 14px; }
-    .project .arrow {
-      flex: none; width: 36px; height: 36px; border-radius: 50%; display: grid; place-items: center;
-      background: var(--accent-soft); color: var(--accent); transition: transform .25s;
-    }
-    .project:hover .arrow { transform: rotate(-45deg); }
-    .project.featured { grid-column: span 1; }
-    .project[hidden] { display: none; }
-
-    /* Featured case studies */
-    .featured-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; margin-bottom: 72px; }
-    @media (max-width: 820px) { .featured-grid { grid-template-columns: 1fr; } }
-    .case { display: flex; flex-direction: column; gap: 12px; }
-    .case:first-child { grid-column: 1 / -1; background: linear-gradient(140deg, var(--accent-soft), var(--card) 70%); }
-    .case .num { font-family: "Nanum Pen Script", cursive; font-size: 30px; line-height: 1; color: var(--accent); }
-    .case h3 { font-size: 22px; letter-spacing: -.01em; }
-    .case .where { color: var(--muted); font-size: 14px; font-weight: 500; }
-    .case p { margin: 0; color: var(--muted); }
-    .case .chips { margin-top: auto; padding-top: 8px; }
-    .case .chip { font-size: 13px; padding: 6px 12px; }
-    .subhead { font-size: 22px; margin: 0 0 8px; letter-spacing: -.01em; }
-
-    /* Story */
-    .story p { color: var(--muted); font-size: 17px; margin: 0 0 18px; max-width: 680px; }
-    .story p.big { color: var(--text); font-size: 22px; line-height: 1.45; font-weight: 600; letter-spacing: -.01em; }
-    .path { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin-top: 8px; }
-    .path .chip { font-size: 13px; }
-    .path i { color: var(--muted); font-style: normal; }
-    .facts { list-style: none; margin: 0 0 4px; padding: 0; display: grid; gap: 10px; }
-    .facts li { display: flex; justify-content: space-between; gap: 12px; font-size: 14px; }
-    .facts li span:first-child { color: var(--muted); }
-    .facts li span:last-child { font-weight: 600; text-align: right; }
-    .edu ul { margin: 10px 0 0; padding-left: 18px; color: var(--muted); font-size: 14px; }
-
-    /* Achievements */
-    .wins { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; margin-top: 24px; }
-    @media (max-width: 820px) { .wins { grid-template-columns: 1fr; } }
-    .win { display: flex; gap: 16px; align-items: center; text-decoration: none; transition: transform .2s; }
-    .win:hover { transform: translateY(-2px); }
-    .win .trophy { flex: none; width: 48px; height: 48px; border-radius: 14px; display: grid; place-items: center; background: var(--accent-soft); font-size: 24px; }
-    .win b { display: block; }
-    .win span { color: var(--muted); font-size: 14px; }
-    .skill-group + .skill-group { margin-top: 24px; }
-
-    /* Skills */
-    .skills-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
-    @media (max-width: 820px) { .skills-grid { grid-template-columns: 1fr; } }
-    .certs { display: grid; gap: 4px; margin: 0; padding: 0; list-style: none; }
-    .certs a {
-      display: flex; justify-content: space-between; gap: 12px; padding: 12px 0; text-decoration: none;
-      border-bottom: 1px dashed var(--line); font-weight: 500;
-    }
-    .certs li:last-child a { border-bottom: 0; }
-    .certs a:hover { color: var(--accent); }
-    .certs small { color: var(--muted); font-weight: 400; white-space: nowrap; }
-
-    /* Contact */
-    .contact {
-      text-align: center; border-radius: 32px; padding: 64px 24px;
-      background: radial-gradient(120% 140% at 50% 0%, var(--accent-soft), var(--card) 60%);
-      border: 1px solid var(--line);
-    }
-    .contact p { color: var(--muted); max-width: 620px; margin: 0 auto 28px; }
-    .contact .mail { font-size: clamp(20px, 4vw, 32px); font-weight: 700; color: var(--accent); text-decoration: none; word-break: break-all; }
-    .socials { display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; margin-top: 28px; }
-
-    footer { padding: 32px 0 40px; color: var(--muted); font-size: 14px; }
-    footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
-
-    .reveal { opacity: 0; transform: translateY(16px); transition: opacity .6s ease, transform .6s ease; }
-    .reveal.in { opacity: 1; transform: none; }
-    @media (prefers-reduced-motion: reduce) {
-      html { scroll-behavior: auto; }
-      .reveal { opacity: 1; transform: none; transition: none; }
-      .dot { animation: none; }
-    }
-  </style>
+  <link rel="stylesheet" href="assets/css/style.css" />
 </head>
 <body>
-  <header>
-    <div class="wrap nav">
-      <a href="#top" class="brand">
-        <img src="https://framerusercontent.com/images/PUOseOOuIhQYyte1bZlqY66GBYo.png?scale-down-to=128" alt="" />
-        <span>Sneha M<small>Product Designer</small></span>
-      </a>
-      <nav class="links" id="links">
-        <a href="#about">About</a>
-        <a href="#experience">Experience</a>
-        <a href="#work">Work</a>
-        <a href="#skills">Skills</a>
-        <a href="#contact">Contact</a>
-      </nav>
-      <div style="display:flex;gap:8px">
-        <button class="icon-btn" id="theme" aria-label="Toggle dark mode">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+  <a class="skip" href="#hello">Skip to content</a>
+
+  <!-- Top bar -->
+  <header class="topbar">
+    <a class="file" href="#hello" data-go="0" aria-label="Sneha M — back to start">
+      <img src="https://framerusercontent.com/images/PUOseOOuIhQYyte1bZlqY66GBYo.png?scale-down-to=128" alt="" width="32" height="32" />
+      <span><b>Sneha M</b><small>Portfolio.fig</small></span>
+    </a>
+    <div class="top-actions">
+      <div class="seg" role="group" aria-label="View mode">
+        <button type="button" data-view="canvas" aria-pressed="true">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>
+          <span>Canvas</span>
         </button>
-        <button class="icon-btn menu-btn" id="menu" aria-label="Open menu" aria-expanded="false" aria-controls="links">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        <button type="button" data-view="reader" aria-pressed="false">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h10"/></svg>
+          <span>Reader</span>
         </button>
       </div>
+      <button class="icon-btn" type="button" id="themeBtn" aria-label="Toggle dark mode">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+      </button>
+      <a class="share" href="#contact" data-go="8">Let's connect</a>
     </div>
   </header>
 
-  <main id="top">
-    <!-- Hero -->
-    <section class="hero">
-      <div class="wrap hero-grid">
-        <div>
-          <span class="badge"><span class="dot"></span>Product Designer @ GoX.ai · Chennai, India</span>
-          <h1>Turning research into <span class="accent">intuitive products</span></h1>
-          <p class="role">Hey 👋, I'm Sneha</p>
-          <p class="intro">I'm an end-to-end Product Designer with a strong UX research foundation, working across B2B SaaS and B2C products in AI, marketing and hospitality — bridging user needs and business goals.</p>
-          <div class="cta">
-            <a class="btn btn-primary" href="#work">View my work
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-            </a>
-            <a class="btn btn-ghost" href="#contact">Let's connect</a>
-          </div>
-          <div class="stats">
-            <div><b>4</b><span>AI-powered products at GoX.ai</span></div>
-            <div><b>5 months</b><span>To ship Illustrations AI</span></div>
-            <div><b>B2B · B2C</b><span>SaaS &amp; consumer</span></div>
-          </div>
-        </div>
-        <div class="portrait reveal">
-          <img src="https://framerusercontent.com/images/PUOseOOuIhQYyte1bZlqY66GBYo.png" alt="Portrait of Sneha M" />
-        </div>
-      </div>
-    </section>
+  <!-- Canvas -->
+  <main id="viewport" class="viewport">
+    <div id="world" class="world">
 
-    <!-- About -->
-    <section id="about" class="soft">
-      <div class="wrap">
-        <p class="eyebrow">my story</p>
-        <h2>Great products start with understanding people</h2>
-        <div class="about-grid">
-          <div class="story reveal">
-            <p class="big">My journey into design started with a simple belief: great products come from truly understanding the people who use them.</p>
-            <p>I began in UX research — talking to users, uncovering pain points, and understanding the behaviours and influences behind their decisions. That foundation still shapes how I design today.</p>
-            <p>Over time I grew curious about what happens after research. I wanted to solve the problems I was uncovering, which led me into product design: user flows, wireframes, prototypes and continuous validation.</p>
-            <p>I've built products from the ground up and improved existing ones. I love finding friction points, simplifying workflows and making experiences more intuitive — and it's most rewarding when those improvements create measurable impact.</p>
-            <p>To me, end-to-end product design means staying close to the problem from start to finish: understanding users deeply, shaping solutions thoughtfully, and seeing ideas through until they become real products.</p>
-            <div class="path" aria-label="Career path">
-              <span class="chip">Computer Science</span><i>→</i>
-              <span class="chip">Cybersecurity @ HCL</span><i>→</i>
-              <span class="chip">UX Research Intern</span><i>→</i>
-              <span class="chip">UX Designer</span><i>→</i>
-              <span class="chip accent">Product Designer</span>
+      <!-- 01 Hello -->
+      <section class="frame" id="hello" data-w="900" data-label="Hello" aria-labelledby="hello-h"
+        data-hint="Hi, I'm Sneha 👋 Drag the canvas, or press → to explore my board." data-hint-touch="Hi, I'm Sneha 👋 Drag to explore, or tap › for the next frame." data-hint-at=".cta">
+        <div class="hello">
+          <div class="hello-copy">
+            <span class="badge anim"><span class="dot"></span>Product Designer @ GoX.ai · Chennai, India</span>
+            <h1 id="hello-h" class="anim" style="--i:1">Turning <span class="hl">research</span> into <span class="scribble">intuitive products<svg viewBox="0 0 300 20" preserveAspectRatio="none" aria-hidden="true"><path d="M3 14 C 60 4, 120 4, 170 10 S 260 18, 297 6"/></svg></span></h1>
+            <p class="intro anim" style="--i:2">I'm an end-to-end Product Designer with a strong UX research foundation, working across B2B SaaS and B2C products in AI, marketing and hospitality — bridging user needs and business goals.</p>
+            <div class="cta anim" style="--i:3">
+              <button type="button" class="btn primary" data-action="tour">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z" fill="currentColor" stroke="none"/></svg>
+                Take the tour
+              </button>
+              <button type="button" class="btn ghost" data-go="3">See featured work</button>
+            </div>
+            <p class="howto anim" style="--i:4"><kbd>Drag</kbd> to pan · <kbd>Ctrl</kbd>+<kbd>Scroll</kbd> to zoom · <kbd>←</kbd><kbd>→</kbd> to move</p>
+          </div>
+          <div class="hello-art anim" style="--i:2">
+            <figure class="portrait">
+              <img src="https://framerusercontent.com/images/PUOseOOuIhQYyte1bZlqY66GBYo.png" alt="Portrait of Sneha M" width="320" height="400" draggable="false" />
+              <figcaption class="dim">Sneha M · Product Designer</figcaption>
+            </figure>
+            <span class="float f1">AI products</span>
+            <span class="float f2">B2B SaaS</span>
+            <span class="float f3">B2C</span>
+            <span class="float f4">Marketing</span>
+            <span class="float f5">Hospitality</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- 02 Story -->
+      <section class="frame" id="story" data-w="900" data-label="My story" aria-labelledby="story-h"
+        data-hint="Psst — these sticky notes are draggable. Rearrange my research!" data-hint-touch="Psst — press and hold a sticky note to drag it around." data-hint-at=".note">
+        <p class="eyebrow anim">my story</p>
+        <h2 id="story-h" class="anim" style="--i:1">Great products start with understanding people</h2>
+        <div class="board anim" style="--i:2">
+          <div class="zone research">
+            <span class="zone-tag">Where I started · Research</span>
+            <div class="notes">
+              <div class="note y" style="--r:-3deg">Talk to users</div>
+              <div class="note y" style="--r:2deg">Uncover pain points</div>
+              <div class="note y" style="--r:-1deg">Understand behaviours &amp; what influences decisions</div>
             </div>
           </div>
-          <div style="display:grid;gap:24px;align-content:start">
-            <div class="card reveal">
-              <h4>At a glance</h4>
-              <ul class="facts">
-                <li><span>Currently</span><span>Product Designer, GoX.ai</span></li>
-                <li><span>Based in</span><span>Chennai, Tamil Nadu, India</span></li>
-                <li><span>Focus</span><span>Research-led, end-to-end design</span></li>
-              </ul>
-              <h4 style="margin-top:22px">Domains</h4>
-              <div class="chips">
-                <span class="chip">AI products</span><span class="chip">Marketing &amp; analytics SaaS</span><span class="chip">Hospitality SaaS</span><span class="chip">Consumer utilities</span>
-              </div>
-            </div>
-            <div class="card edu reveal">
-              <h4>Education</h4>
-              <b>B.E., Computer Science Engineering</b>
-              <span>Kamaraj College of Engineering and Technology · 2017 – 2021 · CGPA 8.25</span>
-              <ul>
-                <li>Sports House Captain (1× overall championship)</li>
-                <li>3rd place, Anna University zonal tournament — Ball Badminton</li>
-                <li>4th place, state-level inter-college tournament — Badminton</li>
-              </ul>
+          <div class="zone-arrow" aria-hidden="true">
+            <span>curious about <br>what comes next</span>
+            <svg viewBox="0 0 80 40"><path d="M4 30 C 25 4, 50 4, 72 22"/><path d="M62 22 L73 23 L69 12"/></svg>
+          </div>
+          <div class="zone design">
+            <span class="zone-tag">Where it led · Product design</span>
+            <div class="notes">
+              <div class="note b" style="--r:2deg">User flows</div>
+              <div class="note b" style="--r:-2deg">Wireframes</div>
+              <div class="note b" style="--r:3deg">Prototypes</div>
+              <div class="note g" style="--r:-2deg">Continuous validation</div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
+        <div class="story-copy">
+          <p class="anim" style="--i:3">My journey into design started with a simple belief: great products come from truly understanding the people who use them. I began in UX research, and that foundation still shapes how I design today.</p>
+          <p class="anim" style="--i:4">I've built products from the ground up and improved existing ones. I love finding friction points, simplifying workflows and making experiences more intuitive — and it's most rewarding when those improvements create measurable impact.</p>
+          <blockquote class="anim" style="--i:5">“End-to-end product design means staying close to the problem from start to finish — understanding users deeply, shaping solutions thoughtfully, and seeing ideas through until they become real products.”</blockquote>
+        </div>
+        <ol class="path anim" style="--i:6" aria-label="Career path">
+          <li>Computer Science</li><li>Cybersecurity @ HCL</li><li>UX Research Intern</li><li>UX Designer</li><li class="now">Product Designer</li>
+        </ol>
+      </section>
 
-    <!-- Experience -->
-    <section id="experience">
-      <div class="wrap">
-        <p class="eyebrow">experience</p>
-        <h2>Where I've worked</h2>
-        <p class="lead">From managing cybersecurity risk to leading design for AI products — every step taught me something I bring into my work today.</p>
-        <div class="timeline">
-          <details class="card job reveal" open>
-            <summary>
-              <span class="title">Product Designer · <span class="company">Two Minute Reports | GoX.ai</span></span>
-              <span class="date">Oct 2024 – Present <svg class="chev" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></span>
-              <span class="meta">Full-time · Chennai, India · On-site</span>
-            </summary>
-            <div class="job-body">
-              <p>I work across multiple AI-powered B2B SaaS and B2C products, leading design from research to delivery.</p>
+      <!-- 03 Experience -->
+      <section class="frame" id="experience" data-w="1500" data-label="Experience" aria-labelledby="exp-h"
+        data-hint="Open any role to see what I worked on there." data-hint-at=".job">
+        <p class="eyebrow anim">experience</p>
+        <h2 id="exp-h" class="anim" style="--i:1">From cybersecurity to product design</h2>
+        <p class="lead anim" style="--i:2">Every step taught me something I bring into my work today — stakeholder management, Agile delivery and systems thinking from engineering; empathy and rigour from research.</p>
+        <ol class="track">
+          <li class="job anim" style="--i:3">
+            <span class="node" aria-hidden="true"></span>
+            <span class="when">Nov 2021 – Jan 2023</span>
+            <h3>Graduate Engineer Trainee</h3>
+            <p class="org">HCL Technologies</p>
+            <p class="meta">Chennai · Hybrid · Cybersecurity</p>
+            <p>Managed cybersecurity risk in OT environments and kept clients, stakeholders and teams aligned for on-time delivery.</p>
+            <button type="button" class="link-btn" data-inspect>View details <span aria-hidden="true">→</span></button>
+            <div class="details">
+              <p class="kicker">Full-time · Nov 2021 – Jan 2023 · Chennai, India · Hybrid</p>
+              <h3>Graduate Engineer Trainee — HCL Technologies</h3>
+              <p>Cybersecurity risk management, project execution and stakeholder communication — where I built the stakeholder management, Agile delivery and systems thinking I now bring into design.</p>
+              <h4>What I did</h4>
               <ul>
-                <li><b>Illustrations AI</b> — Ran secondary research and competitor analysis to define product direction. Designed the landing page, web app, Figma plugin and marketing creatives, and helped ship the product in <b>5 months</b>.</li>
-                <li><b>AI Report Creator</b> — Led end-to-end design of an AI-powered marketing hub built from scratch: primary and secondary research, competitor analysis, information architecture, user flows, wireframes, prototypes and iterative testing.</li>
-                <li><b>Two Minute Reports</b> — Improved UX and supported churn reduction through user research, experimentation, bounce-rate analysis, and a redesign of the cancellation flow to reduce user frustration.</li>
-                <li><b>Make Passport Photo</b> — Driving UX strategy by analysing user behaviour, drop-offs, friction points and accessibility issues, and running experiments to improve conversion, engagement and error prevention.</li>
+                <li>Managed cybersecurity risks in OT environments using Microsoft Defender for IoT.</li>
+                <li>Worked with clients, stakeholders and internal teams to deliver on time.</li>
+                <li>Analysed and resolved security incidents alongside senior colleagues.</li>
+                <li>Managed ServiceNow ticketing and prioritisation under tight deadlines.</li>
+                <li>Wrote documentation and applied Agile practices to improve team efficiency.</li>
               </ul>
+              <div class="chips"><span>Stakeholder management</span><span>Agile</span><span>Systems thinking</span><span>ServiceNow</span></div>
             </div>
-          </details>
-
-          <details class="card job reveal">
-            <summary>
-              <span class="title">UX Designer · <span class="company">Lucify</span></span>
-              <span class="date">Jan 2024 – Oct 2024 <svg class="chev" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></span>
-              <span class="meta">Full-time · Delhi, India · Remote · Hospitality SaaS</span>
-            </summary>
-            <div class="job-body">
-              <ul>
-                <li>Conducted primary and secondary research and documented findings.</li>
-                <li>Designed user flows, information architecture, high-fidelity wireframes and prototypes.</li>
-                <li>Built the product's design system for consistency and scalability.</li>
-                <li>Redesigned the website, including motion design animations to improve engagement.</li>
-              </ul>
-            </div>
-          </details>
-
-          <details class="card job reveal">
-            <summary>
-              <span class="title">UX Researcher Intern · <span class="company">Lucify</span></span>
-              <span class="date">Sep 2023 – Jan 2024 <svg class="chev" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></span>
-              <span class="meta">Internship · Remote</span>
-            </summary>
-            <div class="job-body">
+          </li>
+          <li class="job anim" style="--i:4">
+            <span class="node" aria-hidden="true"></span>
+            <span class="when">Sep 2023 – Jan 2024</span>
+            <h3>UX Researcher Intern</h3>
+            <p class="org">Lucify</p>
+            <p class="meta">Remote · Internship</p>
+            <p>Helped shape a hospitality SaaS product from the ground up through research and design.</p>
+            <button type="button" class="link-btn" data-inspect>View details <span aria-hidden="true">→</span></button>
+            <div class="details">
+              <p class="kicker">Internship · Sep 2023 – Jan 2024 · Remote</p>
+              <h3>UX Researcher Intern — Lucify</h3>
               <p>Helped shape the product from the ground up through research and design.</p>
+              <h4>What I did</h4>
               <ul>
                 <li>Ran secondary research, user interviews and competitor analysis; synthesised insights on user needs, pain points and market trends.</li>
                 <li>Created user flows and information architecture for intuitive navigation.</li>
                 <li>Designed low- and high-fidelity wireframes and interactive Figma prototypes for stakeholders.</li>
                 <li>Worked with developers and product managers to align user needs, technical feasibility and business goals.</li>
               </ul>
+              <div class="chips"><span>User interviews</span><span>Competitor analysis</span><span>Information architecture</span><span>Figma</span></div>
             </div>
-          </details>
-
-          <details class="card job reveal">
-            <summary>
-              <span class="title">Graduate Engineer Trainee · <span class="company">HCL Technologies</span></span>
-              <span class="date">Nov 2021 – Jan 2023 <svg class="chev" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></span>
-              <span class="meta">Full-time · Chennai, India · Hybrid · Cybersecurity</span>
-            </summary>
-            <div class="job-body">
-              <p>Cybersecurity risk management, project execution and stakeholder communication — where I built the stakeholder management, Agile delivery and systems thinking I now bring into design.</p>
+          </li>
+          <li class="job anim" style="--i:5">
+            <span class="node" aria-hidden="true"></span>
+            <span class="when">Jan 2024 – Oct 2024</span>
+            <h3>UX Designer</h3>
+            <p class="org">Lucify</p>
+            <p class="meta">Delhi · Remote · Hospitality SaaS</p>
+            <p>Owned research through high-fidelity design, built the design system and redesigned the website with motion.</p>
+            <button type="button" class="link-btn" data-inspect>View details <span aria-hidden="true">→</span></button>
+            <div class="details">
+              <p class="kicker">Full-time · Jan 2024 – Oct 2024 · Delhi, India · Remote</p>
+              <h3>UX Designer — Lucify</h3>
+              <p>SaaS product in the hospitality industry.</p>
+              <h4>What I did</h4>
               <ul>
-                <li>Managed cybersecurity risks in OT environments using <b>Microsoft Defender for IoT</b>.</li>
-                <li>Worked with clients, stakeholders and internal teams to deliver on time.</li>
-                <li>Analysed and resolved security incidents alongside senior colleagues.</li>
-                <li>Managed <b>ServiceNow</b> ticketing and prioritisation under tight deadlines.</li>
-                <li>Wrote documentation and applied Agile practices to improve team efficiency.</li>
+                <li>Conducted primary and secondary research and documented findings.</li>
+                <li>Designed user flows, information architecture, high-fidelity wireframes and prototypes.</li>
+                <li>Built the product's design system for consistency and scalability.</li>
+                <li>Redesigned the website, including motion design animations to improve engagement.</li>
               </ul>
+              <div class="chips"><span>Design systems</span><span>Motion design</span><span>Prototyping</span><span>Research</span></div>
             </div>
-          </details>
-        </div>
-      </div>
-    </section>
+          </li>
+          <li class="job current anim" style="--i:6">
+            <span class="node" aria-hidden="true"></span>
+            <span class="when">Oct 2024 – Present</span>
+            <h3>Product Designer</h3>
+            <p class="org">Two Minute Reports | GoX.ai</p>
+            <p class="meta">Chennai · On-site · AI, B2B SaaS &amp; B2C</p>
+            <p>Leading design from research to delivery across multiple AI-powered B2B SaaS and B2C products.</p>
+            <button type="button" class="link-btn" data-inspect>View details <span aria-hidden="true">→</span></button>
+            <div class="details">
+              <p class="kicker">Full-time · Oct 2024 – Present · Chennai, India · On-site</p>
+              <h3>Product Designer — Two Minute Reports | GoX.ai</h3>
+              <p>I work across multiple AI-powered B2B SaaS and B2C products, leading design from research to delivery.</p>
+              <h4>What I work on</h4>
+              <ul>
+                <li><b>Illustrations AI</b> — secondary research and competitor analysis to define product direction; designed the landing page, web app, Figma plugin and marketing creatives; helped ship the product in 5 months.</li>
+                <li><b>AI Report Creator</b> — led end-to-end design of an AI-powered marketing hub built from scratch.</li>
+                <li><b>Two Minute Reports</b> — improved UX and supported churn reduction through research, experimentation, bounce-rate analysis and a cancellation-flow redesign.</li>
+                <li><b>Make Passport Photo</b> — driving UX strategy through behaviour, drop-off, friction and accessibility analysis, plus experiments.</li>
+              </ul>
+              <div class="chips"><span>AI products</span><span>End-to-end design</span><span>Experimentation</span><span>Research</span></div>
+            </div>
+          </li>
+        </ol>
+      </section>
 
-    <!-- Work -->
-    <section id="work" class="soft">
-      <div class="wrap">
-        <p class="eyebrow">selected work</p>
-        <h2>Featured projects</h2>
-        <p class="lead">Products I've designed end to end — from research and problem framing to shipped experiences.</p>
-        <div class="featured-grid">
-          <article class="card case reveal">
-            <span class="num">01</span>
-            <h3>AI Report Creator</h3>
-            <span class="where">GoX.ai · B2B SaaS · 0 → 1</span>
-            <p>An AI-powered marketing hub built from scratch. I led the design end to end — primary and secondary research, competitor analysis, information architecture, user flows, wireframes, prototypes and iterative testing.</p>
-            <div class="chips"><span class="chip">User research</span><span class="chip">Information architecture</span><span class="chip">Prototyping</span><span class="chip">Iterative testing</span></div>
+      <!-- 04 Featured work -->
+      <section class="frame" id="work" data-w="1400" data-label="Featured work" aria-labelledby="work-h"
+        data-hint="Click any project to open it in the inspector." data-hint-touch="Tap any project to open it in the inspector." data-hint-at=".case">
+        <p class="eyebrow anim">selected work</p>
+        <h2 id="work-h" class="anim" style="--i:1">Featured projects</h2>
+        <p class="lead anim" style="--i:2">Products I've designed end to end — from research and problem framing to shipped experiences.</p>
+        <div class="cases">
+          <article class="case big anim" style="--i:3">
+            <div class="cover c-report" aria-hidden="true">
+              <div class="ui">
+                <div class="ui-top"><i></i><i></i><i></i><span class="spark">✦ AI</span></div>
+                <div class="ui-body">
+                  <div class="lines"><b></b><b></b><b></b><b></b></div>
+                  <div class="bars"><i style="--h:45%"></i><i style="--h:70%"></i><i style="--h:55%"></i><i style="--h:85%"></i><i style="--h:65%"></i><i style="--h:95%"></i></div>
+                </div>
+              </div>
+            </div>
+            <div class="case-info">
+              <span class="tag">01 · GoX.ai · B2B SaaS · 0 → 1</span>
+              <h3>AI Report Creator</h3>
+              <p>An AI-powered marketing hub built from scratch — I led the design end to end.</p>
+            </div>
+            <button type="button" class="hit" data-inspect aria-label="Inspect AI Report Creator"></button>
+            <div class="details">
+              <p class="kicker">GoX.ai · B2B SaaS · Built from scratch</p>
+              <h3>AI Report Creator</h3>
+              <p>An AI-powered marketing hub built from the ground up. I led the design end to end, staying close to the problem from the first research session to the final prototypes.</p>
+              <h4>What I did</h4>
+              <ul>
+                <li>Primary and secondary research to understand users and the market.</li>
+                <li>Competitor analysis to find gaps and opportunities.</li>
+                <li>Information architecture and user flows for a new product.</li>
+                <li>Wireframes and interactive prototypes.</li>
+                <li>Iterative testing to validate and refine the experience.</li>
+              </ul>
+              <div class="chips"><span>User research</span><span>Competitor analysis</span><span>Information architecture</span><span>Prototyping</span><span>Iterative testing</span></div>
+            </div>
           </article>
-          <article class="card case reveal">
-            <span class="num">02</span>
-            <h3>Illustrations AI</h3>
-            <span class="where">GoX.ai · B2C · Shipped in 5 months</span>
-            <p>Defined product direction through secondary research and competitor analysis, then designed the landing page, web app, Figma plugin and marketing creatives.</p>
-            <div class="chips"><span class="chip">Landing page</span><span class="chip">Web app</span><span class="chip">Figma plugin</span></div>
+
+          <article class="case anim" style="--i:4">
+            <div class="cover c-illus" aria-hidden="true">
+              <span class="blob b1"></span><span class="blob b2"></span><span class="blob b3"></span>
+              <div class="plugin"><div class="ui-top"><i></i><i></i><i></i></div><div class="tiles"><i></i><i></i><i></i><i></i></div></div>
+            </div>
+            <div class="case-info">
+              <span class="tag">02 · GoX.ai · B2C · Shipped in 5 months</span>
+              <h3>Illustrations AI</h3>
+              <p>Landing page, web app, Figma plugin and marketing creatives.</p>
+            </div>
+            <button type="button" class="hit" data-inspect aria-label="Inspect Illustrations AI"></button>
+            <div class="details">
+              <p class="kicker">GoX.ai · B2C · Shipped in 5 months</p>
+              <h3>Illustrations AI</h3>
+              <p>An AI illustration product where I helped define direction and designed every surface people touch — and helped ship it in 5 months.</p>
+              <h4>What I did</h4>
+              <ul>
+                <li>Secondary research and competitor analysis to define product direction.</li>
+                <li>Designed the landing page.</li>
+                <li>Designed the web app.</li>
+                <li>Designed the Figma plugin.</li>
+                <li>Designed marketing creatives.</li>
+              </ul>
+              <div class="chips"><span>Product direction</span><span>Landing page</span><span>Web app</span><span>Figma plugin</span><span>Marketing creatives</span></div>
+            </div>
           </article>
-          <article class="card case reveal">
-            <span class="num">03</span>
-            <h3>Two Minute Reports — Churn &amp; cancellation</h3>
-            <span class="where">GoX.ai · B2B SaaS · Retention</span>
-            <p>Supported churn reduction through user research, experimentation and bounce-rate analysis, and redesigned the cancellation flow to reduce user frustration.</p>
-            <div class="chips"><span class="chip">Experimentation</span><span class="chip">Behaviour analysis</span><span class="chip">Flow redesign</span></div>
+
+          <article class="case anim" style="--i:5">
+            <div class="cover c-churn" aria-hidden="true">
+              <div class="flow"><span>1</span><i></i><span>2</span><i></i><span class="end">♥</span></div>
+              <div class="flow ghost"><span>1</span><i></i><span>2</span><i></i><span>3</span><i></i><span>4</span></div>
+            </div>
+            <div class="case-info">
+              <span class="tag">03 · GoX.ai · B2B SaaS · Retention</span>
+              <h3>Two Minute Reports — Churn &amp; cancellation</h3>
+              <p>Research and experimentation to support churn reduction.</p>
+            </div>
+            <button type="button" class="hit" data-inspect aria-label="Inspect Two Minute Reports churn and cancellation project"></button>
+            <div class="details">
+              <p class="kicker">GoX.ai · B2B SaaS · Retention</p>
+              <h3>Two Minute Reports — Churn &amp; cancellation flow</h3>
+              <p>Improving the experience of an established product and supporting churn reduction by understanding why users leave.</p>
+              <h4>What I did</h4>
+              <ul>
+                <li>User research to understand frustrations and reasons for leaving.</li>
+                <li>Experimentation to test improvements.</li>
+                <li>Bounce-rate analysis to spot where users drop off.</li>
+                <li>Redesigned the cancellation flow to reduce user frustration.</li>
+              </ul>
+              <div class="chips"><span>User research</span><span>Experimentation</span><span>Bounce-rate analysis</span><span>Flow redesign</span></div>
+            </div>
           </article>
-          <article class="card case reveal">
-            <span class="num">04</span>
-            <h3>Make Passport Photo</h3>
-            <span class="where">GoX.ai · B2C · Conversion</span>
-            <p>Driving UX strategy by analysing user behaviour, drop-offs, friction points and accessibility issues, and running experiments to improve conversion, engagement and error prevention.</p>
-            <div class="chips"><span class="chip">Conversion</span><span class="chip">Accessibility</span><span class="chip">Experiments</span></div>
+
+          <article class="case anim" style="--i:6">
+            <div class="cover c-passport" aria-hidden="true">
+              <div class="photo"><span class="head"></span><span class="body"></span><span class="scan"></span></div>
+              <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+            </div>
+            <div class="case-info">
+              <span class="tag">04 · GoX.ai · B2C · Conversion</span>
+              <h3>Make Passport Photo</h3>
+              <p>UX strategy for conversion, engagement and error prevention.</p>
+            </div>
+            <button type="button" class="hit" data-inspect aria-label="Inspect Make Passport Photo"></button>
+            <div class="details">
+              <p class="kicker">GoX.ai · B2C · Conversion</p>
+              <h3>Make Passport Photo</h3>
+              <p>A consumer utility where I'm driving UX strategy to make the experience smoother and more forgiving.</p>
+              <h4>What I'm doing</h4>
+              <ul>
+                <li>Analysing user behaviour, drop-offs and friction points.</li>
+                <li>Identifying and addressing accessibility issues.</li>
+                <li>Running experiments to improve conversion and engagement.</li>
+                <li>Designing for error prevention.</li>
+              </ul>
+              <div class="chips"><span>Behaviour analysis</span><span>Accessibility</span><span>Experiments</span><span>Conversion</span></div>
+            </div>
           </article>
-          <article class="card case reveal">
-            <span class="num">05</span>
-            <h3>Lucify</h3>
-            <span class="where">Hospitality SaaS · Web &amp; mobile</span>
-            <p>Helped shape the product from the ground up as a researcher, then built its design system for consistency and scalability and redesigned the website with motion design animations.</p>
-            <div class="chips"><span class="chip">Design system</span><span class="chip">Motion design</span><span class="chip">Website redesign</span></div>
+
+          <article class="case anim" style="--i:7">
+            <div class="cover c-lucify" aria-hidden="true">
+              <div class="tokens">
+                <div class="sw"><i></i><i></i><i></i><i></i><i></i></div>
+                <div class="row"><span class="aa">Aa</span><span class="pill">Button</span><span class="toggle"><i></i></span></div>
+              </div>
+            </div>
+            <div class="case-info">
+              <span class="tag">05 · Lucify · Hospitality SaaS</span>
+              <h3>Lucify</h3>
+              <p>Design system and website redesign with motion.</p>
+            </div>
+            <button type="button" class="hit" data-inspect aria-label="Inspect Lucify"></button>
+            <div class="details">
+              <p class="kicker">Lucify · Hospitality SaaS · Web &amp; mobile</p>
+              <h3>Lucify</h3>
+              <p>I joined Lucify as a UX Research Intern and helped shape the product from the ground up, then grew into the UX Designer role.</p>
+              <h4>What I did</h4>
+              <ul>
+                <li>Research, user flows and information architecture for intuitive navigation.</li>
+                <li>High-fidelity wireframes and prototypes.</li>
+                <li>Built the product's design system for consistency and scalability.</li>
+                <li>Redesigned the website, including motion design animations to improve engagement.</li>
+              </ul>
+              <div class="chips"><span>Design system</span><span>Motion design</span><span>Website redesign</span><span>Research</span></div>
+            </div>
           </article>
         </div>
+      </section>
 
-        <h3 class="subhead">More work</h3>
-        <p class="lead" style="margin-bottom:28px">Case studies, landing pages and explorations on Behance.</p>
-        <div class="filters" role="group" aria-label="Filter projects" style="margin-top:0">
-          <button aria-pressed="true" data-filter="all">All</button>
-          <button aria-pressed="false" data-filter="case">Case studies</button>
-          <button aria-pressed="false" data-filter="landing">Landing pages</button>
-          <button aria-pressed="false" data-filter="other">Other work</button>
+      <!-- 05 More work -->
+      <section class="frame" id="more" data-w="1300" data-label="More work" aria-labelledby="more-h"
+        data-hint="Filter by type — each project opens on Behance." data-hint-at=".filters">
+        <p class="eyebrow anim">explorations</p>
+        <h2 id="more-h" class="anim" style="--i:1">More work</h2>
+        <p class="lead anim" style="--i:2">Case studies, landing pages and design challenges from my Behance.</p>
+        <div class="filters anim" style="--i:3" role="group" aria-label="Filter projects">
+          <button type="button" aria-pressed="true" data-filter="all">All</button>
+          <button type="button" aria-pressed="false" data-filter="case">Case studies</button>
+          <button type="button" aria-pressed="false" data-filter="landing">Landing pages</button>
+          <button type="button" aria-pressed="false" data-filter="other">Other</button>
         </div>
-        <div class="grid" id="projects"></div>
-      </div>
-    </section>
+        <div class="shots" id="shots"></div>
+      </section>
 
-    <!-- Skills -->
-    <section id="skills">
-      <div class="wrap">
-        <p class="eyebrow">skills &amp; tools</p>
-        <h2>What I bring to the table</h2>
-        <p class="lead">A research-first toolkit, backed by hands-on product work and certifications in UX and design thinking.</p>
-        <div class="skills-grid">
-          <div class="card reveal">
-            <div class="skill-group">
-              <h4>Research</h4>
-              <div class="chips">
-                <span class="chip">User research</span><span class="chip">User interviews</span><span class="chip">Competitor analysis</span>
-                <span class="chip">Heuristic evaluation</span><span class="chip">Usability testing</span><span class="chip">Behaviour &amp; bounce-rate analysis</span><span class="chip">Experimentation</span>
-              </div>
-            </div>
-            <div class="skill-group">
-              <h4>Design</h4>
-              <div class="chips">
-                <span class="chip">Information architecture</span><span class="chip">User flows</span><span class="chip">Wireframing</span>
-                <span class="chip">Prototyping</span><span class="chip">Design systems</span><span class="chip">Motion design</span><span class="chip">Accessibility</span>
-              </div>
-            </div>
-            <div class="skill-group">
-              <h4>Process</h4>
-              <div class="chips"><span class="chip">Design thinking</span><span class="chip">Agile</span><span class="chip">Lean UX</span></div>
-            </div>
-            <div class="skill-group">
-              <h4>Tools</h4>
-              <div class="chips">
-                <span class="chip accent">Figma</span><span class="chip accent">FigJam</span><span class="chip accent">Adobe XD</span><span class="chip accent">Balsamiq</span>
-                <span class="chip accent">Photoshop</span><span class="chip accent">Miro</span><span class="chip accent">Jira</span><span class="chip accent">v0</span>
-              </div>
-            </div>
-            <div class="skill-group">
-              <h4>Soft skills</h4>
-              <div class="chips">
-                <span class="chip">Problem-solving</span><span class="chip">Leadership</span><span class="chip">Collaboration</span>
-                <span class="chip">Task prioritisation</span><span class="chip">Project management</span><span class="chip">Willingness to learn</span>
-              </div>
-            </div>
+      <!-- 06 Toolkit -->
+      <section class="frame" id="toolkit" data-w="760" data-label="Toolkit" aria-labelledby="tool-h"
+        data-hint="Switch the variant to see each skill set." data-hint-at="[role=tablist]">
+        <p class="eyebrow anim">skills &amp; tools</p>
+        <h2 id="tool-h" class="anim" style="--i:1">My toolkit</h2>
+        <div class="variant anim" style="--i:2">
+          <div class="variant-head">
+            <span class="comp">◆ Skill set</span>
+            <span class="prop">Property</span>
           </div>
-          <div class="card reveal">
-            <h4>Certifications</h4>
-            <ul class="certs">
-              <li><a href="https://www.credly.com/badges/405c08e3-d6cc-433b-9f37-c1b3c0017074/public_url" target="_blank" rel="noopener">Enterprise Design Thinking — Team Essentials for AI <small>IBM · Aug 2024</small></a></li>
-              <li><a href="https://www.credly.com/badges/6e40f5f9-d671-4f6c-aac5-d0db50a27cfe/linked_in_profile" target="_blank" rel="noopener">Enterprise Design Thinking Practitioner <small>IBM · Jun 2024</small></a></li>
-              <li><a href="https://www.coursera.org/account/accomplishments/specialization/certificate/4QNXCMT67CFF" target="_blank" rel="noopener">Google UX Design Specialization <small>Coursera · Nov 2023</small></a></li>
-              <li><a href="https://www.coursera.org/account/accomplishments/certificate/6UJFZ3ZKRK7Z" target="_blank" rel="noopener">Introduction to Generative AI <small>Coursera · Nov 2023</small></a></li>
-              <li><a href="https://adplist.org/certifications/122568" target="_blank" rel="noopener">1 Mentorship Session <small>ADPList · Jul 2023</small></a></li>
-              <li><a href="https://www.udemy.com/certificate/UC-73b4b8dd-8c0a-415d-bbcc-4756e2c7f88c/" target="_blank" rel="noopener">Motion Design with Figma: Animations, Motion Graphics, UI/UX <small>Udemy · May 2023</small></a></li>
-              <li><a href="https://www.futurelearn.com/certificates/cf6zq7b" target="_blank" rel="noopener">Digital Skills: User Experience <small>Accenture · Apr 2023</small></a></li>
-              <li><a href="https://api.growthschool.io/certificate/b1b756e5-8ae5-4a67-881c-f662fd1d6c5b" target="_blank" rel="noopener">UX Design Kickstarter Workshop <small>GrowthSchool · Jan 2023</small></a></li>
-              <li><a href="https://trainings.internshala.com/s/v/2368668/5af15928" target="_blank" rel="noopener">UI/UX Design <small>Internshala</small></a></li>
+          <div class="tabs" role="tablist" aria-label="Skill categories">
+            <button type="button" role="tab" id="t-research" aria-controls="p-research" aria-selected="true">Research</button>
+            <button type="button" role="tab" id="t-design" aria-controls="p-design" aria-selected="false" tabindex="-1">Design</button>
+            <button type="button" role="tab" id="t-process" aria-controls="p-process" aria-selected="false" tabindex="-1">Process</button>
+            <button type="button" role="tab" id="t-soft" aria-controls="p-soft" aria-selected="false" tabindex="-1">Soft skills</button>
+          </div>
+          <div class="panel-chips" role="tabpanel" id="p-research" aria-labelledby="t-research">
+            <span>User research</span><span>User interviews</span><span>Competitor analysis</span><span>Heuristic evaluation</span><span>Usability testing</span><span>Behaviour &amp; bounce-rate analysis</span><span>Experimentation</span>
+          </div>
+          <div class="panel-chips" role="tabpanel" id="p-design" aria-labelledby="t-design" hidden>
+            <span>Information architecture</span><span>User flows</span><span>Wireframing</span><span>Prototyping</span><span>Design systems</span><span>Motion design</span><span>Accessibility</span>
+          </div>
+          <div class="panel-chips" role="tabpanel" id="p-process" aria-labelledby="t-process" hidden>
+            <span>Design thinking</span><span>Agile</span><span>Lean UX</span>
+          </div>
+          <div class="panel-chips" role="tabpanel" id="p-soft" aria-labelledby="t-soft" hidden>
+            <span>Problem-solving</span><span>Leadership</span><span>Collaboration</span><span>Task prioritisation</span><span>Project management</span><span>Willingness to learn</span>
+          </div>
+        </div>
+        <h3 class="sub anim" style="--i:3">Tools I live in</h3>
+        <ul class="dock anim" style="--i:4" aria-label="Tools">
+          <li style="--c:#a259ff"><b>Fi</b><span>Figma</span></li>
+          <li style="--c:#ff7262"><b>Fj</b><span>FigJam</span></li>
+          <li style="--c:#ff61f6"><b>Xd</b><span>Adobe XD</span></li>
+          <li style="--c:#cc3131"><b>Bq</b><span>Balsamiq</span></li>
+          <li style="--c:#31a8ff"><b>Ps</b><span>Photoshop</span></li>
+          <li style="--c:#f5b300"><b>Mi</b><span>Miro</span></li>
+          <li style="--c:#2684ff"><b>Ji</b><span>Jira</span></li>
+          <li style="--c:#111"><b>v0</b><span>v0</span></li>
+        </ul>
+      </section>
+
+      <!-- 07 Certifications -->
+      <section class="frame" id="certs" data-w="900" data-label="Certifications" aria-labelledby="cert-h"
+        data-hint="Every badge links to its certificate." data-hint-at=".cert">
+        <p class="eyebrow anim">always learning</p>
+        <h2 id="cert-h" class="anim" style="--i:1">Certifications</h2>
+        <ul class="certs">
+          <li class="anim" style="--i:2"><a class="cert" style="--c:#0f62fe;--r:-2deg" href="https://www.credly.com/badges/405c08e3-d6cc-433b-9f37-c1b3c0017074/public_url" target="_blank" rel="noopener"><span class="seal">IBM</span><span><b>Enterprise Design Thinking — Team Essentials for AI</b><small>IBM · Aug 2024</small></span></a></li>
+          <li class="anim" style="--i:3"><a class="cert" style="--c:#0f62fe;--r:1.5deg" href="https://www.credly.com/badges/6e40f5f9-d671-4f6c-aac5-d0db50a27cfe/linked_in_profile" target="_blank" rel="noopener"><span class="seal">IBM</span><span><b>Enterprise Design Thinking Practitioner</b><small>IBM · Jun 2024</small></span></a></li>
+          <li class="anim" style="--i:4"><a class="cert" style="--c:#34a853;--r:-1deg" href="https://www.coursera.org/account/accomplishments/specialization/certificate/4QNXCMT67CFF" target="_blank" rel="noopener"><span class="seal">G</span><span><b>Google UX Design Specialization</b><small>Coursera · Nov 2023</small></span></a></li>
+          <li class="anim" style="--i:5"><a class="cert" style="--c:#0056d2;--r:2deg" href="https://www.coursera.org/account/accomplishments/certificate/6UJFZ3ZKRK7Z" target="_blank" rel="noopener"><span class="seal">AI</span><span><b>Introduction to Generative AI</b><small>Coursera · Nov 2023</small></span></a></li>
+          <li class="anim" style="--i:6"><a class="cert" style="--c:#ff6a3d;--r:-2deg" href="https://adplist.org/certifications/122568" target="_blank" rel="noopener"><span class="seal">AD</span><span><b>1 Mentorship Session</b><small>ADPList · Jul 2023</small></span></a></li>
+          <li class="anim" style="--i:7"><a class="cert" style="--c:#a435f0;--r:1deg" href="https://www.udemy.com/certificate/UC-73b4b8dd-8c0a-415d-bbcc-4756e2c7f88c/" target="_blank" rel="noopener"><span class="seal">U</span><span><b>Motion Design with Figma: Animations, Motion Graphics, UI/UX</b><small>Udemy · May 2023</small></span></a></li>
+          <li class="anim" style="--i:8"><a class="cert" style="--c:#7d00ff;--r:-1.5deg" href="https://www.futurelearn.com/certificates/cf6zq7b" target="_blank" rel="noopener"><span class="seal">Ac</span><span><b>Digital Skills: User Experience</b><small>Accenture · Apr 2023</small></span></a></li>
+          <li class="anim" style="--i:9"><a class="cert" style="--c:#00a86b;--r:2deg" href="https://api.growthschool.io/certificate/b1b756e5-8ae5-4a67-881c-f662fd1d6c5b" target="_blank" rel="noopener"><span class="seal">GS</span><span><b>UX Design Kickstarter Workshop</b><small>GrowthSchool · Jan 2023</small></span></a></li>
+          <li class="anim" style="--i:10"><a class="cert" style="--c:#008bdc;--r:-1deg" href="https://trainings.internshala.com/s/v/2368668/5af15928" target="_blank" rel="noopener"><span class="seal">IS</span><span><b>UI/UX Design</b><small>Internshala</small></span></a></li>
+        </ul>
+      </section>
+
+      <!-- 08 Background -->
+      <section class="frame" id="about" data-w="1100" data-label="Background" aria-labelledby="about-h"
+        data-hint="A little about where I come from." data-hint-at=".edu">
+        <p class="eyebrow anim">background</p>
+        <h2 id="about-h" class="anim" style="--i:1">Education &amp; wins</h2>
+        <div class="bg-grid">
+          <div class="card edu anim" style="--i:2">
+            <span class="label">Education</span>
+            <h3>B.E., Computer Science Engineering</h3>
+            <p class="muted">Kamaraj College of Engineering and Technology · 2017 – 2021</p>
+            <p class="cgpa"><b>8.25</b> CGPA</p>
+            <ul class="medals">
+              <li><span aria-hidden="true">🏅</span>Sports House Captain (1× overall championship)</li>
+              <li><span aria-hidden="true">🥉</span>3rd place, Anna University zonal tournament — Ball Badminton</li>
+              <li><span aria-hidden="true">🏸</span>4th place, state-level inter-college tournament — Badminton</li>
             </ul>
           </div>
-        </div>
-
-        <div class="wins">
-          <a class="card win reveal" href="https://www.linkedin.com/posts/sneha14m_opentonewopportunities-designhackathon-uiuxdesign-activity-7080409624671129600-iFkI" target="_blank" rel="noopener">
-            <span class="trophy" aria-hidden="true">🏆</span>
-            <span><b>Winner, Design Hackathon</b><span>Nobel Transformation Hub</span></span>
-          </a>
-          <a class="card win reveal" href="https://drive.google.com/file/d/1BfENFpgX8q5tZxBSlgYKuOjqqmGcrwW2/view" target="_blank" rel="noopener">
-            <span class="trophy" aria-hidden="true">🎨</span>
-            <span><b>Winner, Graphic Design Competition</b><span>Adetive Solutions Pvt. Ltd.</span></span>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <!-- Contact -->
-    <section id="contact" style="padding-top:0">
-      <div class="wrap">
-        <div class="contact reveal">
-          <p class="eyebrow">let's connect!</p>
-          <h2>Let's build something meaningful</h2>
-          <p>If you enjoy building products that solve meaningful problems and put users at the centre, I'd love to connect.</p>
-          <a class="mail" href="mailto:snehauxdesigner@gmail.com">snehauxdesigner@gmail.com</a>
-          <div class="socials">
-            <a class="btn btn-ghost" href="https://www.linkedin.com/in/sneha14m/" target="_blank" rel="noopener">LinkedIn</a>
-            <a class="btn btn-ghost" href="https://www.behance.net/sneha_m14" target="_blank" rel="noopener">Behance</a>
-            <a class="btn btn-ghost" href="https://medium.com/@snehauxdesigner" target="_blank" rel="noopener">Medium</a>
-            <a class="btn btn-ghost" href="https://x.com/Sneha_m_ux" target="_blank" rel="noopener">X / Twitter</a>
-            <a class="btn btn-ghost" href="https://www.instagram.com/sne_deshine/" target="_blank" rel="noopener">Instagram</a>
+          <div class="wins">
+            <a class="card win anim" style="--i:3" href="https://www.linkedin.com/posts/sneha14m_opentonewopportunities-designhackathon-uiuxdesign-activity-7080409624671129600-iFkI" target="_blank" rel="noopener">
+              <span class="trophy" aria-hidden="true">🏆</span>
+              <span><b>Winner, Design Hackathon</b><small>Nobel Transformation Hub</small></span>
+              <span class="arr" aria-hidden="true">↗</span>
+            </a>
+            <a class="card win anim" style="--i:4" href="https://drive.google.com/file/d/1BfENFpgX8q5tZxBSlgYKuOjqqmGcrwW2/view" target="_blank" rel="noopener">
+              <span class="trophy" aria-hidden="true">🎨</span>
+              <span><b>Winner, Graphic Design Competition</b><small>Adetive Solutions Pvt. Ltd.</small></span>
+              <span class="arr" aria-hidden="true">↗</span>
+            </a>
+            <div class="card glance anim" style="--i:5">
+              <span class="label">At a glance</span>
+              <dl>
+                <div><dt>Currently</dt><dd>Product Designer, GoX.ai</dd></div>
+                <div><dt>Based in</dt><dd>Chennai, Tamil Nadu, India</dd></div>
+                <div><dt>Domains</dt><dd>AI · Marketing &amp; analytics SaaS · Hospitality SaaS · Consumer utilities</dd></div>
+              </dl>
+            </div>
           </div>
         </div>
+      </section>
+
+      <!-- 09 Contact -->
+      <section class="frame" id="contact" data-w="1600" data-label="Let's connect" aria-labelledby="contact-h"
+        data-hint="Thanks for exploring my canvas — I'd love to hear from you!" data-hint-at=".mail">
+        <div class="contact">
+          <p class="eyebrow anim">let's connect!</p>
+          <h2 id="contact-h" class="anim" style="--i:1">Let's build something <span class="hl">meaningful</span></h2>
+          <p class="lead anim" style="--i:2">If you enjoy building products that solve meaningful problems and put users at the centre, I'd love to connect.</p>
+          <div class="mail-row anim" style="--i:3">
+            <a class="mail" href="mailto:snehauxdesigner@gmail.com">snehauxdesigner@gmail.com</a>
+            <button type="button" class="btn ghost small" data-copy="snehauxdesigner@gmail.com">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg>
+              Copy email
+            </button>
+          </div>
+          <ul class="socials anim" style="--i:4">
+            <li><a href="https://www.linkedin.com/in/sneha14m/" target="_blank" rel="noopener">LinkedIn</a></li>
+            <li><a href="https://www.behance.net/sneha_m14" target="_blank" rel="noopener">Behance</a></li>
+            <li><a href="https://medium.com/@snehauxdesigner" target="_blank" rel="noopener">Medium</a></li>
+            <li><a href="https://x.com/Sneha_m_ux" target="_blank" rel="noopener">X / Twitter</a></li>
+            <li><a href="https://www.instagram.com/sne_deshine/" target="_blank" rel="noopener">Instagram</a></li>
+          </ul>
+          <div class="note ps p anim" style="--i:5;--r:3deg">P.S. Thanks for exploring my canvas! — Sneha</div>
+        </div>
+        <footer class="foot">© <span id="year">2026</span> Sneha M · Designed with care in Chennai</footer>
+      </section>
+
+      <!-- Collaborator cursor -->
+      <div class="buddy" id="buddy" aria-hidden="true">
+        <div class="buddy-inner">
+          <svg viewBox="0 0 24 24"><path d="M3 2l7.5 19 2.6-7.9L21 10.5z"/></svg>
+          <span class="buddy-name">Sneha</span>
+          <span class="buddy-say" id="buddySay"></span>
+        </div>
       </div>
-    </section>
+    </div>
   </main>
 
-  <footer>
-    <div class="wrap">
-      <span>© <span id="year">2025</span> Sneha M. Designed with care.</span>
-      <a href="#top">Back to top ↑</a>
+  <!-- Bottom toolbar -->
+  <nav class="toolbar" aria-label="Canvas navigation">
+    <div class="tb-group">
+      <button type="button" class="tb" id="menuBtn" aria-haspopup="true" aria-expanded="false" aria-controls="menu" aria-label="All frames">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 3v18M15 3v18M3 9h18M3 15h18"/></svg>
+      </button>
+      <button type="button" class="tb nav-only" id="prevBtn" aria-label="Previous frame">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg>
+      </button>
+      <button type="button" class="tb label nav-only" id="frameLabel" aria-label="Current frame — open frame list"><span id="frameNum">1/9</span><b id="frameName">Hello</b></button>
+      <button type="button" class="tb nav-only" id="nextBtn" aria-label="Next frame">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+      </button>
+      <button type="button" class="tb tour nav-only" id="tourBtn" aria-pressed="false" aria-label="Play guided tour">
+        <svg class="i-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z" fill="currentColor" stroke="none"/></svg>
+        <svg class="i-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5h3v14H8zM13 5h3v14h-3z" fill="currentColor" stroke="none"/></svg>
+        <span class="tour-txt">Tour</span>
+      </button>
     </div>
-  </footer>
+    <div class="tb-group zoom-group">
+      <button type="button" class="tb" id="zoomOut" aria-label="Zoom out"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/></svg></button>
+      <button type="button" class="tb pct" id="zoomPct" aria-label="Fit current frame">100%</button>
+      <button type="button" class="tb" id="zoomIn" aria-label="Zoom in"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button>
+      <button type="button" class="tb" id="fitAll" aria-label="Zoom out to see the whole board"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></button>
+    </div>
+    <ol class="menu" id="menu" hidden></ol>
+  </nav>
 
-  <script>
-    var IMG = 'https://framerusercontent.com/images/';
-    var BE = 'https://www.behance.net/gallery/';
-    var projects = [
-      { t: 'Medicare', s: 'Team project · Case study', c: 'case', img: 'ffp4Ukth3aHcGcnmyIiGwYr7w', url: '174043145/MediCare-Medical-Application' },
-      { t: 'Outdoor Nuptials', s: 'Individual project · Case study', c: 'case', img: 'CsluJ62hafQ38e07bIiangXiQPU', url: '174064003/Outdoor-Nuptials' },
-      { t: 'Enhancing Duolingo UX', s: 'Case study', c: 'case', img: 'y7uCmEya065zdaDtXqbDSMEFhqY', url: '176358781/Enhancing-Duolingo-UX-Case-study' },
-      { t: 'Twitter UI Evaluation', s: 'Heuristic evaluation', c: 'case', img: 'Als8PJKpMxirwpVgn3J0xbATM', url: '173895575/Twitter-UI-Evaluation-A-Heuristic-Approach-Case-Study' },
-      { t: 'Celebrare', s: 'Landing page redesign', c: 'landing', img: 'Q6ceRBqrZZUzGfN2qb08mZN4pIg', url: '178916893/Landing-Page-Redesign' },
-      { t: 'Thulasi Siddha Clinic', s: 'Landing page', c: 'landing', img: '4yi6H3iBVQi9KdgrwgfSGbFv3k', url: '198401225/Landing-Page-Design-Thulasi-Siddha-Clinic' },
-      { t: 'PixZap', s: 'Landing page · Pop-art style', c: 'landing', img: 'usBLE8ZOCG6SScmkiXwCoWnaY', url: '177688347/Landing-page-Pop-art-style' },
-      { t: 'QuickTrek', s: 'Landing page', c: 'landing', img: 'pU8MgmgBQOLS0FC696UJtMC8f0', url: '177286753/Landing-Page-QuickTrek' },
-      { t: 'Business Page', s: 'Landing page', c: 'landing', img: 'IyzTlBxeAjSwv6lo2dUAf5pSh60', url: '168710363/Landing-Page' },
-      { t: 'Candyz', s: 'Landing page', c: 'landing', img: 'pu8lQ4I9GAiqtxMijGFaqfZcgM', url: '168888963/Landing-page' },
-      { t: 'Daily UI', s: 'Landing page', c: 'landing', img: 'w6cTDpBL71GT41U9LWAT6IxMaA', url: '173900743/Landing-PageDaily-UI' },
-      { t: '100 Days Design Challenge', s: 'Daily UI', c: 'other', img: 'hvnH4R7Ys4CSuEo4wFWT3lEHI', url: '174372279/Daily-UI-100-Days-Designs' },
-      { t: 'The Self-Care Gap', s: 'Research assignment', c: 'other', img: '2SHZeuIIlZL5ZKi7zAQE4LLUk', url: '198405761/Assignment-The-self-Care-Gap-(Research)' },
-      { t: 'Email Campaign Designs', s: 'Visual design', c: 'other', img: 'KCGlXql3SuNemDz0Eui8AvPfew', url: '174361479/Email-Campaign' }
-    ];
-    var grid = document.getElementById('projects');
-    grid.innerHTML = projects.map(function (p) {
-      return '<a class="project reveal" data-cat="' + p.c + '" href="' + BE + p.url + '" target="_blank" rel="noopener">' +
-        '<div class="thumb"><img loading="lazy" src="' + IMG + p.img + '.png?scale-down-to=1024" alt="' + p.t + ' preview" /></div>' +
-        '<div class="info"><div><h3>' + p.t + '</h3><span>' + p.s + '</span></div>' +
-        '<span class="arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div></a>';
-    }).join('');
+  <div class="minimap" id="minimap" aria-hidden="true"><div class="mm-world" id="mmWorld"></div></div>
 
-    document.querySelectorAll('.filters button').forEach(function (btn) {
-      btn.addEventListener('click', function () {
-        var f = btn.dataset.filter;
-        document.querySelectorAll('.filters button').forEach(function (b) { b.setAttribute('aria-pressed', b === btn); });
-        grid.querySelectorAll('.project').forEach(function (el) { el.hidden = f !== 'all' && el.dataset.cat !== f; });
-      });
-    });
+  <!-- Inspector -->
+  <div class="scrim" id="scrim" hidden></div>
+  <aside class="inspector" id="inspector" role="dialog" aria-modal="true" aria-labelledby="inspTitle" hidden>
+    <div class="insp-head">
+      <span class="insp-tabs"><b>Inspect</b><span id="inspTitle">Details</span></span>
+      <button type="button" class="icon-btn" id="inspClose" aria-label="Close details">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+    </div>
+    <div class="insp-body" id="inspBody"></div>
+  </aside>
 
-    var menu = document.getElementById('menu'), links = document.getElementById('links');
-    menu.addEventListener('click', function () {
-      var open = links.classList.toggle('open');
-      menu.setAttribute('aria-expanded', open);
-    });
-    links.addEventListener('click', function (e) { if (e.target.tagName === 'A') { links.classList.remove('open'); menu.setAttribute('aria-expanded', false); } });
+  <div class="you" id="you" aria-hidden="true"><span>You</span></div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <div class="sr-only" id="live" aria-live="polite"></div>
 
-    var root = document.documentElement;
-    try { var saved = localStorage.getItem('theme'); if (saved) root.dataset.theme = saved; } catch (e) {}
-    document.getElementById('theme').addEventListener('click', function () {
-      var dark = root.dataset.theme ? root.dataset.theme === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
-      root.dataset.theme = dark ? 'light' : 'dark';
-      try { localStorage.setItem('theme', root.dataset.theme); } catch (e) {}
-    });
-
-    document.getElementById('year').textContent = new Date().getFullYear();
-
-    if ('IntersectionObserver' in window) {
-      var io = new IntersectionObserver(function (entries) {
-        entries.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } });
-      }, { threshold: 0.12 });
-      document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
-    } else {
-      document.querySelectorAll('.reveal').forEach(function (el) { el.classList.add('in'); });
-    }
-  </script>
+  <script src="assets/js/main.js"></script>
 </body>
 </html>
