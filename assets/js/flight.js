@@ -58,12 +58,14 @@
     });
   });
 
-  /* ---------- Stops ---------- */
+  /* ---------- World ---------- */
   var slides = $$('.slide');
-  var stopsEl = $('#stops'), route = $('#route'), plane = $('#plane'), bubble = $('#bubble');
+  var slidesEl = $('#slides');
+  var stopsEl = $('#stops'), route = $('#route'), plane = $('#plane'), planeTilt = $('#planeTilt'), bubble = $('#bubble');
   var progress = $('#progress'), prevBtn = $('#prevBtn'), nextBtn = $('#nextBtn');
-  var sky = $('.sky');
+  var stars = [$('#stars1'), $('#stars2'), $('#stars3')], planets = $('#planets'), warp = $('#warp');
   var n = slides.length;
+  slides.forEach(function (s, k) { s.style.setProperty('--k', k); });
 
   stopsEl.innerHTML = slides.map(function (s, i) {
     return '<li><button type="button" class="stop" data-i="' + i + '" style="left:' + (i / (n - 1) * 100) + '%"' +
@@ -71,10 +73,51 @@
   }).join('');
   var stopBtns = $$('.stop', stopsEl);
 
-  var current = -1, busy = false;
+  /* Motion: one continuous position (in sections) that eases from stop to stop —
+     speeding up, cruising, then slowing to land exactly on the stop. The camera, the plane
+     and the star layers are all drawn from this one value, so they always move together. */
+  var pos = 0, vel = 0, current = -1, raf = 0, facing = 1;
+  var tw = null; // { p0, v0, p1, T, t0 }
+
+  function render() {
+    var W = innerWidth, rw = route.clientWidth;
+    slidesEl.style.transform = 'translate3d(' + (-pos * W) + 'px,0,0)';
+    plane.style.transform = 'translate3d(' + (pos / (n - 1) * rw) + 'px,0,0)';
+    progress.style.transform = 'scaleX(' + (pos / (n - 1)) + ')';
+    var speeds = [0.06, 0.14, 0.26];
+    stars.forEach(function (el, k) { el.style.backgroundPosition = (-pos * W * speeds[k]) + 'px 0'; });
+    planets.style.transform = 'translate3d(' + (-pos * W * 0.42) + 'px,0,0)';
+    warp.style.opacity = Math.min(Math.abs(vel) * 0.22, 0.5).toFixed(3);
+    // Gentle bank with speed: nose up while accelerating, level when cruising/stopped.
+    var tilt = Math.max(-7, Math.min(7, -vel * 3.2));
+    planeTilt.style.transform = 'rotate(' + tilt.toFixed(2) + 'deg)';
+  }
+
+  function tick(now) {
+    var t = Math.min((now - tw.t0) / tw.T, 1), T = tw.T / 1000;
+    // Cubic Hermite: starts at the current speed (so changing your mind mid-flight is smooth), ends at rest.
+    var t2 = t * t, t3 = t2 * t;
+    pos = (2 * t3 - 3 * t2 + 1) * tw.p0 + (t3 - 2 * t2 + t) * T * tw.v0 + (-2 * t3 + 3 * t2) * tw.p1;
+    vel = ((6 * t2 - 6 * t) * tw.p0 + (-6 * t2 + 6 * t) * tw.p1) / T + (3 * t2 - 4 * t + 1) * tw.v0;
+    render();
+    if (t < 1) { raf = requestAnimationFrame(tick); return; }
+    pos = tw.p1; vel = 0; render(); raf = 0; tw = null; arrive();
+  }
+  function flyTo(p1) {
+    var dist = Math.abs(p1 - pos);
+    tw = { p0: pos, v0: vel, p1: p1, T: 700 + Math.sqrt(dist) * 380, t0: performance.now() };
+    plane.classList.add('moving');
+    bubble.classList.remove('show');
+    cancelAnimationFrame(raf);
+    raf = requestAnimationFrame(tick);
+  }
+
+  function arrive() {
+    plane.classList.remove('moving');
+    say(current);
+  }
 
   function stopX(i) { return route.clientWidth * i / (n - 1); }
-
   function placeBubble() {
     var r = route.getBoundingClientRect();
     var px = r.left + stopX(current);
@@ -84,9 +127,7 @@
     bubble.style.left = (left - flight.left) + 'px';
     bubble.style.setProperty('--tail', Math.max(18, Math.min(w - 18, px - left)) + 'px');
   }
-
   function say(i) {
-    bubble.classList.remove('show');
     bubble.innerHTML = '<span class="who">Proto</span>' + slides[i].dataset.say;
     placeBubble();
     requestAnimationFrame(function () { bubble.classList.add('show'); });
@@ -94,35 +135,17 @@
 
   function go(i, instant) {
     i = Math.max(0, Math.min(n - 1, i));
-    if (i === current) return;
-    var dir = i > current ? 1 : -1;
-    var hop = current < 0 ? 0 : Math.abs(i - current);
-    var dur = instant || reduceMotion ? 0 : Math.min(600 + hop * 220, 1600);
-
-    // Slides: the old one leaves in the flight direction, the new one arrives from the other side.
+    if (i === current && !instant) return;
+    if (i !== current) {
+      facing = i > (current < 0 ? i : current) ? 1 : i < current ? -1 : facing;
+      plane.classList.toggle('left', facing < 0);
+    }
+    current = i;
     slides.forEach(function (s, k) {
-      s.style.setProperty('--from', dir);
-      s.style.setProperty('--to', -dir);
-      if (k === current) { s.classList.remove('on'); s.classList.add('out'); }
-      else s.classList.remove('out');
       s.toggleAttribute('inert', k !== i);
       s.setAttribute('aria-hidden', String(k !== i));
     });
-    slides[i].classList.add('on');
     slides[i].scrollTop = 0;
-
-    // Plane: fly (and face) toward the next stop.
-    plane.classList.toggle('left', dir < 0);
-    plane.style.transitionDuration = dur + 'ms';
-    plane.style.setProperty('--dur', dur + 'ms');
-    plane.style.transform = 'translateX(' + stopX(i) + 'px)';
-    if (dur) { plane.classList.remove('flying'); void plane.offsetWidth; plane.classList.add('flying'); }
-    setTimeout(function () { plane.classList.remove('flying'); }, dur);
-
-    progress.style.transitionDuration = dur + 'ms';
-    progress.style.transform = 'scaleX(' + (i / (n - 1)) + ')';
-    sky.style.setProperty('--shift', (-i * 60) + 'px');
-
     stopBtns.forEach(function (b, k) {
       b.classList.toggle('here', k === i);
       b.classList.toggle('done', k < i);
@@ -131,11 +154,12 @@
     prevBtn.disabled = i === 0;
     nextBtn.disabled = i === n - 1;
     nextBtn.classList.toggle('nudge', i === 0);
-
-    current = i;
-    bubble.classList.remove('show');
-    setTimeout(function () { say(i); }, dur ? dur * 0.6 : 0);
     try { history.replaceState(null, '', i === 0 ? location.pathname + location.search : '#' + slides[i].id); } catch (e) {}
+
+    if (instant || reduceMotion) {
+      cancelAnimationFrame(raf); raf = 0; tw = null;
+      pos = i; vel = 0; render(); arrive();
+    } else flyTo(i);
   }
 
   prevBtn.addEventListener('click', function () { go(current - 1); });
@@ -153,23 +177,35 @@
     else if (e.key === 'End') { e.preventDefault(); go(n - 1); }
   });
 
-  // Swipe left/right on touch screens (but not inside the sideways Behance strip).
-  var sx = 0, sy = 0, swiping = false;
-  $('#stage').addEventListener('touchstart', function (e) {
-    swiping = !e.target.closest('.shots');
-    sx = e.touches[0].clientX; sy = e.touches[0].clientY;
+  // Touch: drag the world live with a finger, then glide to the nearest stop.
+  var stage = $('#stage'), drag = null;
+  stage.addEventListener('touchstart', function (e) {
+    if (e.touches.length !== 1 || e.target.closest('.shots')) return;
+    drag = { x: e.touches[0].clientX, y: e.touches[0].clientY, pos: pos, t: performance.now(), lock: null };
   }, { passive: true });
-  $('#stage').addEventListener('touchend', function (e) {
-    if (!swiping) return;
-    var dx = e.changedTouches[0].clientX - sx, dy = e.changedTouches[0].clientY - sy;
-    if (Math.abs(dx) > 60 && Math.abs(dx) > Math.abs(dy) * 1.5) go(current + (dx < 0 ? 1 : -1));
+  stage.addEventListener('touchmove', function (e) {
+    if (!drag) return;
+    var dx = e.touches[0].clientX - drag.x, dy = e.touches[0].clientY - drag.y;
+    if (drag.lock === null && Math.abs(dx) + Math.abs(dy) > 8) drag.lock = Math.abs(dx) > Math.abs(dy) * 1.2 ? 'x' : 'y';
+    if (drag.lock !== 'x') return;
+    cancelAnimationFrame(raf); raf = 0; tw = null;
+    pos = Math.max(-0.15, Math.min(n - 0.85, drag.pos - dx / innerWidth));
+    vel = 0;
+    plane.classList.add('moving');
+    bubble.classList.remove('show');
+    render();
+  }, { passive: true });
+  stage.addEventListener('touchend', function (e) {
+    if (!drag) return;
+    var d = drag; drag = null;
+    if (d.lock !== 'x') return;
+    var dx = e.changedTouches[0].clientX - d.x;
+    var flick = Math.abs(dx) > 40 && Math.abs(dx) / Math.max(performance.now() - d.t, 1) > 0.3;
+    var i = flick ? current + (dx < 0 ? 1 : -1) : Math.round(pos);
+    if (i === current) flyTo(current); else go(i);
   }, { passive: true });
 
-  addEventListener('resize', function () {
-    plane.style.transitionDuration = '0ms';
-    plane.style.transform = 'translateX(' + stopX(current) + 'px)';
-    placeBubble();
-  });
+  addEventListener('resize', function () { render(); if (!raf) placeBubble(); });
   addEventListener('hashchange', function () {
     var k = slides.findIndex(function (s) { return '#' + s.id === location.hash; });
     if (k >= 0) go(k);
