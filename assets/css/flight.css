@@ -405,3 +405,6 @@ html:not(.js) .flight { display: none; }
 .f-txt span { font-size: 14px; color: var(--muted); line-height: 1.45; }
 .f-txt em { font-style: normal; font-weight: 800; font-size: 14px; color: var(--accent-ink); margin-top: 2px; }
 @media (max-width: 600px) { .feature { grid-template-columns: 1fr; } .f-art { height: 90px; } .f-txt { padding-right: 0; } .f-badge { top: 22px; right: 22px; } }
+.f-art.pc { background: linear-gradient(135deg, #5b21b6, #a78bfa); }
+.f-pct { font-size: 15px; font-weight: 900; color: rgba(255,255,255,.75); }
+.f-new.big { width: auto; padding: 0 10px; font-size: 18px; color: #5b21b6; }
