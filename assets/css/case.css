@@ -373,12 +373,12 @@ h2 s { color: var(--muted); text-decoration-color: #9d8ec4; text-decoration-thic
 .decisions h3 { font-size: 17px; margin-bottom: 6px; }
 .decisions p { color: var(--muted); font-size: 15px; }
 .decisions p b { color: var(--ink); }
-.d-n { width: 30px; height: 30px; border-radius: 50%; display: grid; place-items: center; font-weight: 900; font-size: 14px; color: #fff; background: #2f6fed; }
+.d-n { width: 30px; height: 30px; border-radius: 50%; display: grid; place-items: center; font-weight: 900; font-size: 14px; color: #fff; background: #7c3aed; }
 @media (max-width: 760px) { .decisions { grid-template-columns: 1fr; } }
 
 /* Plan selection wireframe */
 .wire.pp { padding: 20px 18px 22px; }
-.pin { position: absolute; z-index: 2; width: 20px; height: 20px; border-radius: 50%; display: grid; place-items: center; font-style: normal; font-size: 11px; font-weight: 900; color: #fff; background: #2f6fed; box-shadow: 0 0 0 3px #fff; }
+.pin { position: absolute; z-index: 2; width: 20px; height: 20px; border-radius: 50%; display: grid; place-items: center; font-style: normal; font-size: 11px; font-weight: 900; color: #fff; background: #7c3aed; box-shadow: 0 0 0 3px #fff; }
 .pp-fields { position: relative; display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 12px; }
 .pp-fields label { display: grid; gap: 3px; font-size: 11px; font-weight: 700; }
 .pp-select { display: block; padding: 7px 9px; border: 1.5px solid var(--rule); border-radius: 7px; background: #fff; font-size: 11.5px; font-weight: 600; }
@@ -432,3 +432,44 @@ h2 s { color: var(--muted); text-decoration-color: #9d8ec4; text-decoration-thic
 .shot.wf .w-ph.short { width: 60%; }
 .imp li { display: block; position: relative; padding-left: 32px; }
 .imp li::before { position: absolute; left: 0; top: 2px; }
+
+/* MakePassportPhoto-branded wireframes: green page, white form card, yellow CTA */
+.wire.mp { padding: 0; margin-top: 28px; background: linear-gradient(135deg, #3ddc8f, var(--brand)); background-image: none; background: linear-gradient(135deg, #3ddc8f, var(--brand)); }
+.mp-top { display: flex; align-items: center; justify-content: space-between; padding: 10px 14px; color: #fff; }
+.mp-logo { font-size: 11px; font-weight: 600; letter-spacing: .02em; line-height: 1; }
+.mp-logo b { font-weight: 900; }
+.mp-logo small { display: block; font-size: 8px; opacity: .85; letter-spacing: .08em; margin-top: 2px; }
+.mp-toggle { display: inline-flex; align-items: center; gap: 6px; font-size: 10.5px; font-weight: 700; }
+.mp-toggle i { width: 24px; height: 13px; border-radius: 999px; background: #fff3; box-shadow: inset 0 0 0 1.5px #fff; position: relative; }
+.mp-toggle i::after { content: ""; position: absolute; right: 2px; top: 2px; width: 9px; height: 9px; border-radius: 50%; background: var(--cta); }
+.mp-card { margin: 0 14px 16px; padding: 14px; border-radius: 8px; background: #fff; box-shadow: 0 10px 24px rgba(0, 60, 30, .18); }
+.mp-h { font-weight: 800; font-size: 12.5px; color: #0f8f55; margin: 2px 0 8px; }
+.mp-card > .pp-select { margin-bottom: 7px; }
+.mp-tag { margin-left: auto; padding: 1px 6px; border-radius: 4px; background: #f1f5f4; color: #57534e; font-size: 9.5px; font-weight: 700; }
+.mp .pp-old li { border-color: transparent; background: none; padding: 6px 2px; }
+.mp .pp-old .pp-i { margin-left: 4px; }
+.mp .pp-cta { background: var(--cta); color: #292524; }
+.mp .pp-cta.old { background: var(--cta); color: #3f3a16; font-weight: 600; letter-spacing: .04em; }
+.mp-proof { text-align: center; font-size: 10px; color: #a8a29e; margin: 8px 0 0; }
+.mp-proof b { color: #57534e; }
+.mp .pp-fields label span:first-child { font-size: 9px; letter-spacing: .08em; color: var(--mute); }
+.mp .pp-plan.rec { border-color: var(--brand); background: color-mix(in srgb, var(--brand) 6%, #fff); }
+.mp .pp-badge { background: #0f8f55; }
+.mp .pp-plan.quiet { background: #fff; }
+.mp .pp-off { background: #fef3c7; color: #92400e; }
+.mp .w-note { color: #fff; text-shadow: 0 1px 2px rgba(0,0,0,.25); padding: 0 14px 12px; }
+.mp .pp-n1, .mp .pp-n2 { margin-top: 0; }
+.mp-modals { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; padding: 14px; }
+.mp-modal { display: grid; gap: 3px; align-content: start; padding: 10px; border-radius: 8px; background: #fff; box-shadow: 0 8px 18px rgba(0, 60, 30, .18); }
+.mp-modal > b { font-size: 12px; text-align: center; }
+.mp-modal > small { font-size: 9.5px; color: var(--mute); text-align: center; margin-bottom: 4px; }
+.mp-modal .w-ok li, .mp-modal .w-x li { font-size: 9.5px; margin: 1px 0; }
+.mp-modal .w-ok li { color: #3f3f46; }
+.mp-modal .w-ok li::before { color: #3f3f46; }
+.mp-more { font-size: 9.5px; color: #a8a29e; font-style: italic; }
+.mp .pp-compare { margin: 14px; box-shadow: 0 10px 24px rgba(0, 60, 30, .18); }
+.mp .pp-compare .col.rec { color: #0f8f55; }
+.mp .pp-compare .cell.ok::before { content: "✓ "; color: #0f8f55; font-weight: 900; }
+.mp .pp-compare .cell.no { color: #b91c1c; }
+.mp .pp-compare .cell.no::before { content: "✕ "; font-weight: 900; }
+@media (max-width: 560px) { .mp-modals { grid-template-columns: 1fr; } .mp .pp-compare { font-size: 10px; } }
