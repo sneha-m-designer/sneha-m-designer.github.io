@@ -73,6 +73,7 @@
   var samples = { x: [], y: [], s: [] };
   var total = 1, startY = 0, endY = 0, W = 0;
   var bands = [];
+  var crossings = [], windows = [];
 
   function rel(el) {
     var j = journey.getBoundingClientRect(), r = el.getBoundingClientRect();
@@ -87,6 +88,7 @@
     var xL0 = first.left / 2;
     d += 'M' + xL0 + ' ' + startY;
     bands = [];
+    crossings = [];
     var side = 'L';
     stops.forEach(function (stop, i) {
       var card = rel($('.card', stop));
@@ -99,6 +101,7 @@
       stop.classList.toggle('arrive-right', side === 'L');
       stop.classList.toggle('arrive-left', side === 'R');
       bands.push({ top: top, bottom: top + band, stop: stop });
+      crossings.push({ y0: y0, y1: y1 });
       side = side === 'L' ? 'R' : 'L';
     });
     // Final approach into the finish flag.
@@ -108,6 +111,7 @@
     var a = fTop - 100;
     d += ' L' + xEnd + ' ' + a + ' C' + xEnd + ' ' + (a + 50) + ' ' + (W / 2) + ' ' + (fTop - 60) + ' ' + (W / 2) + ' ' + (fTop - 8);
     endY = fTop - 8;
+    crossings.push({ y0: a, y1: endY });
 
     paths.forEach(function (p) { p.setAttribute('d', d); });
     road.setAttribute('viewBox', '0 0 ' + W + ' ' + journey.offsetHeight);
@@ -124,6 +128,17 @@
       samples.x.push(pt.x); samples.y.push(pt.y); samples.s.push(s);
     }
     trail.style.strokeDasharray = total + ' ' + total;
+
+    // Each crossing spreads over extra scroll before and after it, so the car
+    // drives across at a steady pace instead of darting from side to side.
+    var P = innerHeight * 0.34;
+    windows = crossings.map(function (c, k) {
+      var before = k === 0 ? c.y0 - startY : c.y0 - crossings[k - 1].y1;
+      var after = k === crossings.length - 1 ? 0 : crossings[k + 1].y0 - c.y1;
+      var wa = c.y0 - Math.min(P, before / 2), wb = c.y1 + Math.min(P, after / 2);
+      return { wa: wa, wb: wb, ia: lookup(wa), ib: lookup(wb) };
+    });
+    cur = null;
     update(true);
   }
 
@@ -136,20 +151,51 @@
   }
 
   /* ---------- Driving ---------- */
+  // Where the car should be (as a sample index) for the current scroll.
+  function target() {
+    var y = innerHeight * 0.55 - journey.getBoundingClientRect().top;
+    y = Math.max(startY, Math.min(y, endY));
+    for (var k = 0; k < windows.length; k++) {
+      var w = windows[k];
+      if (y >= w.wa && y <= w.wb) {
+        var t = (y - w.wa) / (w.wb - w.wa);
+        t = t * t * (3 - 2 * t) * 0.35 + t * 0.65; // gentle ease in and out
+        return w.ia + (w.ib - w.ia) * t;
+      }
+    }
+    return lookup(y);
+  }
+
+  var cur = null, raf = 0;
   var lastX = null, lastY = null, lastI = 0, moveT = 0, lastPuff = 0, angle = 0;
   function update(force) {
     if (!samples.y.length) return;
-    var jTop = journey.getBoundingClientRect().top;
-    var y = innerHeight * 0.55 - jTop;
-    var i = lookup(Math.max(startY, Math.min(y, endY)));
-    var x = samples.x[i], py = samples.y[i];
-    var a = Math.max(0, i - 3), b = Math.min(samples.x.length - 1, i + 3);
+    var goal = target();
+    if (cur === null || force || reduceMotion) cur = goal;
+    cancelAnimationFrame(raf);
+    var step = function () {
+      var diff = goal - cur;
+      cur = Math.abs(diff) < 0.05 ? goal : cur + diff * 0.16;
+      render(cur, force);
+      if (cur !== goal) raf = requestAnimationFrame(step);
+    };
+    step();
+  }
+
+  function render(f, force) {
+    var n = samples.x.length - 1;
+    var i0 = Math.max(0, Math.min(n, Math.floor(f))), i1 = Math.min(n, i0 + 1), t = f - i0;
+    var i = Math.round(f);
+    var x = samples.x[i0] + (samples.x[i1] - samples.x[i0]) * t;
+    var py = samples.y[i0] + (samples.y[i1] - samples.y[i0]) * t;
+    var sLen = samples.s[i0] + (samples.s[i1] - samples.s[i0]) * t;
+    var a = Math.max(0, i - 3), b = Math.min(n, i + 3);
     var dx = samples.x[b] - samples.x[a], dy = samples.y[b] - samples.y[a];
     if (dx || dy) angle = Math.atan2(dy, dx) * 180 / Math.PI;
     car.style.transform = 'translate(' + x + 'px,' + py + 'px)';
     carBody.style.transform = 'rotate(' + angle + 'deg)';
-    trail.style.strokeDashoffset = String(total - samples.s[i]);
-    tripBar.style.transform = 'scaleX(' + (samples.s[i] / total).toFixed(4) + ')';
+    trail.style.strokeDashoffset = String(total - sLen);
+    tripBar.style.transform = 'scaleX(' + (sLen / total).toFixed(4) + ')';
 
     // Speech bubble while crossing between stops.
     var say = '';
@@ -163,9 +209,10 @@
 
     // Arrivals reveal each stop's card; the nav shows where we are.
     var atBottom = innerHeight + scrollY >= document.documentElement.scrollHeight - 4;
-    var here = -1;
+    var here = -1, jTop = journey.getBoundingClientRect().top;
     bands.forEach(function (bd, k) {
-      var arrived = atBottom || py >= bd.top + (bd.bottom - bd.top) * 0.55;
+      // Show a card as soon as it scrolls into view, even if the car is still on its way.
+      var arrived = atBottom || bd.bottom + jTop < innerHeight * 0.85 || py >= bd.top + (bd.bottom - bd.top) * 0.55;
       if (arrived) { bd.stop.classList.add('arrived'); here = k; }
     });
     navLinks.forEach(function (l, k) { l.classList.toggle('here', k === here); l.classList.toggle('passed', k < here); });
@@ -175,11 +222,11 @@
       clearTimeout(moveT);
       moveT = setTimeout(function () { car.classList.remove('moving'); }, 160);
       var now = performance.now();
-      if (!reduceMotion && now - lastPuff > 110) {
+      if (!reduceMotion && now - lastPuff > 140) {
         lastPuff = now;
         var p = document.createElement('span');
         p.className = 'puff';
-        var back = i >= lastI ? Math.max(0, i - 8) : Math.min(samples.x.length - 1, i + 8);
+        var back = i >= lastI ? Math.max(0, i - 8) : Math.min(n, i + 8);
         p.style.left = samples.x[back] + 'px';
         p.style.top = samples.y[back] + 'px';
         journey.appendChild(p);
