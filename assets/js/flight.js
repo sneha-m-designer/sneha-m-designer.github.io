@@ -154,7 +154,7 @@
     prevBtn.disabled = i === 0;
     nextBtn.disabled = i === n - 1;
     nextBtn.classList.toggle('nudge', i === 0);
-    try { history.replaceState(null, '', i === 0 ? location.pathname + location.search : '#' + slides[i].id); } catch (e) {}
+    try { history.replaceState(null, '', location.pathname + (i === 0 ? '' : '#' + slides[i].id)); } catch (e) {}
 
     if (instant || reduceMotion) {
       cancelAnimationFrame(raf); raf = 0; tw = null;
@@ -211,6 +211,33 @@
     if (k >= 0) go(k);
   });
 
-  var start = Math.max(0, slides.findIndex(function (s) { return '#' + s.id === location.hash; }));
-  go(start, true);
+  // Which stop to open: ?stop=projects (used by the case-study back links) or #projects.
+  function requestedStop() {
+    var m = /[?&]stop=([\w-]+)/.exec(location.search);
+    var id = m ? m[1] : location.hash.slice(1);
+    return Math.max(0, slides.findIndex(function (s) { return s.id === id; }));
+  }
+  // Browsers (Safari especially) try to scroll to #anchors themselves; the world is
+  // positioned by transform, so keep every scroll offset pinned at zero.
+  function unscroll() {
+    if (stage.scrollLeft || stage.scrollTop) { stage.scrollLeft = 0; stage.scrollTop = 0; }
+    if (slidesEl.scrollLeft) slidesEl.scrollLeft = 0;
+    if (scrollX || scrollY) scrollTo(0, 0);
+  }
+  stage.addEventListener('scroll', unscroll);
+  slidesEl.addEventListener('scroll', unscroll);
+  addEventListener('scroll', unscroll);
+
+  // Coming back via the browser's Back button can restore this page from memory: resync.
+  addEventListener('pageshow', function (e) {
+    if (!e.persisted) return;
+    unscroll();
+    current = -1;
+    go(requestedStop(), true);
+  });
+
+  if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+  unscroll();
+  go(requestedStop(), true);
+  setTimeout(unscroll, 0);
 })();
