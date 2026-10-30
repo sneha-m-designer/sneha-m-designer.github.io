@@ -131,96 +131,80 @@
     <!-- Solution -->
     <section class="block reveal" id="solution">
       <p class="kicker">05 · The solution</p>
-      <h2>Three changes that turned an exit into insight</h2>
+      <h2>The new flow, step by step</h2>
+      <p class="lead">Three changes, one journey: from the plan page to a clear, honest exit.</p>
 
-      <article class="sol">
-        <div class="sol-txt">
-          <span class="sol-n">1</span>
-          <h3>In-app cancellation</h3>
-          <p>Users can now cancel straight from their plan — <b>Current Plan → ⋮ → Cancel Subscription</b> — without contacting support. This removes the dependency on the support team and gives users full control over their subscription.</p>
-        </div>
-        <figure class="shot wf" aria-label="Wireframe: cancelling from the current plan menu">
-          <div class="wire">
-            <div class="w-app"><span class="w-logo"></span><span class="w-brand">Two Minute Reports</span><span class="w-nav"><i></i><i></i><i></i></span><span class="w-avatar"></span></div>
-            <p class="w-crumb">Settings › <b>Billing</b></p>
-            <div class="w-plan">
-              <span class="w-t">Current Plan :</span><span class="w-pill">Lite</span><span class="w-muted">Monthly</span>
-              <span class="w-active">Active</span><span class="w-dots" aria-hidden="true">⋮</span>
-              <div class="w-menu"><span class="w-red">Cancel Subscription</span><svg class="w-cursor" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3l14 8-6.2 1.6L10 19z"/></svg></div>
-            </div>
-            <div class="w-rows"><i></i><i style="width:70%"></i><i style="width:84%"></i><i style="width:55%"></i></div>
-            <span class="w-note n-right">cancel straight from your plan —<br>no support ticket needed ↗</span>
+      <ol class="flow">
+        <li class="step">
+          <div class="step-txt">
+            <span class="step-n">1</span>
+            <h3>In-app cancellation</h3>
+            <p>Users cancel straight from their plan — <b>⋮ → Cancel Subscription</b> — without contacting support. Full control, no waiting.</p>
           </div>
-          <figcaption class="wf-cap">Rough wireframe · cancel from the plan menu</figcaption>
-        </figure>
-      </article>
+          <figure class="shot wf" data-bar="Billing" aria-label="Wireframe: cancelling from the plan menu">
+            <div class="wire w-one">
+              <div class="w-plan">
+                <span class="w-t">Current Plan :</span><span class="w-pill">Lite</span><span class="w-muted">Monthly</span>
+                <span class="w-active">Active</span><span class="w-dots" aria-hidden="true">⋮</span>
+                <div class="w-menu"><span class="w-red">Cancel Subscription</span><svg class="w-cursor" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3l14 8-6.2 1.6L10 19z"/></svg></div>
+              </div>
+              <span class="w-note n-left">no support ticket needed</span>
+            </div>
+          </figure>
+        </li>
 
-      <article class="sol flip">
-        <div class="sol-txt">
-          <span class="sol-n">2</span>
-          <h3>Personalised feedback collection</h3>
-          <p>Instead of one generic form, every cancellation reason now has its own curated follow-up questions — turning generic responses into actionable business intelligence.</p>
-          <ul class="map" aria-label="How follow-up questions adapt to each reason">
-            <li><span class="why">Budget constraint</span><i aria-hidden="true">→</i><span class="ask">Pricing-related questions</span></li>
-            <li><span class="why">Product issue</span><i aria-hidden="true">→</i><span class="ask">Product-specific questions</span></li>
-            <li><span class="why">Found a better alternative</span><i aria-hidden="true">→</i><span class="ask">Competitor insights — which tool, what was missing</span></li>
-          </ul>
-        </div>
-        <figure class="shot wf" aria-label="Wireframe: reason selection leading to curated questions">
-          <div class="wire">
-            <div class="w-head"><b>Cancel subscription</b><span class="w-btn dark">Contact support</span></div>
-            <div class="w-steps"><span class="done">✓ Reason</span><i class="on"></i><span class="on">② Feedback</span><i></i><span>③ Confirmation</span></div>
-            <div class="w-split">
-              <div class="w-pane">
-                <p class="w-q c">What made you consider cancelling?</p>
-                <div class="w-reasons">
-                  <span>Product issue</span><span>Short-term need</span><span>Just exploring</span>
-                  <span class="sel">Found better alternative<em>✓</em><svg class="w-cursor" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3l14 8-6.2 1.6L10 19z"/></svg></span><span>Budget constraint</span><span>Other</span>
+        <li class="step">
+          <div class="step-txt">
+            <span class="step-n">2</span>
+            <h3>Personalised feedback</h3>
+            <p>Users pick a reason, and each reason opens its own curated questions — so every answer is specific enough to act on.</p>
+          </div>
+          <figure class="shot wf" data-bar="Cancel subscription · Reason → Feedback" aria-label="Wireframe: each reason leads to its own questions">
+            <div class="wire w-two">
+              <p class="w-q">Why are you cancelling?</p>
+              <ul class="w-branch">
+                <li>
+                  <span class="w-reason">Budget constraint</span><i class="w-link-line" aria-hidden="true"></i>
+                  <span class="w-qset"><b>Pricing questions</b><span class="w-ph"></span><span class="w-ph short"></span></span>
+                </li>
+                <li>
+                  <span class="w-reason">Product issue</span><i class="w-link-line" aria-hidden="true"></i>
+                  <span class="w-qset"><b>Product questions</b><span class="w-ph"></span><span class="w-ph short"></span></span>
+                </li>
+                <li class="sel">
+                  <span class="w-reason">Found a better alternative<em>✓</em><svg class="w-cursor" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3l14 8-6.2 1.6L10 19z"/></svg></span><i class="w-link-line" aria-hidden="true"></i>
+                  <span class="w-qset"><b>Competitor questions</b><span class="w-field">Which tool are you switching to?</span><span class="w-field">What was missing?</span></span>
+                </li>
+              </ul>
+            </div>
+          </figure>
+        </li>
+
+        <li class="step">
+          <div class="step-txt">
+            <span class="step-n">3</span>
+            <h3>A better offboarding experience</h3>
+            <p>Users can cancel right away — or take an offer tailored to their reason, like switching to a plan that fits. What they'd lose sits next to what they'd keep, so the choice is clear and honest.</p>
+          </div>
+          <figure class="shot wf" data-bar="Cancel subscription · Confirmation" aria-label="Wireframe: cancel now, or take a tailored offer">
+            <div class="wire w-three">
+              <div class="w-offer">
+                <div class="w-card">
+                  <b>Cancel now</b><small>What you'll lose</small>
+                  <ul class="w-x"><li>Accounts &amp; connections</li><li>Queries &amp; schedules</li><li>Team access</li></ul>
+                  <span class="w-btn red">Cancel subscription</span>
+                </div>
+                <span class="w-or">or</span>
+                <div class="w-card pick">
+                  <b>Switch plan</b><small>What you'll keep</small>
+                  <ul class="w-ok"><li>Some of your accounts</li><li>A seat for one member</li><li>Key data sources</li></ul>
+                  <span class="w-btn brand">Switch to other plan<svg class="w-cursor" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3l14 8-6.2 1.6L10 19z"/></svg></span>
                 </div>
               </div>
-              <span class="w-arrow" aria-hidden="true">→</span>
-              <div class="w-pane soft">
-                <p class="w-q">Which tool are you switching to?</p><span class="w-input">e.g. ABC Reporting Tool</span>
-                <p class="w-q">Was something missing that made you switch?</p><span class="w-input tall">Tell us more…</span>
-                <p class="w-q">Have you contacted support about it?</p><span class="w-radio"><i></i>Yes <i></i>No</span>
-                <span class="w-btn brand next">Next</span>
-              </div>
             </div>
-            <span class="w-note n-bottom">each reason → its own questions</span>
-          </div>
-          <figcaption class="wf-cap">Rough wireframe · “Found better alternative” opens competitor questions</figcaption>
-        </figure>
-      </article>
-
-      <article class="sol">
-        <div class="sol-txt">
-          <span class="sol-n">3</span>
-          <h3>A better offboarding experience</h3>
-          <p>Users can cancel right away — or, based on the reason they chose, see an offer tailored to their issue, like switching to a plan that fits better. Showing what they'd lose next to what they'd keep makes the choice clear and honest, with no dark patterns.</p>
-        </div>
-        <figure class="shot wf" aria-label="Wireframe: cancel now, or take a tailored offer">
-          <div class="wire">
-            <div class="w-head"><b>Cancel subscription</b><span class="w-btn dark">Contact support</span></div>
-            <div class="w-steps"><span class="done">✓ Reason</span><i class="on"></i><span class="on">② Feedback</span><i></i><span>③ Confirmation</span></div>
-            <p class="w-q c">It's tough to say goodbye. Here's what we can offer.</p>
-            <div class="w-offer">
-              <div class="w-card">
-                <b>Cancel subscription</b><small>What you'll lose</small>
-                <ul class="w-x"><li>Accounts &amp; connections deleted</li><li>Queries &amp; schedules lost</li><li>Team loses access</li></ul>
-                <span class="w-check"><i></i>I understand this is permanent</span>
-                <span class="w-btn red">Cancel subscription</span>
-              </div>
-              <div class="w-card pick">
-                <b>Downgrade / upgrade your plan</b><small>What you'll keep</small>
-                <ul class="w-ok"><li>Access to some of your accounts</li><li>A seat for one member</li><li>Your key data sources</li></ul>
-                <span class="w-btns"><span class="w-btn brand">Switch to other plan<svg class="w-cursor" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3l14 8-6.2 1.6L10 19z"/></svg></span><span class="w-link">Stay in my plan</span></span>
-              </div>
-            </div>
-            <span class="w-note n-bottom">cancel now — or an offer that fits the reason</span>
-          </div>
-          <figcaption class="wf-cap">Rough wireframe · cancel instantly or take a tailored offer</figcaption>
-        </figure>
-      </article>
+          </figure>
+        </li>
+      </ol>
     </section>
 
     <!-- Impact -->
