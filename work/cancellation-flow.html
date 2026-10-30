@@ -40,14 +40,13 @@
       <h1>How I turned a frustrating support-led cancellation process into a <span>self-serve experience</span></h1>
       <p class="sub">Reducing cancellation friction while uncovering the real reasons behind customer churn.</p>
       <dl class="meta">
-        <div><dt>Role</dt><dd>UX Designer</dd></div>
         <div><dt>Focus</dt><dd>Churn Analysis · User Research · Self-Serve Experience · Retention Strategy</dd></div>
-        <div><dt>Status</dt><dd><span class="live"><i></i>Deployed</span></dd></div>
+        <div><dt>Timeline</dt><dd>2 weeks</dd></div>
       </dl>
       <div class="hero-stats">
         <div><b>500+</b><span>cancelled users' feedback analysed</span></div>
         <div><b>8</b><span>recurring churn categories found</span></div>
-        <div><b>~26%</b><span>contacted support before leaving</span></div>
+        <div><b>~26%</b><span>asked support for help before deciding to cancel</span></div>
         <!-- TODO: replace X with the real number of users who cancelled in-app without contacting support -->
         <div><b><span class="todo" title="Placeholder — real number coming">X</span></b><span>users cancelled in-app, without contacting support</span></div>
       </div>
@@ -112,7 +111,7 @@
             <circle cx="60" cy="60" r="50" class="ring-fg" pathLength="100" style="--p:26.2"/>
           </svg>
           <div class="stat-num"><b>131</b><span>of 500</span></div>
-          <figcaption><b>Only ~26% contacted support before cancelling.</b> Most users left without ever asking for help — so the team was missing its chance to understand them or retain them.</figcaption>
+          <figcaption><b>Only ~26% reached out for help before deciding to cancel.</b> All 500 had to contact support to cancel — but most only got in touch once they had already decided to leave, so the team missed the chance to resolve their issue or retain them.</figcaption>
         </figure>
       </div>
     </section>
@@ -138,11 +137,20 @@
         <div class="sol-txt">
           <span class="sol-n">1</span>
           <h3>In-app cancellation</h3>
-          <p>Users can now cancel directly inside the product, without contacting support. This removes the dependency on the support team and gives users full control over their subscription.</p>
+          <p>Users can now cancel straight from their plan — <b>Current Plan → ⋮ → Cancel Subscription</b> — without contacting support. This removes the dependency on the support team and gives users full control over their subscription.</p>
         </div>
-        <figure class="shot" data-img="../assets/img/cancellation/new-flow.png">
-          <img alt="The new in-app cancellation flow" loading="lazy" />
-          <figcaption class="ph"><span>🖼️</span>Screenshot: new cancellation flow<small>assets/img/cancellation/new-flow.png</small></figcaption>
+        <figure class="shot wf" aria-label="Wireframe: cancelling from the current plan menu">
+          <div class="wire">
+            <div class="w-page"><i style="width:28%"></i><i style="width:16%"></i></div>
+            <div class="w-plan">
+              <span class="w-t">Current Plan :</span><span class="w-pill">Lite</span><span class="w-muted">Monthly</span>
+              <span class="w-active">Active</span><span class="w-dots" aria-hidden="true">⋮</span>
+              <div class="w-menu"><span class="w-red">Cancel Subscription</span></div>
+            </div>
+            <div class="w-rows"><i></i><i style="width:70%"></i><i style="width:84%"></i><i style="width:55%"></i></div>
+            <span class="w-note n-right">one click from your plan —<br>no support ticket ↗</span>
+          </div>
+          <figcaption class="wf-cap">Rough wireframe · cancel from the plan menu</figcaption>
         </figure>
       </article>
 
@@ -150,16 +158,35 @@
         <div class="sol-txt">
           <span class="sol-n">2</span>
           <h3>Personalised feedback collection</h3>
-          <p>Instead of asking everyone the same question, the follow-up questions now adapt to the reason the user selects — turning generic responses into actionable business intelligence.</p>
+          <p>Instead of one generic form, every cancellation reason now has its own curated follow-up questions — turning generic responses into actionable business intelligence.</p>
           <ul class="map" aria-label="How follow-up questions adapt to each reason">
-            <li><span class="why">Pricing concerns</span><i aria-hidden="true">→</i><span class="ask">Pricing-related questions</span></li>
-            <li><span class="why">Missing features</span><i aria-hidden="true">→</i><span class="ask">Product-specific questions</span></li>
-            <li><span class="why">Switching to another tool</span><i aria-hidden="true">→</i><span class="ask">Competitor insights</span></li>
+            <li><span class="why">Budget constraint</span><i aria-hidden="true">→</i><span class="ask">Pricing-related questions</span></li>
+            <li><span class="why">Product issue</span><i aria-hidden="true">→</i><span class="ask">Product-specific questions</span></li>
+            <li><span class="why">Found a better alternative</span><i aria-hidden="true">→</i><span class="ask">Competitor insights — which tool, what was missing</span></li>
           </ul>
         </div>
-        <figure class="shot" data-img="../assets/img/cancellation/dynamic-feedback.png">
-          <img alt="The dynamic feedback flow" loading="lazy" />
-          <figcaption class="ph"><span>🖼️</span>Screenshot: dynamic feedback flow<small>assets/img/cancellation/dynamic-feedback.png</small></figcaption>
+        <figure class="shot wf" aria-label="Wireframe: reason selection leading to curated questions">
+          <div class="wire">
+            <div class="w-head"><b>Cancel subscription</b><span class="w-btn dark">Contact support</span></div>
+            <div class="w-steps"><span class="on">● Reason</span><i></i><span>② Feedback</span><i></i><span>③ Confirmation</span></div>
+            <div class="w-split">
+              <div class="w-pane">
+                <p class="w-q c">What made you consider cancelling?</p>
+                <div class="w-reasons">
+                  <span>Product issue</span><span>Short-term need</span><span>Just exploring</span>
+                  <span class="sel">Found better alternative</span><span>Budget constraint</span><span>Other</span>
+                </div>
+              </div>
+              <span class="w-arrow" aria-hidden="true">→</span>
+              <div class="w-pane soft">
+                <p class="w-q">Which tool are you switching to?</p><span class="w-input">e.g. ABC Reporting Tool</span>
+                <p class="w-q">Was something missing that made you switch?</p><span class="w-input tall">Tell us more…</span>
+                <p class="w-q">Have you contacted support about it?</p><span class="w-radio"><i></i>Yes <i></i>No</span>
+              </div>
+            </div>
+            <span class="w-note n-bottom">each reason → its own questions</span>
+          </div>
+          <figcaption class="wf-cap">Rough wireframe · “Found better alternative” opens competitor questions</figcaption>
         </figure>
       </article>
 
@@ -167,12 +194,29 @@
         <div class="sol-txt">
           <span class="sol-n">3</span>
           <h3>A better offboarding experience</h3>
-          <p>The new flow gives users a clear, transparent path to cancel, while helping the business understand their intent.</p>
+          <p>Users can cancel right away — or, based on the reason they chose, see an offer tailored to their issue, like switching to a plan that fits better. Showing what they'd lose next to what they'd keep makes the choice clear and honest, with no dark patterns.</p>
         </div>
-        <div class="compare" aria-label="Before and after">
-          <div class="cmp before"><span class="c-k">Before</span><b>Support-led</b><small>4 steps · 2 waits · generic form</small></div>
-          <div class="cmp after"><span class="c-k">After</span><b>Self-serve, in-app</b><small>No support needed · questions tailored to each reason</small></div>
-        </div>
+        <figure class="shot wf" aria-label="Wireframe: cancel now, or take a tailored offer">
+          <div class="wire">
+            <div class="w-head"><b>Cancel subscription</b><span class="w-btn dark">Contact support</span></div>
+            <p class="w-q c">It's tough to say goodbye. Here's what we can offer.</p>
+            <div class="w-offer">
+              <div class="w-card">
+                <b>Cancel subscription</b><small>What you'll lose</small>
+                <ul class="w-x"><li>Accounts &amp; connections deleted</li><li>Queries &amp; schedules lost</li><li>Team loses access</li></ul>
+                <span class="w-check"><i></i>I understand this is permanent</span>
+                <span class="w-btn red">Cancel subscription</span>
+              </div>
+              <div class="w-card pick">
+                <b>Switch your plan</b><small>What you'll keep</small>
+                <ul class="w-ok"><li>Access to some of your accounts</li><li>A seat for one member</li><li>Your key data sources</li></ul>
+                <span class="w-btns"><span class="w-btn purple">Switch plan</span><span class="w-link">Stay in my plan</span></span>
+              </div>
+            </div>
+            <span class="w-note n-bottom">cancel now — or an offer that fits the reason</span>
+          </div>
+          <figcaption class="wf-cap">Rough wireframe · cancel instantly or take a tailored offer</figcaption>
+        </figure>
       </article>
     </section>
 
