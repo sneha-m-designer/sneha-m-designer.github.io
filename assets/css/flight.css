@@ -385,3 +385,23 @@ html:not(.js) .flight { display: none; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; transition-delay: 0s !important; }
 }
+
+/* Featured case study card (Projects stop) */
+.feature {
+  display: grid; grid-template-columns: 170px 1fr; gap: 18px; align-items: center; position: relative; margin-bottom: 12px;
+  padding: 14px; border-radius: 20px; text-decoration: none; border: 1px solid color-mix(in srgb, var(--accent) 45%, var(--line));
+  background: linear-gradient(135deg, rgba(168, 85, 247, .2), rgba(236, 72, 153, .08)); transition: transform .3s var(--spring), box-shadow .3s;
+}
+.feature:hover { transform: translateY(-3px); box-shadow: 0 10px 28px var(--glow-soft); }
+.f-badge { position: absolute; top: 12px; right: 12px; font-size: 11px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; padding: 4px 9px; border-radius: 999px; background: linear-gradient(135deg, var(--accent), var(--accent-2)); color: #fff; }
+.f-art { height: 110px; border-radius: 14px; display: flex; align-items: center; justify-content: center; gap: 8px; background: linear-gradient(135deg, #4f46e5, #a855f7); }
+.f-old { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; }
+.f-old i { width: 22px; height: 22px; border-radius: 6px; display: grid; place-items: center; font-style: normal; font-size: 11px; font-weight: 800; background: rgba(255,255,255,.25); color: #fff; }
+.f-arrow { color: #fff; font-weight: 900; }
+.f-new { width: 40px; height: 40px; border-radius: 12px; display: grid; place-items: center; font-weight: 900; font-size: 20px; background: #fff; color: #16a34a; box-shadow: 0 6px 16px rgba(0,0,0,.25); }
+.f-txt { display: grid; gap: 4px; padding-right: 70px; }
+.f-txt small { font-size: 11.5px; font-weight: 800; color: var(--accent-ink); }
+.f-txt b { font-size: 18px; line-height: 1.3; letter-spacing: -.01em; }
+.f-txt span { font-size: 14px; color: var(--muted); line-height: 1.45; }
+.f-txt em { font-style: normal; font-weight: 800; font-size: 14px; color: var(--accent-ink); margin-top: 2px; }
+@media (max-width: 600px) { .feature { grid-template-columns: 1fr; } .f-art { height: 90px; } .f-txt { padding-right: 0; } .f-badge { top: 22px; right: 22px; } }

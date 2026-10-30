@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Cancellation Flow Redesign — Case Study | Sneha M</title>
+  <meta name="description" content="How Sneha M turned a frustrating support-led cancellation process at Two Minute Reports into a self-serve experience — and turned churn into actionable insight." />
+  <meta name="theme-color" content="#12072a" />
+  <link rel="canonical" href="https://sneha-m.com/work/cancellation-flow.html" />
+  <meta property="og:title" content="Case study: Cancellation Flow Redesign — Sneha M" />
+  <meta property="og:description" content="From a 4-step support-led cancellation to a self-serve flow that learns why users leave." />
+  <meta property="og:url" content="https://sneha-m.com/work/cancellation-flow.html" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%238b5cf6'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-weight='700' font-size='34' fill='white'%3ES%3C/text%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Nanum+Pen+Script&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/css/case.css" />
+  <script>document.documentElement.classList.add('js');</script>
+</head>
+<body>
+  <header class="top">
+    <a class="back" href="../index.html#projects">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg>
+      <span>Back to the flight</span>
+    </a>
+    <span class="top-title">Cancellation Flow Redesign</span>
+    <div class="top-actions">
+      <button class="icon-btn" type="button" id="themeBtn" aria-label="Toggle light mode">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+      </button>
+      <a class="btn primary small" href="mailto:snehauxdesigner@gmail.com">Contact</a>
+    </div>
+    <div class="read-bar" aria-hidden="true"><i id="readBar"></i></div>
+  </header>
+
+  <main class="case">
+    <!-- Hero -->
+    <section class="hero">
+      <ul class="tags"><li>Two Minute Reports</li><li>Churn Prevention</li><li>Cancellation Flow</li></ul>
+      <h1>How I turned a frustrating support-led cancellation process into a <span>self-serve experience</span></h1>
+      <p class="sub">Reducing cancellation friction while uncovering the real reasons behind customer churn.</p>
+      <dl class="meta">
+        <div><dt>Role</dt><dd>UX Designer</dd></div>
+        <div><dt>Focus</dt><dd>Churn Analysis · User Research · Self-Serve Experience · Retention Strategy</dd></div>
+        <div><dt>Status</dt><dd><span class="live"><i></i>Deployed</span></dd></div>
+      </dl>
+      <div class="hero-stats">
+        <div><b>500+</b><span>cancelled users' feedback analysed</span></div>
+        <div><b>8</b><span>recurring churn categories found</span></div>
+        <div><b>~26%</b><span>contacted support before leaving</span></div>
+        <div><b>0</b><span>support contacts needed to cancel now</span></div>
+      </div>
+    </section>
+
+    <!-- Overview -->
+    <section class="block reveal" id="overview">
+      <p class="kicker">01 · Overview</p>
+      <h2>A sensitive moment, made harder than it needed to be</h2>
+      <div class="two">
+        <p>At Two Minute Reports, users couldn't cancel their subscription on their own. They had to contact support, wait for a reply, fill out a cancellation form, and then wait again for confirmation. This added friction to an already sensitive moment in the user journey.</p>
+        <p>The business also had a blind spot: cancellation feedback was collected through a generic form, so it was hard to understand <em>why</em> users were really leaving. I redesigned the experience with an in-app, self-serve cancellation flow and a structured feedback system that turned churn into actionable insight.</p>
+      </div>
+    </section>
+
+    <!-- Problem -->
+    <section class="block reveal" id="problem">
+      <p class="kicker">02 · The problem</p>
+      <h2>Four steps, two waits, zero control</h2>
+      <ol class="old-flow" aria-label="The old cancellation process">
+        <li><span class="n">1</span><b>Contact support</b></li>
+        <li class="wait"><span class="n">2</span><b>Wait for a response</b><small>⏳</small></li>
+        <li><span class="n">3</span><b>Fill out a cancellation form</b></li>
+        <li class="wait"><span class="n">4</span><b>Wait for confirmation</b><small>⏳</small></li>
+      </ol>
+      <div class="callouts">
+        <div class="callout"><span class="c-k">The result</span><p>Frustrated users, heavy support dependency, and delayed task completion.</p></div>
+        <div class="callout dark"><span class="c-k">The hidden cost</span><p>Generic feedback that couldn't explain why users were churning.</p></div>
+      </div>
+    </section>
+
+    <!-- Research -->
+    <section class="block reveal" id="research">
+      <p class="kicker">03 · Research &amp; findings</p>
+      <h2>I analysed feedback from <span class="hl">500+ cancelled users</span></h2>
+      <p class="lead">Cancellation reasons fell into 8 recurring categories:</p>
+      <ul class="cats">
+        <li><span>🧩</span>Product limitations</li>
+        <li><span>💸</span>Pricing concerns</li>
+        <li><span>🔌</span>Missing integrations</li>
+        <li><span>🔀</span>Switching to alternative tools</li>
+        <li><span>✅</span>Temporary business need completed</li>
+        <li><span>😤</span>Cancellation experience issues</li>
+        <li><span>📦</span>Wrong plan selection</li>
+        <li><span>🎧</span>Customer support concerns</li>
+      </ul>
+
+      <div class="insight-row">
+        <div class="insights">
+          <h3>Key insights — the biggest drivers of churn</h3>
+          <ul>
+            <li>Users expected more advanced workflows</li>
+            <li>Missing connectors such as <b>Stripe, Salesforce, Threads and Snapchat</b></li>
+            <li>A preference for competing tools</li>
+            <li>Campaigns or client projects coming to an end</li>
+            <li>Enterprise requirements that didn't match product capabilities</li>
+          </ul>
+        </div>
+        <figure class="stat">
+          <svg class="ring" viewBox="0 0 120 120" aria-hidden="true">
+            <circle cx="60" cy="60" r="50" class="ring-bg"/>
+            <circle cx="60" cy="60" r="50" class="ring-fg" pathLength="100" style="--p:26.2"/>
+          </svg>
+          <div class="stat-num"><b>131</b><span>of 500</span></div>
+          <figcaption><b>Only ~26% contacted support before cancelling.</b> Most users left without ever asking for help — so the team was missing its chance to understand them or retain them.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- Opportunity -->
+    <section class="block reveal" id="opportunity">
+      <p class="kicker">04 · The opportunity</p>
+      <h2>From a flow that <s>processes</s> cancellations to one that <span class="hl">learns</span> from them</h2>
+      <ul class="opps">
+        <li><span>⚡</span><b>Reduce friction</b><small>through self-serve cancellation</small></li>
+        <li><span>🔍</span><b>Capture better churn insights</b><small>at the moment of exit</small></li>
+        <li><span>💜</span><b>Spot retention opportunities</b><small>before users leave</small></li>
+        <li><span>🎧</span><b>Reduce support workload</b><small>no tickets needed to cancel</small></li>
+      </ul>
+    </section>
+
+    <!-- Solution -->
+    <section class="block reveal" id="solution">
+      <p class="kicker">05 · The solution</p>
+      <h2>Three changes that turned an exit into insight</h2>
+
+      <article class="sol">
+        <div class="sol-txt">
+          <span class="sol-n">1</span>
+          <h3>In-app cancellation</h3>
+          <p>Users can now cancel directly inside the product, without contacting support. This removes the dependency on the support team and gives users full control over their subscription.</p>
+        </div>
+        <figure class="shot" data-img="../assets/img/cancellation/new-flow.png">
+          <img alt="The new in-app cancellation flow" loading="lazy" />
+          <figcaption class="ph"><span>🖼️</span>Screenshot: new cancellation flow<small>assets/img/cancellation/new-flow.png</small></figcaption>
+        </figure>
+      </article>
+
+      <article class="sol flip">
+        <div class="sol-txt">
+          <span class="sol-n">2</span>
+          <h3>Personalised feedback collection</h3>
+          <p>Instead of asking everyone the same question, the follow-up questions now adapt to the reason the user selects — turning generic responses into actionable business intelligence.</p>
+          <ul class="map" aria-label="How follow-up questions adapt to each reason">
+            <li><span class="why">Pricing concerns</span><i aria-hidden="true">→</i><span class="ask">Pricing-related questions</span></li>
+            <li><span class="why">Missing features</span><i aria-hidden="true">→</i><span class="ask">Product-specific questions</span></li>
+            <li><span class="why">Switching to another tool</span><i aria-hidden="true">→</i><span class="ask">Competitor insights</span></li>
+          </ul>
+        </div>
+        <figure class="shot" data-img="../assets/img/cancellation/dynamic-feedback.png">
+          <img alt="The dynamic feedback flow" loading="lazy" />
+          <figcaption class="ph"><span>🖼️</span>Screenshot: dynamic feedback flow<small>assets/img/cancellation/dynamic-feedback.png</small></figcaption>
+        </figure>
+      </article>
+
+      <article class="sol">
+        <div class="sol-txt">
+          <span class="sol-n">3</span>
+          <h3>A better offboarding experience</h3>
+          <p>The new flow gives users a clear, transparent path to cancel, while helping the business understand their intent.</p>
+        </div>
+        <div class="compare" aria-label="Before and after">
+          <div class="cmp before"><span class="c-k">Before</span><b>Support-led</b><small>4 steps · 2 waits · generic form</small></div>
+          <div class="cmp after"><span class="c-k">After</span><b>Self-serve, in-app</b><small>No support needed · questions tailored to each reason</small></div>
+        </div>
+      </article>
+    </section>
+
+    <!-- Impact -->
+    <section class="block reveal" id="impact">
+      <p class="kicker">06 · Impact</p>
+      <h2>Better for users, smarter for the business</h2>
+      <div class="impact">
+        <div class="imp">
+          <h3>👤 User impact</h3>
+          <ul><li>Faster cancellation</li><li>Less frustration</li><li>More transparency and control</li><li>No support dependency</li></ul>
+        </div>
+        <div class="imp">
+          <h3>📈 Business impact</h3>
+          <ul><li>Clearer understanding of churn drivers</li><li>Higher-quality cancellation feedback</li><li>New retention research opportunities</li><li>Reduced support workload</li></ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Learning -->
+    <section class="block reveal learning" id="learning">
+      <p class="kicker">07 · Key learning</p>
+      <blockquote>
+        <p><b>Cancellation isn't just an offboarding flow.</b></p>
+        <p>Designed thoughtfully, it becomes one of the most valuable moments to understand customer needs, uncover product gaps, and shape future roadmap decisions.</p>
+      </blockquote>
+    </section>
+
+    <nav class="end reveal" aria-label="What next">
+      <a class="btn ghost" href="../index.html#projects">← Back to all projects</a>
+      <a class="btn primary" href="mailto:snehauxdesigner@gmail.com?subject=Hi%20Sneha%20%E2%80%94%20about%20your%20cancellation%20flow%20case%20study">Talk to Sneha about this project</a>
+    </nav>
+  </main>
+
+  <footer class="foot">© <span id="year">2026</span> Sneha M · Designed with care in Chennai</footer>
+  <script src="../assets/js/case.js"></script>
+</body>
+</html>
