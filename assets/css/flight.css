@@ -408,3 +408,5 @@ html:not(.js) .flight { display: none; }
 .f-art.pc { background: linear-gradient(135deg, #5b21b6, #a78bfa); }
 .f-pct { font-size: 15px; font-weight: 900; color: rgba(255,255,255,.75); }
 .f-new.big { width: auto; padding: 0 10px; font-size: 18px; color: #5b21b6; }
+.f-art.sb { background: linear-gradient(135deg, #2e1065, #7c3aed); }
+.f-shuttle { font-size: 44px; filter: drop-shadow(0 6px 10px rgba(0,0,0,.35)); }
