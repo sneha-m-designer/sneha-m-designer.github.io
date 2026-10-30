@@ -9,106 +9,69 @@
   <meta name="theme-color" content="#12072a" />
   <link rel="canonical" href="https://sneha-m.com/" />
   <meta property="og:title" content="Sneha M | Product Designer" />
-  <meta property="og:description" content="Hop in — Proto will drive you through Sneha's portfolio." />
+  <meta property="og:description" content="Hop in — Proto will fly you through Sneha's portfolio." />
   <meta property="og:image" content="https://framerusercontent.com/images/PUOseOOuIhQYyte1bZlqY66GBYo.png" />
   <meta property="og:url" content="https://sneha-m.com/" />
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%238b5cf6'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-weight='700' font-size='34' fill='white'%3ES%3C/text%3E%3C/svg%3E" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Nanum+Pen+Script&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="assets/css/road.css" />
+  <link rel="stylesheet" href="assets/css/flight.css" />
   <script>document.documentElement.classList.add('js');</script>
 </head>
 <body>
   <svg width="0" height="0" style="position:absolute" aria-hidden="true">
-    <!-- Proto, the guide -->
-    <symbol id="pixel" viewBox="0 0 100 100">
+    <!-- Proto's head, used in the cockpit -->
+    <symbol id="proto-head" viewBox="0 0 100 92">
       <line x1="50" y1="14" x2="50" y2="4" stroke="#2e1065" stroke-width="4" stroke-linecap="round"/>
       <circle cx="50" cy="5" r="5" fill="#f0abfc" stroke="#2e1065" stroke-width="2"/>
-      <rect x="12" y="14" width="76" height="66" rx="30" fill="#8b5cf6" stroke="#2e1065" stroke-width="4"/>
+      <rect x="12" y="14" width="76" height="70" rx="30" fill="#8b5cf6" stroke="#2e1065" stroke-width="4"/>
       <rect x="22" y="26" width="56" height="36" rx="16" fill="#f5edff"/>
       <circle cx="38" cy="43" r="6" fill="#2e1065"/><circle cx="62" cy="43" r="6" fill="#2e1065"/>
       <circle cx="40" cy="41" r="2" fill="#fff"/><circle cx="64" cy="41" r="2" fill="#fff"/>
       <path d="M42 53 Q50 59 58 53" fill="none" stroke="#2e1065" stroke-width="3.5" stroke-linecap="round"/>
       <circle cx="28" cy="54" r="4" fill="#f9a8d4" opacity=".9"/><circle cx="72" cy="54" r="4" fill="#f9a8d4" opacity=".9"/>
-      <rect x="30" y="80" width="12" height="12" rx="5" fill="#2e1065"/><rect x="58" y="80" width="12" height="12" rx="5" fill="#2e1065"/>
-    </symbol>
-    <!-- Top-down car, pointing right -->
-    <symbol id="car-sprite" viewBox="0 0 80 48">
-      <rect x="10" y="3" width="13" height="7" rx="3" fill="#1a0b2e"/><rect x="54" y="3" width="13" height="7" rx="3" fill="#1a0b2e"/>
-      <rect x="10" y="38" width="13" height="7" rx="3" fill="#1a0b2e"/><rect x="54" y="38" width="13" height="7" rx="3" fill="#1a0b2e"/>
-      <rect x="2" y="7" width="76" height="34" rx="15" fill="#ec4899" stroke="#831843" stroke-width="2.5"/>
-      <rect x="49" y="11" width="15" height="26" rx="6" fill="#e9d5ff" stroke="#831843" stroke-width="2"/>
-      <rect x="10" y="12" width="10" height="24" rx="5" fill="#e9d5ff" opacity=".7"/>
-      <circle cx="34" cy="24" r="11" fill="#8b5cf6" stroke="#2e1065" stroke-width="2.5"/>
-      <circle cx="38" cy="20.5" r="2.4" fill="#2e1065"/><circle cx="38" cy="27.5" r="2.4" fill="#2e1065"/>
-      <circle cx="74" cy="13" r="2.8" fill="#fef9c3"/><circle cx="74" cy="35" r="2.8" fill="#fef9c3"/>
     </symbol>
   </svg>
 
   <header class="top">
-    <a class="brand" href="#top">
+    <a class="brand" href="#hello" data-go="0">
       <img src="https://framerusercontent.com/images/PUOseOOuIhQYyte1bZlqY66GBYo.png?scale-down-to=128" alt="" width="34" height="34" />
       <span><b>Sneha M</b><small>Product Designer</small></span>
     </a>
-    <nav class="stops" aria-label="Jump to a stop">
-      <a href="#about">About</a>
-      <a href="#education">Education</a>
-      <a href="#experience">Experience</a>
-      <a href="#projects">Projects</a>
-      <a href="#achievements">Wins</a>
-      <a href="#certifications">Certifications</a>
-      <a href="#toolkit">Toolkit</a>
-      <a href="#contact">Contact</a>
-    </nav>
     <div class="top-actions">
-      <button class="icon-btn" type="button" id="themeBtn" aria-label="Toggle dark mode">
+      <button class="icon-btn" type="button" id="themeBtn" aria-label="Toggle light mode">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
       </button>
-      <a class="btn primary small hire" href="#contact">Contact</a>
+      <a class="btn primary small" href="#contact" data-go="8">Contact</a>
     </div>
-    <div class="trip-bar" aria-hidden="true"><i id="tripBar"></i></div>
   </header>
 
-  <main id="top">
-    <!-- Hero: Proto introduces the trip -->
-    <section class="hero" aria-labelledby="hero-h">
-      <div class="hero-guide">
-        <svg class="pixel-big" aria-hidden="true"><use href="#pixel"/></svg>
-        <div class="hero-say">
-          <p class="who-says">Proto · your tour guide 🤖</p>
-          <p id="hero-h" class="say-big">Hi, I'm Proto! 👋 Sneha is busy designing something cool right now, so I’m your tour guide today.</p>
-          <p class="say-small">Buckle up, let’s ride! 🚗💨</p>
-        </div>
-      </div>
-      <div class="hero-card">
-        <img class="hero-photo" src="https://framerusercontent.com/images/PUOseOOuIhQYyte1bZlqY66GBYo.png" alt="Portrait of Sneha M" width="120" height="120" />
-        <div>
-          <h1>Sneha M</h1>
-          <p class="role">Product Designer @ <b>Two Minute Reports | GoX.ai</b></p>
-          <p class="tag">Turning research into intuitive products — B2B SaaS &amp; B2C, across AI, marketing and hospitality. Based in Chennai.</p>
-        </div>
-      </div>
-      <div class="hero-cta">
-        <a class="btn primary" href="#about">Start the ride <span aria-hidden="true">🚗</span></a>
-        <a class="btn ghost" href="#projects">Skip to projects</a>
-        <a class="btn ghost" href="#contact">Get her email</a>
-      </div>
-      <p class="scroll-cue" aria-hidden="true">scroll to drive <span>↓</span></p>
-    </section>
+  <div class="sky" aria-hidden="true">
+    <span class="cloud c1"></span><span class="cloud c2"></span><span class="cloud c3"></span><span class="cloud c4"></span><span class="cloud c5"></span>
+  </div>
 
-    <!-- The journey -->
-    <div class="journey" id="journey">
-      <svg class="road" id="road" aria-hidden="true">
-        <path class="r-edge" /><path class="r-asphalt" /><path class="r-dash" /><path class="r-trail" />
-      </svg>
-      <div class="start-line" id="startLine" aria-hidden="true"><span>START</span></div>
+  <main class="stage" id="stage">
+    <div class="slides" id="slides">
+      <section class="slide" id="hello" data-label="Hello" data-say="Hi, I’m Proto! 👋 Sneha is busy designing something cool right now, so I’m your tour guide today. Buckle up — press → or tap the arrow to take off! ✈️" aria-label="Introduction">
+        <div class="card hero">
+          <img class="hero-photo" src="https://framerusercontent.com/images/PUOseOOuIhQYyte1bZlqY66GBYo.png" alt="Portrait of Sneha M" width="132" height="132" />
+          <p class="hey">Hey, I'm Sneha 👋</p>
+          <h1>I turn research into <span>intuitive products.</span></h1>
+          <p class="role">Product Designer @ <b>Two Minute Reports | GoX.ai</b> · Chennai</p>
+          <ul class="chips"><li>UX research foundation</li><li>End-to-end product design</li><li>AI · Marketing · Hospitality</li><li>B2B SaaS &amp; B2C</li></ul>
+          <div class="hero-cta">
+            <button class="btn primary" type="button" data-go="1">Take off ✈️</button>
+            <button class="btn ghost" type="button" data-go="4">Skip to projects</button>
+            <button class="btn ghost" type="button" data-go="8">Get her email</button>
+          </div>
+          <p class="howto"><kbd>←</kbd> <kbd>→</kbd> to fly between stops</p>
+        </div>
+      </section>
 
-      <!-- 1 About -->
-      <section class="stop" id="about" data-say="Stop 1: meet the designer ✨" aria-labelledby="h-about">
-        <div class="band" aria-hidden="true"><span class="sign">Stop 1 · About</span></div>
+      <section class="slide" id="about" data-label="About" data-say="Meet <b>Sneha</b> 👋 She started in UX research, so she always asks <i>“why?”</i> before she draws a single box." aria-label="About">
         <div class="card">
-          <div class="speech"><svg class="ava" aria-hidden="true"><use href="#pixel"/></svg><p>Meet <b>Sneha</b> 👋 She started in UX research, so she always asks <i>“why?”</i> before she draws a single box.</p></div>
+          
           <h2 id="h-about">About Sneha</h2>
           <p class="quote">“Great products come from truly understanding the people who use them.”</p>
           <ol class="steps">
@@ -120,11 +83,9 @@
         </div>
       </section>
 
-      <!-- 2 Education -->
-      <section class="stop" id="education" data-say="Rewinding to college days 🎓" aria-labelledby="h-edu">
-        <div class="band" aria-hidden="true"><span class="sign">Stop 2 · Education</span></div>
+      <section class="slide" id="education" data-label="Education" data-say="<b>Computer Science</b> grad 🎓 — and plot twist: Sports House Captain with badminton medals! 🏸" aria-label="Education">
         <div class="card">
-          <div class="speech"><svg class="ava" aria-hidden="true"><use href="#pixel"/></svg><p><b>Computer Science</b> grad 🎓 — and plot twist: Sports House Captain with badminton medals! 🏸</p></div>
+          
           <h2 id="h-edu">Education</h2>
           <div class="edu">
             <span class="edu-ico" aria-hidden="true">🎓</span>
@@ -138,11 +99,9 @@
         </div>
       </section>
 
-      <!-- 3 Experience -->
-      <section class="stop" id="experience" data-say="Her work journey ahead 💼" aria-labelledby="h-exp">
-        <div class="band" aria-hidden="true"><span class="sign">Stop 3 · Experience</span></div>
+      <section class="slide" id="experience" data-label="Experience" data-say="From guarding systems in cybersecurity 🛡️ to designing AI products — quite the journey, right?" aria-label="Experience">
         <div class="card">
-          <div class="speech"><svg class="ava" aria-hidden="true"><use href="#pixel"/></svg><p>From guarding systems in cybersecurity 🛡️ to designing AI products — quite the road trip, right?</p></div>
+          
           <h2 id="h-exp">Experience</h2>
           <ol class="jobs">
             <li class="now"><span class="when">Oct 2024 – Present</span><b>Product Designer</b><span class="co">Two Minute Reports | GoX.ai · Chennai</span><small>Leading design from research to delivery across AI-powered B2B SaaS and B2C products.</small></li>
@@ -153,11 +112,9 @@
         </div>
       </section>
 
-      <!-- 4 Projects -->
-      <section class="stop" id="projects" data-say="Best stop coming up! 🚀" aria-labelledby="h-proj">
-        <div class="band" aria-hidden="true"><span class="sign">Stop 4 · Projects</span></div>
+      <section class="slide" id="projects" data-label="Projects" data-say="My favourite stop! 😍 Tap any project to peek under the hood." aria-label="Projects">
         <div class="card wide">
-          <div class="speech"><svg class="ava" aria-hidden="true"><use href="#pixel"/></svg><p>My favourite stop! 😍 Tap any project to peek under the hood.</p></div>
+          
           <h2 id="h-proj">Projects</h2>
           <div class="projects">
             <details class="proj" style="--c1:#7c3aed;--c2:#c084fc">
@@ -186,11 +143,9 @@
         </div>
       </section>
 
-      <!-- 5 Achievements -->
-      <section class="stop" id="achievements" data-say="Trophy cabinet ahead 🏆" aria-labelledby="h-ach">
-        <div class="band" aria-hidden="true"><span class="sign">Stop 5 · Achievements</span></div>
+      <section class="slide" id="achievements" data-label="Wins" data-say="Shh… she won't brag, so I will. 🏆" aria-label="Wins">
         <div class="card">
-          <div class="speech"><svg class="ava" aria-hidden="true"><use href="#pixel"/></svg><p>Shh… she won't brag, so I will. 🏆</p></div>
+          
           <h2 id="h-ach">Achievements</h2>
           <div class="wins">
             <a href="https://www.linkedin.com/posts/sneha14m_opentonewopportunities-designhackathon-uiuxdesign-activity-7080409624671129600-iFkI" target="_blank" rel="noopener"><span class="trophy" aria-hidden="true">🥇</span><b>Winner — Design Hackathon</b><small>Nobel Transformation Hub ↗</small></a>
@@ -199,11 +154,9 @@
         </div>
       </section>
 
-      <!-- 6 Certifications -->
-      <section class="stop" id="certifications" data-say="Certificate check 📜" aria-labelledby="h-cert">
-        <div class="band" aria-hidden="true"><span class="sign">Stop 6 · Certifications</span></div>
+      <section class="slide" id="certifications" data-label="Certificates" data-say="She collects certificates like I collect flight miles 📜 — all <b>9</b> are real, tap to check!" aria-label="Certificates">
         <div class="card">
-          <div class="speech"><svg class="ava" aria-hidden="true"><use href="#pixel"/></svg><p>She collects certificates like I collect miles 📜 — all <b>9</b> are real, tap to check!</p></div>
+          
           <h2 id="h-cert">Certifications</h2>
           <ul class="certs">
             <li><a style="--c:#0f62fe" href="https://www.credly.com/badges/405c08e3-d6cc-433b-9f37-c1b3c0017074/public_url" target="_blank" rel="noopener"><b>IBM</b><span>Enterprise Design Thinking — Team Essentials for AI</span><small>IBM · Aug 2024</small></a></li>
@@ -219,11 +172,9 @@
         </div>
       </section>
 
-      <!-- 7 Toolkit -->
-      <section class="stop" id="toolkit" data-say="Peeking into her toolbox 🧰" aria-labelledby="h-tool">
-        <div class="band" aria-hidden="true"><span class="sign">Stop 7 · Toolkit</span></div>
+      <section class="slide" id="toolkit" data-label="Toolkit" data-say="Here's her toolbox 🧰 — the gear behind every design." aria-label="Toolkit">
         <div class="card">
-          <div class="speech"><svg class="ava" aria-hidden="true"><use href="#pixel"/></svg><p>Here's her toolbox 🧰 — the gear behind every design.</p></div>
+          
           <h2 id="h-tool">Skills &amp; tools</h2>
           <ul class="tools">
             <li style="--c:#a259ff"><b>Fi</b>Figma</li><li style="--c:#ff7262"><b>Fj</b>FigJam</li><li style="--c:#ff61f6"><b>Xd</b>Adobe XD</li><li style="--c:#cc3131"><b>Bq</b>Balsamiq</li>
@@ -237,11 +188,9 @@
         </div>
       </section>
 
-      <!-- 8 Contact -->
-      <section class="stop" id="contact" data-say="Last stop: say hi! 👋" aria-labelledby="h-contact">
-        <div class="band" aria-hidden="true"><span class="sign">Stop 8 · Contact</span></div>
+      <section class="slide" id="contact" data-label="Contact" data-say="Liked the flight? Drop her a line 👇 She’d love to hear what you’re building — and how she can help make it better 💜" aria-label="Contact">
         <div class="card contact">
-          <div class="speech"><svg class="ava" aria-hidden="true"><use href="#pixel"/></svg><p>Liked the ride? Drop her a line 👇 She’d love to hear what you’re building — and how she can help make it better 💜</p></div>
+          
           <h2 id="h-contact">Let's build something meaningful</h2>
           <p class="c-lead">If you enjoy building products that solve meaningful problems and put users at the centre, Sneha would love to connect.</p>
           <a class="mail" href="mailto:snehauxdesigner@gmail.com">snehauxdesigner@gmail.com</a>
@@ -258,22 +207,54 @@
           </ul>
         </div>
       </section>
-
-      <div class="finish" id="finish">
-        <span class="flag" aria-hidden="true">🏁</span>
-        <p><b>End of the road! 🏁</b> Thanks for riding with me — Proto out. 🤖💜</p>
-        <a class="btn ghost small" href="#top">Back to the start ↑</a>
-      </div>
-
-      <div class="car" id="car" aria-hidden="true">
-        <div class="car-body"><svg><use href="#car-sprite"/></svg></div>
-        <span class="car-say" id="carSay"></span>
-      </div>
     </div>
   </main>
 
-  <footer class="foot">© <span id="year">2026</span> Sneha M · Designed with care in Chennai</footer>
+  <!-- Flight route: replaces the top navigation -->
+  <nav class="flight" aria-label="Portfolio stops">
+    <div class="bubble" id="bubble" aria-live="polite"></div>
+    <button class="arrow prev" type="button" id="prevBtn" aria-label="Fly to the previous stop">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg>
+    </button>
+    <div class="route" id="route">
+      <div class="line" aria-hidden="true"><i id="progress"></i></div>
+      <ol class="stops" id="stops"></ol>
+      <div class="plane" id="plane" aria-hidden="true">
+        <div class="plane-body">
+          <svg class="plane-svg" viewBox="0 0 170 100">
+            <!-- contrail -->
+            <path class="trail-line" d="M4 62 H30" />
+            <!-- tail fin + stabiliser -->
+            <path d="M22 60 L14 26 Q14 22 19 23 L44 52 Z" fill="#c026d3" stroke="#701a75" stroke-width="2.5" stroke-linejoin="round"/>
+            <ellipse cx="34" cy="62" rx="18" ry="5" fill="#f0abfc" stroke="#701a75" stroke-width="2"/>
+            <!-- wheels -->
+            <path d="M88 76 L84 88 M112 76 L116 88" stroke="#2e1065" stroke-width="3" stroke-linecap="round"/>
+            <circle cx="84" cy="90" r="6" fill="#2e1065"/><circle cx="116" cy="90" r="6" fill="#2e1065"/>
+            <circle cx="84" cy="90" r="2.2" fill="#c4b5fd"/><circle cx="116" cy="90" r="2.2" fill="#c4b5fd"/>
+            <!-- fuselage -->
+            <path d="M28 58 Q30 46 50 46 L132 44 Q152 44 154 60 Q152 76 132 76 L50 76 Q30 74 28 58 Z" fill="#ec4899" stroke="#831843" stroke-width="3"/>
+            <path d="M40 66 L148 66" stroke="#fbcfe8" stroke-width="4" stroke-linecap="round" opacity=".8"/>
+            <!-- cockpit opening -->
+            <path d="M74 47 Q96 38 118 46" fill="none" stroke="#831843" stroke-width="3" stroke-linecap="round"/>
+            <!-- Proto pokes out of the cockpit -->
+            <svg x="74" y="4" width="46" height="44"><use href="#proto-head"/></svg>
+            <!-- windscreen -->
+            <path d="M118 46 L126 34 L130 45" fill="#e9d5ff" stroke="#831843" stroke-width="2.2" stroke-linejoin="round" opacity=".9"/>
+            <!-- wing -->
+            <ellipse cx="98" cy="64" rx="34" ry="7" fill="#f9a8d4" stroke="#831843" stroke-width="2.5"/>
+            <!-- nose + propeller -->
+            <circle cx="156" cy="60" r="6" fill="#fde68a" stroke="#831843" stroke-width="2.5"/>
+            <g class="prop"><ellipse cx="160" cy="60" rx="3.5" ry="26" fill="#2e1065" opacity=".75"/></g>
+          </svg>
+        </div>
+      </div>
+    </div>
+    <button class="arrow next" type="button" id="nextBtn" aria-label="Fly to the next stop">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+    </button>
+  </nav>
+
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
-  <script src="assets/js/road.js"></script>
+  <script src="assets/js/flight.js"></script>
 </body>
 </html>
