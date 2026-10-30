@@ -141,14 +141,15 @@
         </div>
         <figure class="shot wf" aria-label="Wireframe: cancelling from the current plan menu">
           <div class="wire">
-            <div class="w-page"><i style="width:28%"></i><i style="width:16%"></i></div>
+            <div class="w-app"><span class="w-logo"></span><span class="w-brand">Two Minute Reports</span><span class="w-nav"><i></i><i></i><i></i></span><span class="w-avatar"></span></div>
+            <p class="w-crumb">Settings › <b>Billing</b></p>
             <div class="w-plan">
               <span class="w-t">Current Plan :</span><span class="w-pill">Lite</span><span class="w-muted">Monthly</span>
               <span class="w-active">Active</span><span class="w-dots" aria-hidden="true">⋮</span>
-              <div class="w-menu"><span class="w-red">Cancel Subscription</span></div>
+              <div class="w-menu"><span class="w-red">Cancel Subscription</span><svg class="w-cursor" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3l14 8-6.2 1.6L10 19z"/></svg></div>
             </div>
             <div class="w-rows"><i></i><i style="width:70%"></i><i style="width:84%"></i><i style="width:55%"></i></div>
-            <span class="w-note n-right">one click from your plan —<br>no support ticket ↗</span>
+            <span class="w-note n-right">cancel straight from your plan —<br>no support ticket needed ↗</span>
           </div>
           <figcaption class="wf-cap">Rough wireframe · cancel from the plan menu</figcaption>
         </figure>
@@ -168,13 +169,13 @@
         <figure class="shot wf" aria-label="Wireframe: reason selection leading to curated questions">
           <div class="wire">
             <div class="w-head"><b>Cancel subscription</b><span class="w-btn dark">Contact support</span></div>
-            <div class="w-steps"><span class="on">● Reason</span><i></i><span>② Feedback</span><i></i><span>③ Confirmation</span></div>
+            <div class="w-steps"><span class="done">✓ Reason</span><i class="on"></i><span class="on">② Feedback</span><i></i><span>③ Confirmation</span></div>
             <div class="w-split">
               <div class="w-pane">
                 <p class="w-q c">What made you consider cancelling?</p>
                 <div class="w-reasons">
                   <span>Product issue</span><span>Short-term need</span><span>Just exploring</span>
-                  <span class="sel">Found better alternative</span><span>Budget constraint</span><span>Other</span>
+                  <span class="sel">Found better alternative<em>✓</em><svg class="w-cursor" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3l14 8-6.2 1.6L10 19z"/></svg></span><span>Budget constraint</span><span>Other</span>
                 </div>
               </div>
               <span class="w-arrow" aria-hidden="true">→</span>
@@ -182,6 +183,7 @@
                 <p class="w-q">Which tool are you switching to?</p><span class="w-input">e.g. ABC Reporting Tool</span>
                 <p class="w-q">Was something missing that made you switch?</p><span class="w-input tall">Tell us more…</span>
                 <p class="w-q">Have you contacted support about it?</p><span class="w-radio"><i></i>Yes <i></i>No</span>
+                <span class="w-btn brand next">Next</span>
               </div>
             </div>
             <span class="w-note n-bottom">each reason → its own questions</span>
@@ -199,6 +201,7 @@
         <figure class="shot wf" aria-label="Wireframe: cancel now, or take a tailored offer">
           <div class="wire">
             <div class="w-head"><b>Cancel subscription</b><span class="w-btn dark">Contact support</span></div>
+            <div class="w-steps"><span class="done">✓ Reason</span><i class="on"></i><span class="on">② Feedback</span><i></i><span>③ Confirmation</span></div>
             <p class="w-q c">It's tough to say goodbye. Here's what we can offer.</p>
             <div class="w-offer">
               <div class="w-card">
@@ -208,9 +211,9 @@
                 <span class="w-btn red">Cancel subscription</span>
               </div>
               <div class="w-card pick">
-                <b>Switch your plan</b><small>What you'll keep</small>
+                <b>Downgrade / upgrade your plan</b><small>What you'll keep</small>
                 <ul class="w-ok"><li>Access to some of your accounts</li><li>A seat for one member</li><li>Your key data sources</li></ul>
-                <span class="w-btns"><span class="w-btn purple">Switch plan</span><span class="w-link">Stay in my plan</span></span>
+                <span class="w-btns"><span class="w-btn brand">Switch to other plan<svg class="w-cursor" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3l14 8-6.2 1.6L10 19z"/></svg></span><span class="w-link">Stay in my plan</span></span>
               </div>
             </div>
             <span class="w-note n-bottom">cancel now — or an offer that fits the reason</span>
