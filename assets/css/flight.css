@@ -464,3 +464,24 @@ html:not(.js) .flight { display: none; }
 .xp-role-h b { color: var(--ink); font-size: 15px; }
 .xp-role .xp-list { border-top: 0; padding-top: 8px; }
 .bubble.show.hush { opacity: 0; transform: translateY(8px) scale(.96); pointer-events: none; }
+
+/* Behance grid */
+.behance { margin-top: 18px; padding: 18px; border-radius: 22px; border: 1px solid color-mix(in srgb, var(--accent) 40%, var(--line)); background: linear-gradient(160deg, rgba(168, 85, 247, .16), var(--soft)); }
+.be-head { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 14px; }
+.be-head > div { display: grid; grid-template-columns: auto 1fr; column-gap: 12px; align-items: center; }
+.be-badge { grid-row: span 2; width: 44px; height: 44px; border-radius: 12px; display: grid; place-items: center; font-weight: 900; font-size: 18px; color: #fff; background: #1769ff; }
+.be-head h3 { margin: 0; font-size: 18px; }
+.be-head p { margin: 0; font-size: 13.5px; color: var(--muted); }
+.behance .shots { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; overflow: visible; padding: 0; }
+.behance .shot { width: auto; display: block; border-radius: 14px; background: var(--panel-solid); transition: transform .25s var(--spring), border-color .2s, box-shadow .25s; }
+.behance .shot:hover { transform: translateY(-4px); border-color: var(--accent); box-shadow: 0 10px 24px var(--glow-soft); }
+.behance .shot .thumb { position: relative; overflow: hidden; }
+.behance .shot img { transition: transform .5s var(--ease); }
+.behance .shot:hover img { transform: scale(1.06); }
+.behance .go { position: absolute; right: 8px; top: 8px; width: 26px; height: 26px; border-radius: 50%; display: grid; place-items: center; font-size: 13px; font-weight: 800; background: rgba(255,255,255,.9); color: #4c1d95; opacity: 0; transform: translateY(-4px); transition: .25s var(--ease); }
+.behance .shot:hover .go { opacity: 1; transform: none; }
+.behance .cap { display: grid; gap: 1px; padding: 9px 11px 11px; }
+.behance .cap b { padding: 0; font-size: 13.5px; line-height: 1.3; }
+.behance .cap small { font-size: 11.5px; font-weight: 700; color: var(--accent-ink); }
+@media (max-width: 860px) { .behance .shots { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 600px) { .behance .shots { grid-template-columns: 1fr 1fr; gap: 10px; } .behance { padding: 14px; } }

@@ -15,25 +15,25 @@
   var IMG = 'https://framerusercontent.com/images/';
   var BE = 'https://www.behance.net/gallery/';
   var shots = [
-    ['Medicare', 'ffp4Ukth3aHcGcnmyIiGwYr7w', '174043145/MediCare-Medical-Application'],
-    ['Outdoor Nuptials', 'CsluJ62hafQ38e07bIiangXiQPU', '174064003/Outdoor-Nuptials'],
-    ['Enhancing Duolingo UX', 'y7uCmEya065zdaDtXqbDSMEFhqY', '176358781/Enhancing-Duolingo-UX-Case-study'],
-    ['Twitter UI Evaluation', 'Als8PJKpMxirwpVgn3J0xbATM', '173895575/Twitter-UI-Evaluation-A-Heuristic-Approach-Case-Study'],
-    ['The Self-Care Gap', '2SHZeuIIlZL5ZKi7zAQE4LLUk', '198405761/Assignment-The-self-Care-Gap-(Research)'],
-    ['Celebrare', 'Q6ceRBqrZZUzGfN2qb08mZN4pIg', '178916893/Landing-Page-Redesign'],
-    ['Thulasi Siddha Clinic', '4yi6H3iBVQi9KdgrwgfSGbFv3k', '198401225/Landing-Page-Design-Thulasi-Siddha-Clinic'],
-    ['PixZap', 'usBLE8ZOCG6SScmkiXwCoWnaY', '177688347/Landing-page-Pop-art-style'],
-    ['QuickTrek', 'pU8MgmgBQOLS0FC696UJtMC8f0', '177286753/Landing-Page-QuickTrek'],
-    ['Business Page', 'IyzTlBxeAjSwv6lo2dUAf5pSh60', '168710363/Landing-Page'],
-    ['Candyz', 'pu8lQ4I9GAiqtxMijGFaqfZcgM', '168888963/Landing-page'],
-    ['Daily UI', 'w6cTDpBL71GT41U9LWAT6IxMaA', '173900743/Landing-PageDaily-UI'],
-    ['100 Days Design Challenge', 'hvnH4R7Ys4CSuEo4wFWT3lEHI', '174372279/Daily-UI-100-Days-Designs'],
-    ['Email Campaign Designs', 'KCGlXql3SuNemDz0Eui8AvPfew', '174361479/Email-Campaign']
+    ['Medicare', 'ffp4Ukth3aHcGcnmyIiGwYr7w', '174043145/MediCare-Medical-Application', 'Case study'],
+    ['Outdoor Nuptials', 'CsluJ62hafQ38e07bIiangXiQPU', '174064003/Outdoor-Nuptials', 'Case study'],
+    ['Enhancing Duolingo UX', 'y7uCmEya065zdaDtXqbDSMEFhqY', '176358781/Enhancing-Duolingo-UX-Case-study', 'Case study'],
+    ['Twitter UI Evaluation', 'Als8PJKpMxirwpVgn3J0xbATM', '173895575/Twitter-UI-Evaluation-A-Heuristic-Approach-Case-Study', 'Heuristic evaluation'],
+    ['The Self-Care Gap', '2SHZeuIIlZL5ZKi7zAQE4LLUk', '198405761/Assignment-The-self-Care-Gap-(Research)', 'Research'],
+    ['Celebrare', 'Q6ceRBqrZZUzGfN2qb08mZN4pIg', '178916893/Landing-Page-Redesign', 'Landing page'],
+    ['Thulasi Siddha Clinic', '4yi6H3iBVQi9KdgrwgfSGbFv3k', '198401225/Landing-Page-Design-Thulasi-Siddha-Clinic', 'Landing page'],
+    ['PixZap', 'usBLE8ZOCG6SScmkiXwCoWnaY', '177688347/Landing-page-Pop-art-style', 'Landing page'],
+    ['QuickTrek', 'pU8MgmgBQOLS0FC696UJtMC8f0', '177286753/Landing-Page-QuickTrek', 'Landing page'],
+    ['Business Page', 'IyzTlBxeAjSwv6lo2dUAf5pSh60', '168710363/Landing-Page', 'Landing page'],
+    ['Candyz', 'pu8lQ4I9GAiqtxMijGFaqfZcgM', '168888963/Landing-page', 'Landing page'],
+    ['Daily UI', 'w6cTDpBL71GT41U9LWAT6IxMaA', '173900743/Landing-PageDaily-UI', 'Landing page'],
+    ['100 Days Design Challenge', 'hvnH4R7Ys4CSuEo4wFWT3lEHI', '174372279/Daily-UI-100-Days-Designs', 'Daily UI'],
+    ['Email Campaign Designs', 'KCGlXql3SuNemDz0Eui8AvPfew', '174361479/Email-Campaign', 'Visual design']
   ];
   var shotsEl = $('#shots');
   if (shotsEl) shotsEl.innerHTML = shots.map(function (p) {
     return '<a class="shot" href="' + BE + p[2] + '" target="_blank" rel="noopener"><div class="thumb"><img loading="lazy" src="' + IMG + p[1] +
-      '.png?scale-down-to=512" alt="" width="160" height="120"></div><b>' + p[0] + '</b></a>';
+      '.png?scale-down-to=512" alt="" width="240" height="180"><span class="go" aria-hidden="true">↗</span></div><span class="cap"><b>' + p[0] + '</b><small>' + p[3] + '</small></span></a>';
   }).join('');
 
   /* ---------- Theme / toast / copy ---------- */
@@ -199,7 +199,7 @@
   // Touch: drag the world live with a finger, then glide to the nearest stop.
   var stage = $('#stage'), drag = null;
   stage.addEventListener('touchstart', function (e) {
-    if (e.touches.length !== 1 || e.target.closest('.shots')) return;
+    if (e.touches.length !== 1 || false) return;
     drag = { x: e.touches[0].clientX, y: e.touches[0].clientY, pos: pos, t: performance.now(), lock: null };
   }, { passive: true });
   stage.addEventListener('touchmove', function (e) {
