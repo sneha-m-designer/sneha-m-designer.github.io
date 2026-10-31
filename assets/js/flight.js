@@ -58,6 +58,25 @@
     });
   });
 
+  /* ---------- Live durations (e.g. "2 yrs 1 mo" for the current role) ---------- */
+  $$('[data-since]').forEach(function (el) {
+    var parts = el.dataset.since.split('-'), now = new Date();
+    var months = (now.getFullYear() - +parts[0]) * 12 + (now.getMonth() + 1 - +parts[1]) + 1;
+    var y = Math.floor(months / 12), m = months % 12;
+    el.textContent = [y ? y + ' yr' + (y > 1 ? 's' : '') : '', m ? m + ' mo' + (m > 1 ? 's' : '') : ''].filter(Boolean).join(' ');
+  });
+
+  // Proto's bubble steps aside while a long section is being scrolled.
+  $$('.slide').forEach(function (sl) {
+    var t = 0;
+    sl.addEventListener('scroll', function () {
+      var bubble = document.getElementById('bubble');
+      bubble.classList.add('hush');
+      clearTimeout(t);
+      t = setTimeout(function () { bubble.classList.remove('hush'); }, 1400);
+    }, { passive: true });
+  });
+
   /* ---------- World ---------- */
   var slides = $$('.slide');
   var slidesEl = $('#slides');
