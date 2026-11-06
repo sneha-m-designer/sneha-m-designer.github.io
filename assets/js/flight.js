@@ -152,9 +152,11 @@
     requestAnimationFrame(function () { bubble.classList.add('show'); });
   }
 
+  var via = 'link';
   function go(i, instant) {
     i = Math.max(0, Math.min(n - 1, i));
     if (i === current && !instant) return;
+    var initial = current < 0;
     if (i !== current) {
       facing = i > (current < 0 ? i : current) ? 1 : i < current ? -1 : facing;
       plane.classList.toggle('left', facing < 0);
@@ -174,6 +176,8 @@
     nextBtn.disabled = i === n - 1;
     nextBtn.classList.toggle('nudge', i === 0);
     try { history.replaceState(null, '', location.pathname + (i === 0 ? '' : '#' + slides[i].id)); } catch (e) {}
+    try { document.dispatchEvent(new CustomEvent('portfolio:stop', { detail: { id: slides[i].id, label: slides[i].dataset.label, index: i, via: initial ? 'landing' : via } })); } catch (e) {}
+    via = 'link';
 
     if (instant || reduceMotion) {
       cancelAnimationFrame(raf); raf = 0; tw = null;
@@ -181,15 +185,16 @@
     } else flyTo(i);
   }
 
-  prevBtn.addEventListener('click', function () { go(current - 1); });
-  nextBtn.addEventListener('click', function () { go(current + 1); });
-  stopBtns.forEach(function (b) { b.addEventListener('click', function () { go(+b.dataset.i); }); });
+  prevBtn.addEventListener('click', function () { via = 'arrow_button'; go(current - 1); });
+  nextBtn.addEventListener('click', function () { via = 'arrow_button'; go(current + 1); });
+  stopBtns.forEach(function (b) { b.addEventListener('click', function () { via = 'route_stop'; go(+b.dataset.i); }); });
   $$('[data-go]').forEach(function (el) {
-    el.addEventListener('click', function (e) { e.preventDefault(); go(+el.dataset.go); });
+    el.addEventListener('click', function (e) { e.preventDefault(); via = 'button'; go(+el.dataset.go); });
   });
 
   document.addEventListener('keydown', function (e) {
     if (e.metaKey || e.ctrlKey || e.altKey || e.target.closest('input, textarea, select')) return;
+    via = 'keyboard';
     if (e.key === 'ArrowRight') { e.preventDefault(); go(current + 1); }
     else if (e.key === 'ArrowLeft') { e.preventDefault(); go(current - 1); }
     else if (e.key === 'Home') { e.preventDefault(); go(0); }
@@ -221,6 +226,7 @@
     var dx = e.changedTouches[0].clientX - d.x;
     var flick = Math.abs(dx) > 40 && Math.abs(dx) / Math.max(performance.now() - d.t, 1) > 0.3;
     var i = flick ? current + (dx < 0 ? 1 : -1) : Math.round(pos);
+    via = 'swipe';
     if (i === current) flyTo(current); else go(i);
   }, { passive: true });
 
