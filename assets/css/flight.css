@@ -509,3 +509,20 @@ html:not(.js) .flight { display: none; }
 :root:not([data-theme="light"]) .socials .si { filter: drop-shadow(0 0 0 transparent); }
 :root:not([data-theme="light"]) .socials a[style*="#000000"] .si { fill: #fff; }
 .socials a:hover { border-color: var(--b); }
+
+/* About: brief chapters */
+.story li.brief .ch { padding-bottom: 14px; }
+.story li.brief .ch p { font-size: 15px; }
+
+/* Projects: process */
+.process { margin-bottom: 20px; padding: 18px; border-radius: 20px; background: var(--soft); border: 1px solid var(--line); }
+.process h3, .cs-h { margin: 0 0 12px; font-size: 17px; }
+.proc { display: grid; grid-template-columns: repeat(6, 1fr); gap: 8px; }
+.proc li { position: relative; display: grid; gap: 3px; align-content: start; padding: 12px; border-radius: 14px; background: var(--panel-solid); border: 1px solid var(--line); }
+.proc li:not(:last-child)::after { content: "→"; position: absolute; right: -9px; top: 18px; z-index: 1; font-size: 12px; font-weight: 900; color: var(--accent-ink); }
+.pn { width: 24px; height: 24px; border-radius: 50%; display: grid; place-items: center; font-size: 12px; font-weight: 900; color: #fff; background: linear-gradient(135deg, var(--accent), var(--accent-2)); margin-bottom: 4px; }
+.proc b { font-size: 14px; }
+.proc small { font-size: 12px; color: var(--muted); line-height: 1.35; }
+.proc-loop { margin: 10px 0 0; font-size: 13px; font-weight: 700; color: var(--accent-ink); text-align: right; }
+@media (max-width: 900px) { .proc { grid-template-columns: repeat(3, 1fr); } .proc li:nth-child(3)::after { display: none; } }
+@media (max-width: 520px) { .proc { grid-template-columns: 1fr 1fr; } .proc li::after { display: none; } .proc-loop { text-align: left; } }

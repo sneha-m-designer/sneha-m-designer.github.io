@@ -777,3 +777,12 @@ h2 s { color: var(--muted); text-decoration-color: #9d8ec4; text-decoration-thic
   .dx-steps { flex-wrap: wrap; row-gap: 4px; }
   .dx-steps i { flex: 0 0 10px; }
 }
+
+.hero-stats.two { grid-template-columns: repeat(2, 1fr); }
+@media (max-width: 560px) { .hero-stats.two { grid-template-columns: 1fr; } }
+.meta > div:only-child { grid-column: 1 / -1; }
+.g-now { background: linear-gradient(90deg, var(--muted), var(--accent)); }
+.g-band { opacity: .45; }
+.g-before { position: absolute; top: -5px; bottom: -5px; width: 3px; margin-left: -1px; border-radius: 2px; background: var(--muted); }
+.g-tick.nowt small { color: var(--ink); font-weight: 900; }
+.g-tick.nowt { top: auto; bottom: 100%; padding: 0 0 6px; }
