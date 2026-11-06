@@ -146,7 +146,19 @@
     bubble.style.left = (left - flight.left) + 'px';
     bubble.style.setProperty('--tail', Math.max(18, Math.min(w - 18, px - left)) + 'px');
   }
+  var helloT = 0;
   function say(i) {
+    clearTimeout(helloT);
+    bubble.classList.remove('hello-fade');
+    if (slides[i].id === 'hello') {
+      // If the greeting covers the Hello buttons (small screens), let it go sooner.
+      var cta = slides[i].querySelector('.hero-cta');
+      setTimeout(function () {
+        var a = bubble.getBoundingClientRect(), c = cta && cta.getBoundingClientRect();
+        var covers = c && !(a.right < c.left || a.left > c.right || a.bottom < c.top || a.top > c.bottom);
+        if (covers || innerHeight <= 880) helloT = setTimeout(function () { bubble.classList.add('hello-fade'); }, covers ? 3500 : 6000);
+      }, 60);
+    }
     bubble.innerHTML = '<span class="who">Proto</span>' + slides[i].dataset.say;
     placeBubble();
     requestAnimationFrame(function () { bubble.classList.add('show'); });

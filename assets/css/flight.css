@@ -526,3 +526,29 @@ html:not(.js) .flight { display: none; }
 .proc-loop { margin: 10px 0 0; font-size: 13px; font-weight: 700; color: var(--accent-ink); text-align: right; }
 @media (max-width: 900px) { .proc { grid-template-columns: repeat(3, 1fr); } .proc li:nth-child(3)::after { display: none; } }
 @media (max-width: 520px) { .proc { grid-template-columns: 1fr 1fr; } .proc li::after { display: none; } .proc-loop { text-align: left; } }
+
+/* Hello: fit the space above Proto's bubble on shorter screens */
+.slide#hello { padding-bottom: 14px; }
+.hero { gap: clamp(4px, 1.1vh, 10px); padding-top: clamp(12px, 2.6vh, 30px); padding-bottom: clamp(14px, 2.4vh, 28px); }
+.hero h1 { font-size: clamp(28px, min(5.4vw, 6.4vh), 58px); }
+.hero-photo { width: clamp(64px, 12vh, 116px); height: clamp(64px, 12vh, 116px); }
+.hey { font-size: clamp(22px, 3.4vh, 30px); margin-top: 2px; }
+@media (max-height: 880px) and (min-width: 641px) {
+  .hero .chips { margin: 2px 0 4px; }
+  .hero .chips li { font-size: 12.5px; padding: 5px 10px; }
+  .howto { display: none; }
+}
+@media (max-height: 720px) and (min-width: 641px) {
+  .hero .chips { display: none; }
+}
+@media (max-width: 640px) {
+  .hero h1 { font-size: clamp(26px, min(8.4vw, 5.2vh), 40px); }
+  .hero-photo { width: clamp(56px, 10vh, 92px); height: clamp(56px, 10vh, 92px); }
+}
+@media (max-width: 640px) and (max-height: 760px) {
+  .hero .chips li:nth-child(n+3) { display: none; }
+  .hero .role { font-size: 14px; }
+}
+/* Proto's welcome bubble steps aside on Hello once the page has loaded on short screens */
+.bubble { pointer-events: none; }
+.bubble.show.hello-fade { opacity: 0; transform: translateY(8px) scale(.96); }
