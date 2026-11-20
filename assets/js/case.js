@@ -10,18 +10,18 @@
   });
   document.getElementById('year').textContent = new Date().getFullYear();
 
-  // Visitors who came from the v2 portfolio go back there, not to the flight.
-  var fromV2 = /\/v2\//.test(document.referrer);
+  // Visitors who came from v2 or v3 go back there, not to the flight.
+  var from = (/\/(v\d+)\//.exec(document.referrer) || [])[1] || '';
   try {
-    if (fromV2) sessionStorage.setItem('portfolio', 'v2');
+    if (from) sessionStorage.setItem('portfolio', from);
     else if (document.referrer && !/\/work\//.test(document.referrer)) sessionStorage.setItem('portfolio', 'flight');
-    fromV2 = sessionStorage.getItem('portfolio') === 'v2';
+    from = /^v\d+$/.test(sessionStorage.getItem('portfolio') || '') ? sessionStorage.getItem('portfolio') : '';
   } catch (e) {}
-  if (fromV2) {
+  if (from) {
     $$('a[href^="../index.html"]').forEach(function (a) {
-      a.setAttribute('href', '../v2/#work');
+      a.setAttribute('href', '../' + from + '/#work');
       var label = a.querySelector('span');
-      if (label && /flight/i.test(label.textContent)) label.textContent = 'Back to portfolio';
+      if (label && /flight/i.test(label.textContent)) label.textContent = from === 'v3' ? 'Back to the ride' : 'Back to portfolio';
     });
   }
 

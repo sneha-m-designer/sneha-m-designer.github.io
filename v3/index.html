@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Ride with Sneha | Product Designer</title>
+  <meta name="description" content="Hop on Sneha's scooty and ride through her journey as a Product Designer: research, experience, case studies with results, and how to reach her." />
+  <meta name="theme-color" content="#f3e8ff" />
+  <link rel="canonical" href="https://sneha-m.com/v3/" />
+  <meta property="og:title" content="Ride with Sneha | Product Designer" />
+  <meta property="og:description" content="I turn user pain points into solutions that drive business impact. Hop on and ride through my portfolio." />
+  <meta property="og:image" content="https://framerusercontent.com/images/PUOseOOuIhQYyte1bZlqY66GBYo.png" />
+  <meta property="og:url" content="https://sneha-m.com/v3/" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%238b5cf6'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-weight='700' font-size='34' fill='white'%3ES%3C/text%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Nanum+Pen+Script&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="v3.css" />
+  <script>document.documentElement.classList.add('js');</script>
+  <script src="../assets/js/analytics.js"></script>
+</head>
+<body>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <!-- Sneha on her scooty, side view facing right -->
+    <symbol id="rider" viewBox="0 0 220 170">
+      <!-- scooter body -->
+      <path d="M40 112 Q46 92 74 90 L120 90 Q132 90 136 100 L144 120 L58 122 Q42 122 40 112 Z" fill="#8b5cf6" stroke="#3b0764" stroke-width="3" stroke-linejoin="round"/>
+      <path d="M128 92 L150 46 L162 46" fill="none" stroke="#3b0764" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M138 72 Q160 76 166 104 L150 122 L140 122 Z" fill="#a78bfa" stroke="#3b0764" stroke-width="3" stroke-linejoin="round"/>
+      <rect x="156" y="38" width="16" height="9" rx="4" fill="#3b0764"/>
+      <circle cx="171" cy="58" r="5" fill="#fde68a" stroke="#3b0764" stroke-width="2"/>
+      <path d="M58 90 L100 90 L98 80 Q78 76 60 80 Z" fill="#2e1065"/>
+      <!-- rider -->
+      <path d="M86 82 Q82 52 98 40 L112 42 Q118 60 110 84 Z" fill="#f5f0ff" stroke="#3b0764" stroke-width="3" stroke-linejoin="round"/>
+      <path d="M90 82 L116 84 L138 104 L130 110 L108 94 L86 94 Z" fill="#4c1d95" stroke="#3b0764" stroke-width="3" stroke-linejoin="round"/>
+      <path d="M130 110 L142 112 L140 118 L126 116 Z" fill="#3b0764"/>
+      <path d="M106 50 Q130 56 150 48" fill="none" stroke="#f5f0ff" stroke-width="7" stroke-linecap="round"/>
+      <path d="M106 50 Q130 56 150 48" fill="none" stroke="#3b0764" stroke-width="2" stroke-linecap="round" opacity=".35"/>
+      <circle cx="106" cy="24" r="14" fill="#d8a47f" stroke="#3b0764" stroke-width="2.5"/>
+      <path d="M92 22 Q92 6 108 6 Q124 6 122 20 L120 26 Q108 14 94 26 Z" fill="#a855f7" stroke="#3b0764" stroke-width="2.5" stroke-linejoin="round"/>
+      <path d="M118 24 L124 24 Q125 28 120 30" fill="#ede9fe" stroke="#3b0764" stroke-width="1.6"/>
+      <g class="ponytail"><path d="M93 22 Q74 18 66 30 Q78 28 92 30 Z" fill="#2e1065"/></g>
+      <circle cx="112" cy="25" r="1.8" fill="#2e1065"/>
+      <path d="M108 31 Q112 33 115 31" fill="none" stroke="#2e1065" stroke-width="1.6" stroke-linecap="round"/>
+      <!-- wheels -->
+      <g class="wheel" style="transform-origin:62px 128px"><circle cx="62" cy="128" r="20" fill="#1e1033"/><circle cx="62" cy="128" r="9" fill="#c4b5fd"/><path d="M62 112 V144 M46 128 H78" stroke="#1e1033" stroke-width="3"/></g>
+      <g class="wheel" style="transform-origin:154px 128px"><circle cx="154" cy="128" r="20" fill="#1e1033"/><circle cx="154" cy="128" r="9" fill="#c4b5fd"/><path d="M154 112 V144 M138 128 H170" stroke="#1e1033" stroke-width="3"/></g>
+    </symbol>
+  </svg>
+
+  <header class="hud">
+    <a class="brand" href="#stop-home" data-jump="0"><span class="brand-dot">S</span><span><b>Sneha M</b><small>Product Designer</small></span></a>
+    <nav class="trip" aria-label="Stops on the ride"><ol id="tripStops"></ol><div class="trip-line"><i id="tripFill"></i></div></nav>
+    <a class="btn small" href="#stop-contact" data-jump="last">Contact</a>
+  </header>
+
+  <!-- Scroll drives the ride; the world is fixed and moves sideways -->
+  <div class="scroller" id="scroller" aria-hidden="true"></div>
+
+  <main class="scene" id="scene">
+    <div class="sky" id="sky"><span class="sun" id="sun"></span><span class="moon" id="moon"></span><div class="stars" id="stars"></div></div>
+    <div class="layer clouds" id="clouds" data-speed="0.12"></div>
+    <div class="layer hills far" id="hillsFar" data-speed="0.18"></div>
+    <div class="layer hills near" id="hillsNear" data-speed="0.32"></div>
+    <div class="layer city" id="city" data-speed="0.55"></div>
+
+    <div class="world" id="world">
+      <div class="road" id="road"><div class="road-dash"></div></div>
+      <div class="props" id="props"></div>
+
+      <section class="stop" id="stop-home" data-label="Home" data-say="Hop on! 🛵 Scroll to ride through my story →">
+        <div class="board home">
+          <img class="photo" src="https://framerusercontent.com/images/PUOseOOuIhQYyte1bZlqY66GBYo.png" alt="Portrait of Sneha M" width="96" height="96" />
+          <p class="hey">Hey, I'm Sneha 👋</p>
+          <h1>I turn user pain points into <span>solutions that drive business impact.</span></h1>
+          <p class="meta">Product Designer @ <b>Two Minute Reports | GoX.ai</b> · Chennai</p>
+          <p class="hint"><span class="mouse"></span> Scroll, swipe or press → to ride</p>
+        </div>
+        <span class="post"></span>
+      </section>
+
+      <section class="stop" id="stop-college" data-label="College" data-say="First stop: where it all began 🎓">
+        <div class="board">
+          <p class="tag">🎓 2017 – 2021</p>
+          <h2>Kamaraj College of Engineering &amp; Technology</h2>
+          <p><b>B.E. in Computer Science Engineering</b> · CGPA 8.25</p>
+          <p class="note">Engineering taught me to break big problems into small, testable pieces.</p>
+        </div>
+        <span class="post"></span>
+      </section>
+
+      <section class="stop" id="stop-hcl" data-label="HCL" data-say="Then a detour through cybersecurity 🛡️">
+        <div class="board">
+          <p class="tag">🛡️ Nov 2021 – Jan 2023 · Chennai</p>
+          <h2>Graduate Engineer Trainee, HCL Technologies</h2>
+          <ul>
+            <li>Managed cybersecurity risk in OT environments with Microsoft Defender for IoT</li>
+            <li>Prioritised ServiceNow tickets under tight deadlines</li>
+            <li>Worked with clients and stakeholders in Agile teams</li>
+          </ul>
+          <p class="note">Where I learned stakeholder management and systems thinking.</p>
+        </div>
+        <span class="post"></span>
+      </section>
+
+      <section class="stop" id="stop-lucify" data-label="Lucify" data-say="This is where I fell for UX research 🔍">
+        <div class="board">
+          <p class="tag">🔍 Sep 2023 – Oct 2024 · Remote</p>
+          <h2>Lucify: from research intern to UX designer</h2>
+          <ul>
+            <li><b>UX Researcher Intern:</b> interviews, competitor analysis, flows and IA that shaped the product from the ground up</li>
+            <li><b>UX Designer:</b> hi-fi prototypes for a hospitality SaaS, built the design system, redesigned the website with motion</li>
+          </ul>
+        </div>
+        <span class="post"></span>
+      </section>
+
+      <section class="stop" id="stop-gox" data-label="GoX.ai" data-say="And here's where I work today 🚀">
+        <div class="board">
+          <p class="tag live">● Oct 2024 – Present · Chennai</p>
+          <h2>Product Designer, Two Minute Reports | GoX.ai</h2>
+          <p>Leading design from research to delivery across AI-powered B2B SaaS and B2C products:</p>
+          <div class="chips"><span>Make Passport Photo</span><span>Illustrations AI · shipped in 5 months</span><span>AI Report Creator</span><span>Two Minute Reports</span></div>
+        </div>
+        <span class="post"></span>
+      </section>
+
+      <section class="stop" id="stop-process" data-label="Process" data-say="Every project, I take the same road 🛣️">
+        <div class="board">
+          <p class="tag">🛣️ How I work</p>
+          <h2>Find the friction. Fix it. Prove it.</h2>
+          <ol class="steps">
+            <li><b>Discover</b><small>Research and data to find the real pain</small></li>
+            <li><b>Define</b><small>The problem and the metric for success</small></li>
+            <li><b>Ideate</b><small>Explore directions, test and refine</small></li>
+            <li><b>Design</b><small>Prototype the final flows</small></li>
+            <li><b>Measure</b><small>Track the metric after launch</small></li>
+            <li><b>Improve</b><small>Learn and repeat</small></li>
+          </ol>
+        </div>
+        <span class="post"></span>
+      </section>
+
+      <section class="stop work" id="stop-work" data-label="Work" data-say="Billboards ahead: my work, with results 📈">
+        <a class="board billboard" href="../work/paid-conversion.html">
+          <p class="tag">MakePassportPhoto · Conversion</p>
+          <h2>More users choosing the paid plan over free</h2>
+          <div class="big"><b>&lt;1% → 6%</b><small>paid plan selection</small></div>
+          <div class="big"><b>&lt;1% → &gt;2%</b><small>paid conversion</small></div>
+          <span class="go">Read case study →</span>
+        </a>
+        <span class="post"></span>
+      </section>
+
+      <section class="stop work" id="stop-work2" data-label="Upsell" data-say="Same product, a different moment 🔓">
+        <a class="board billboard" href="../work/download-upsell.html">
+          <p class="tag">MakePassportPhoto · Upsell</p>
+          <h2>A passive download page turned into an upgrade moment</h2>
+          <div class="big"><b>2.36% → 6.15%</b><small>users clicking to upgrade</small></div>
+          <span class="go">Read case study →</span>
+        </a>
+        <span class="post"></span>
+      </section>
+
+      <section class="stop work" id="stop-work3" data-label="Churn" data-say="And one about why people leave 💜">
+        <a class="board billboard" href="../work/cancellation-flow.html">
+          <p class="tag">Two Minute Reports · Churn</p>
+          <h2>A support-led cancellation turned into a self-serve flow</h2>
+          <div class="big"><b>500+</b><small>churned users' feedback analysed</small></div>
+          <div class="big"><b>8</b><small>churn drivers found</small></div>
+          <span class="go">Read case study →</span>
+        </a>
+        <span class="post"></span>
+      </section>
+
+      <section class="stop" id="stop-tools" data-label="Toolshop" data-say="Quick pit stop at the toolshop 🧰">
+        <div class="board">
+          <p class="tag">🧰 Toolshop</p>
+          <h2>What I work with</h2>
+          <div class="chips tools"><span>Figma</span><span>FigJam</span><span>PostHog</span><span>Claude</span><span>Miro</span><span>Jira</span><span>v0</span><span>Adobe XD</span><span>Balsamiq</span><span>Photoshop</span></div>
+          <p class="note"><b>Research:</b> interviews, usability testing, heuristic evaluation, funnels and experiments. <b>Design:</b> IA, flows, prototyping, design systems, motion, accessibility.</p>
+        </div>
+        <span class="post"></span>
+      </section>
+
+      <section class="stop" id="stop-wins" data-label="Wins" data-say="Shh… a few trophies 🏆 Still learning and growing!">
+        <div class="board">
+          <p class="tag">🏆 Trophy park</p>
+          <h2>Wins &amp; certificates</h2>
+          <ul class="links">
+            <li><a href="https://www.linkedin.com/posts/sneha14m_opentonewopportunities-designhackathon-uiuxdesign-activity-7080409624671129600-iFkI" target="_blank" rel="noopener">🥇 Winner, Design Hackathon · Nobel Transformation Hub ↗</a></li>
+            <li><a href="https://drive.google.com/file/d/1BfENFpgX8q5tZxBSlgYKuOjqqmGcrwW2/view" target="_blank" rel="noopener">🎨 Winner, Graphic Design Competition · Adetive Solutions ↗</a></li>
+            <li><a href="https://www.coursera.org/account/accomplishments/specialization/certificate/4QNXCMT67CFF" target="_blank" rel="noopener">📜 Google UX Design Specialization ↗</a></li>
+            <li><a href="https://www.credly.com/badges/6e40f5f9-d671-4f6c-aac5-d0db50a27cfe/linked_in_profile" target="_blank" rel="noopener">📜 IBM Enterprise Design Thinking ↗</a></li>
+          </ul>
+        </div>
+        <span class="post"></span>
+      </section>
+
+      <section class="stop" id="stop-contact" data-label="Café" data-say="End of the ride ☕ Let's grab a coffee and talk!">
+        <div class="board contact">
+          <p class="tag">☕ Last stop</p>
+          <h2>Let's build something meaningful.</h2>
+          <p>If you enjoy building products that solve real problems and put users at the centre, I'd love to hear from you.</p>
+          <a class="btn" href="mailto:snehauxdesigner@gmail.com?subject=Hi%20Sneha%20%E2%80%94%20from%20your%20portfolio">snehauxdesigner@gmail.com</a>
+          <button class="btn ghost" type="button" data-copy="snehauxdesigner@gmail.com">Copy email</button>
+          <p class="socials"><a href="https://www.linkedin.com/in/sneha14m/" target="_blank" rel="noopener">LinkedIn ↗</a><a href="https://www.behance.net/sneha_m14" target="_blank" rel="noopener">Behance ↗</a><a href="https://medium.com/@snehauxdesigner" target="_blank" rel="noopener">Medium ↗</a><a href="../v2/">Classic view ↗</a></p>
+        </div>
+        <span class="post"></span>
+      </section>
+    </div>
+
+    <div class="rider" id="rider" aria-hidden="true">
+      <p class="say" id="say"></p>
+      <svg class="scooty" id="scooty"><use href="#rider"/></svg>
+      <span class="exhaust" id="exhaust"></span>
+    </div>
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="v3.js"></script>
+</body>
+</html>
