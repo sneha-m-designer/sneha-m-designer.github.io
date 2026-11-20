@@ -21,7 +21,7 @@
     $$('a[href^="../index.html"]').forEach(function (a) {
       a.setAttribute('href', '../' + from + '/#work');
       var label = a.querySelector('span');
-      if (label && /flight/i.test(label.textContent)) label.textContent = from === 'v3' ? 'Back to the ride' : 'Back to portfolio';
+      if (label && /flight/i.test(label.textContent)) label.textContent = 'Back to portfolio';
     });
   }
 
