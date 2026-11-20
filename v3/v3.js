@@ -11,25 +11,24 @@
   var PHOTO = 'https://framerusercontent.com/images/PUOseOOuIhQYyte1bZlqY66GBYo.png?scale-down-to=256';
 
   // ---------- Art: each object drawn in its own local box ----------
-  function card(x, y, r, fill, t1, t2, t3) {
+  function card(x, y, r, fill, t1, t3) {
     return '<g transform="translate(' + x + ' ' + y + ') rotate(' + r + ')">' +
       '<rect width="164" height="98" rx="6" fill="' + fill + '" filter="url(#soft)"/>' +
       '<circle cx="82" cy="10" r="6" fill="' + PURPLE + '"/>' +
-      '<text x="14" y="42" ' + SANS + ' font-weight="800" font-size="19" fill="' + INK + '">' + t1 + '</text>' +
-      '<text x="14" y="64" ' + SANS + ' font-size="12.5" fill="#5b5475">' + t2 + '</text>' +
-      '<text x="14" y="84" ' + SANS + ' font-weight="700" font-size="12" fill="' + PURPLE + '">' + t3 + '</text></g>';
+      '<text x="82" y="52" text-anchor="middle" ' + SANS + ' font-weight="800" font-size="22" fill="' + INK + '">' + t1 + '</text>' +
+      '<text x="82" y="78" text-anchor="middle" ' + SANS + ' font-weight="700" font-size="14" fill="' + PURPLE + '">' + t3 + '</text></g>';
   }
   var ART = {
-    board: { w: 420, h: 320, label: '📌 My journey', open: 'experience', hint: [400, 18], svg:
+    board: { w: 420, h: 320, label: '📌 My journey', open: 'experience', svg:
       '<rect width="420" height="320" rx="16" fill="' + DEEP + '"/><rect x="14" y="14" width="392" height="292" rx="8" fill="#e9e1fb"/>' +
       '<text x="210" y="50" text-anchor="middle" ' + CAV + ' font-size="32" fill="' + DEEP + '">My journey</text>' +
-      card(30, 70, -4, '#fff', 'GoX.ai', 'Product Designer', '2024 – now') +
-      card(222, 64, 3, '#fff', 'Lucify', 'UX Designer', '2024') +
-      card(36, 190, 2.5, '#fff', 'Lucify', 'UX Research Intern', '2023') +
-      card(224, 186, -3, '#fff6b8', 'HCL Tech', 'Engineer Trainee', '2021 – 23') },
+      card(34, 76, -3, '#fff', 'GoX.ai', '2024 – now') +
+      card(222, 72, 3, '#fff', 'Lucify', '2023 – 24') +
+      card(34, 192, 2, '#fff', 'HCL Tech', '2021 – 23') +
+      card(222, 188, -2.5, '#fff6b8', 'B.E. CSE', 'CGPA 8.25') },
 
-    shelf: { w: 420, h: 240, label: '🏆 Wins & certificates', open: 'wins', hint: [404, 70], svg:
-      '<rect x="0" y="206" width="420" height="18" rx="4" fill="#3b2f63"/><path d="M40 224 v16 h10 v-16z M370 224 v16 h10 v-16z" fill="#3b2f63"/>' +
+    shelf: { w: 300, h: 240, label: '🏆 Wins & certificates', open: 'wins', svg:
+      '<rect x="10" y="206" width="280" height="18" rx="4" fill="#3b2f63"/><path d="M40 224 v16 h10 v-16z M250 224 v16 h10 v-16z" fill="#3b2f63"/>' +
       '<path d="M38 92 h76 v22 a38 38 0 0 1 -76 0z" fill="#f5c542"/>' +
       '<path d="M38 102 q-24 0 -20 20 q4 16 24 14 M114 102 q24 0 20 20 q-4 16 -24 14" fill="none" stroke="#f5c542" stroke-width="7"/>' +
       '<rect x="68" y="150" width="16" height="22" fill="#d9a92b"/><rect x="50" y="172" width="52" height="12" rx="3" fill="#d9a92b"/><rect x="44" y="184" width="64" height="22" rx="4" fill="' + INK + '"/>' +
@@ -38,10 +37,7 @@
       '<text x="202" y="130" text-anchor="middle" ' + SANS + ' font-weight="800" font-size="15" fill="' + INK + '">Google UX</text>' +
       '<rect x="166" y="142" width="72" height="5" rx="2" fill="' + LAV + '"/><rect x="176" y="154" width="52" height="5" rx="2" fill="' + SOFT + '"/>' +
       '<circle cx="202" cy="182" r="11" fill="' + PURPLE + '"/></g>' +
-      '<g transform="rotate(4 320 165)"><rect x="276" y="122" width="88" height="84" rx="4" fill="#fff" stroke="' + INK + '" stroke-width="6"/>' +
-      '<text x="320" y="156" text-anchor="middle" ' + SANS + ' font-weight="800" font-size="15" fill="' + PURPLE + '">IBM</text>' +
-      '<rect x="292" y="168" width="56" height="5" rx="2" fill="' + LAV + '"/><rect x="300" y="180" width="40" height="5" rx="2" fill="' + SOFT + '"/></g>' +
-      '<rect x="372" y="170" width="44" height="12" rx="2" fill="' + LAV + '"/><rect x="376" y="182" width="40" height="12" rx="2" fill="' + PURPLE + '"/><rect x="370" y="194" width="46" height="12" rx="2" fill="' + DEEP + '"/>' },
+      '' },
 
     poster: { w: 300, h: 120, label: '📓 How I work', open: 'process', svg:
       '<rect width="300" height="120" rx="10" fill="' + INK + '"/><rect x="8" y="8" width="284" height="104" rx="6" fill="#fff"/>' +
@@ -55,7 +51,7 @@
       '<circle cx="58" cy="212" r="10" fill="' + LAV + '"/><circle cx="80" cy="340" r="9" fill="' + LAV + '"/>' +
       '<g transform="rotate(28 156 92)"><path d="M118 74 Q156 30 194 74 L208 114 H104 Z" fill="' + PURPLE + '"/><ellipse cx="156" cy="114" rx="22" ry="7" fill="#fff3a3"/></g>' },
 
-    notebook: { w: 260, h: 125, label: '📓 How I work', open: 'process', hint: [238, 12], svg:
+    notebook: { w: 260, h: 125, label: '📓 How I work', open: 'process', svg:
       '<ellipse cx="130" cy="114" rx="122" ry="9" fill="rgba(0,0,0,.18)"/>' +
       '<path d="M24 22 L238 10 L252 100 L12 112 Z" fill="' + PURPLE + '"/><path d="M24 22 L12 112 L32 111 L43 21 Z" fill="#5b21b6"/>' +
       '<path d="M212 12 L224 102" stroke="' + INK + '" stroke-width="5"/>' +
@@ -71,9 +67,8 @@
       '<text x="52" y="58" ' + SANS + ' font-weight="800" font-size="15" fill="' + INK + '">Selected work</text>' +
       [['6%', 'paid plan', 52], ['6.15%', 'upgrades', 156], ['500+', 'users', 260]].map(function (c) {
         return '<rect x="' + c[2] + '" y="70" width="90" height="128" rx="8" fill="#fff" stroke="#e4ddf6"/>' +
-          '<rect x="' + (c[2] + 10) + '" y="80" width="70" height="40" rx="5" fill="' + SOFT + '"/>' +
-          '<text x="' + (c[2] + 45) + '" y="152" text-anchor="middle" ' + SANS + ' font-weight="900" font-size="20" fill="' + PURPLE + '">' + c[0] + '</text>' +
-          '<text x="' + (c[2] + 45) + '" y="172" text-anchor="middle" ' + SANS + ' font-size="11" fill="#5b5475">' + c[1] + '</text>';
+          '<text x="' + (c[2] + 45) + '" y="140" text-anchor="middle" ' + SANS + ' font-weight="900" font-size="20" fill="' + PURPLE + '">' + c[0] + '</text>' +
+          '<text x="' + (c[2] + 45) + '" y="162" text-anchor="middle" ' + SANS + ' font-size="11" fill="#5b5475">' + c[1] + '</text>';
       }).join('') +
       '<path d="M0 236 H400 L388 258 Q384 266 372 266 H28 Q16 266 12 258 Z" fill="#cfc4ee"/><rect x="168" y="236" width="64" height="7" rx="3.5" fill="#b3a5e0"/>' },
 
@@ -85,7 +80,7 @@
       '<circle class="pupil" cx="42" cy="59" r="4" fill="' + INK + '"/><circle class="pupil" cx="68" cy="59" r="4" fill="' + INK + '"/>' +
       '<rect x="32" y="98" width="46" height="26" rx="10" fill="' + LAV + '"/><circle cx="55" cy="111" r="5" fill="#fff"/></g>' },
 
-    frame: { w: 112, h: 136, label: '🖼️ About me', open: 'about', hint: [104, 6], svg:
+    frame: { w: 112, h: 136, label: '🖼️ About me', open: 'about', svg:
       '<path d="M70 120 L92 136 H60 Z" fill="' + INK + '"/>' +
       '<rect x="3" y="3" width="106" height="126" rx="6" fill="#fff" stroke="' + INK + '" stroke-width="6"/>' +
       '<rect x="14" y="14" width="84" height="84" fill="' + SOFT + '"/>' +
@@ -121,14 +116,14 @@
   // Placements: [x, y, scale] in each layout's coordinate space.
   var LAYOUTS = {
     wide: { w: 1600, h: 1000, deskTop: 660, deskFront: 740, place: {
-      board: [110, 100, 1], shelf: [1090, 118, 1], lamp: [70, 326, 1], notebook: [300, 588, 1],
-      laptop: [590, 404, 1.02], proto: [1022, 552, 1], frame: [1142, 548, 1], cup: [1266, 526, 1],
-      mug: [1360, 568, 1], plant: [1476, 484, 1] },
+      board: [120, 130, .82], shelf: [1170, 140, .95], lamp: [80, 326, 1], notebook: [320, 588, .95],
+      laptop: [600, 404, 1.02], proto: [1060, 552, 1], frame: [1200, 548, 1], mug: [1340, 568, 1],
+      plant: [1468, 484, 1] },
       drawers: [[80, 770, 440, 90], [80, 876, 440, 90], [1080, 770, 440, 90], [1080, 876, 440, 90]] },
     tall: { w: 800, h: 1150, deskTop: 800, deskFront: 1010, place: {
-      board: [22, 40, .9], shelf: [440, 96, .82], lamp: [8, 478, .9], laptop: [196, 552, .95],
-      plant: [650, 612, .94], notebook: [26, 880, 1], proto: [304, 862, 1], cup: [428, 838, 1],
-      frame: [534, 862, 1], mug: [664, 878, 1], poster: [250, 352, 1] },
+      board: [40, 70, .82], shelf: [500, 120, .85], lamp: [20, 478, .9], laptop: [210, 552, .95],
+      plant: [650, 612, .94], notebook: [40, 880, .95], proto: [330, 862, 1], frame: [480, 862, 1],
+      mug: [640, 878, 1] },
       drawers: [[40, 1040, 340, 80], [420, 1040, 340, 80]] }
   };
 
@@ -151,7 +146,7 @@
       s += '<rect class="drawer" x="' + d[0] + '" y="' + d[1] + '" width="' + d[2] + '" height="' + d[3] + '" rx="10"/>' +
         '<rect class="handle" x="' + (d[0] + d[2] / 2 - 40) + '" y="' + (d[1] + 22) + '" width="80" height="10" rx="5"/>';
     });
-    var order = ['poster', 'board', 'shelf', 'lamp', 'notebook', 'laptop', 'proto', 'frame', 'cup', 'mug', 'plant'];
+    var order = ['board', 'shelf', 'lamp', 'notebook', 'laptop', 'proto', 'frame', 'mug', 'plant'];
     order.forEach(function (id) {
       var a = ART[id], p = L.place[id];
       if (!p) return;
@@ -170,8 +165,8 @@
   // ---------- Interactions ----------
   var tip = $('#tip'), bubble = $('#bubble'), toastEl = $('#toast');
   var explored = false, water = 0, protoTip = 0;
-  var LABELS = { work: 'Work', process: 'How I work', experience: 'Experience', about: 'About', wins: 'Wins', tools: 'Toolkit', contact: 'Contact' };
-  var INDEX = { work: 1, process: 2, experience: 3, about: 4, wins: 5, tools: 6, contact: 7 };
+  var LABELS = { work: 'Work', process: 'How I work', experience: 'Experience', about: 'About', wins: 'Wins', contact: 'Contact' };
+  var INDEX = { work: 1, process: 2, experience: 3, about: 4, wins: 5, contact: 6 };
 
   function bindObjects() {
     $$('.obj', stage).forEach(function (o) {
@@ -222,7 +217,8 @@
     'Try the lamp if it\'s too bright in here 🌙',
     'The coffee mug is the fastest way to reach Sneha ☕',
     'Water the plant. Go on, I dare you 🌱',
-    'The pinboard has her whole journey 📌'
+    'The pinboard has her whole journey 📌',
+    'Her photo frame has her toolkit too 🖼️'
   ];
   function protoSays(o) {
     say(o, TIPS[protoTip++ % TIPS.length]);
