@@ -1,243 +1,223 @@
-/* Sneha M — v3 "Ride with Sneha": scroll drives a scooty along a road of stops. */
+/* Sneha M — v3 "Fix This Page". Visitors find and fix 6 UX problems to reveal the portfolio. */
 (function () {
   'use strict';
   var $ = function (s, r) { return (r || document).querySelector(s); };
   var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
+  var track = function (n, p) { if (window.track) window.track(n, p); };
   var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var root = document.documentElement;
 
-  // Inline the rider so its wheels and ponytail can animate.
-  var sym = $('#rider'), scooty = $('#scooty');
-  scooty.setAttribute('viewBox', sym.getAttribute('viewBox'));
-  scooty.innerHTML = sym.innerHTML;
-  var wheels = $$('.wheel', scooty);
+  var FIXES = {
+    nav: { label: 'Mystery-meat navigation', chip: 'Labelled navigation',
+      problem: 'Unlabelled icons and a file name for a logo. You had to guess where things were.',
+      fix: 'Plain-word links, my name and role, and one clear "Let\'s talk" action.',
+      why: 'If people have to guess, they leave.' },
+    hero: { label: 'Jargon headline', chip: 'Clear value proposition',
+      problem: 'Buzzwords, low contrast and a tiny "click here". In 5 seconds you couldn\'t tell what I do.',
+      fix: 'One plain line on what I do, high contrast, two clear actions and my results up front.',
+      why: 'Say what you do. Then prove it.' },
+    popup: { label: 'Guilt-trip popup', chip: 'Popup removed',
+      problem: 'A popup interrupted you, and its "no" button tried to make you feel bad.',
+      fix: 'Removed it. Nothing here asks for something before giving something.',
+      why: 'Earn attention before asking for it.' },
+    about: { label: 'Wall of text', chip: 'Scannable timeline',
+      problem: 'Four roles and a degree crammed into one 200-word sentence at 12px.',
+      fix: 'A timeline: role, company, dates and one line each, with the current role highlighted.',
+      why: 'People scan. Design for scanning.' },
+    work: { label: 'Outputs without outcomes', chip: 'Results first',
+      problem: '"Project 1", lorem ipsum and broken images. No problem, no result, no reason to click.',
+      fix: 'Every case study now leads with the problem it solved and the measured result.',
+      why: 'Show the outcome, not just the output.' },
+    contact: { label: 'Too many form fields', chip: 'One-tap contact',
+      problem: '10 required fields, a fax number and a captcha just to say hello.',
+      fix: 'One tap to email me, a copy button, and where else to find me.',
+      why: 'Every extra step is a reason to quit.' }
+  };
+  var ORDER = ['nav', 'hero', 'popup', 'about', 'work', 'contact'];
+  var TOTAL = ORDER.length;
+  var fixed = {};
+  var t0 = Date.now();
+  var blocks = {};
+  $$('.fx').forEach(function (el) { blocks[el.dataset.fix] = el; });
 
-  var scene = $('#scene'), world = $('#world'), scroller = $('#scroller'), rider = $('#rider'), say = $('#say');
-  var stops = $$('.stop', world), props = $('#props');
-  var layers = $$('.layer'), tripFill = $('#tripFill'), tripList = $('#tripStops');
-  var n = stops.length;
+  var hud = $('#hud'), pct = $('#hudPct'), bar = $('#hudBar'), msg = $('#hudMsg');
+  var beforeBtn = $('#beforeBtn'), fixAllBtn = $('#fixAllBtn'), popup = blocks.popup;
 
-  var vw, vh, boardW, gap, arrival = [], dwellStart = [], dwell, travel = [], total, riderX;
+  function count() { return Object.keys(fixed).length; }
+  function save() { try { sessionStorage.setItem('v3fixed', JSON.stringify(Object.keys(fixed))); } catch (e) {} }
 
-  /* ---------- Layout ---------- */
-  function layout() {
-    vw = innerWidth; vh = innerHeight;
-    var mobile = vw <= 640;
-    var riderW = mobile ? 118 : Math.min(Math.max(vw * 0.15, 130), 200);
-    riderX = mobile ? vw * 0.06 : vw * 0.06;
-    rider.style.setProperty('--rider-x', riderX + 'px');
-    boardW = mobile ? Math.round(vw * 0.88) : Math.round(Math.min(600, vw - (riderX + riderW + 80) - 40));
-    var screenLeft = mobile ? (vw - boardW) / 2 : Math.max((vw - boardW) / 2, riderX + riderW + 60);
-    gap = boardW + Math.max(vw * 0.5, 360);
-    dwell = vh * 0.55;
-    var x0 = screenLeft;
-    stops.forEach(function (s, i) {
-      var x = x0 + i * gap;
-      s.style.left = x + 'px';
-      s.style.setProperty('--board-w', boardW + 'px');
-      arrival[i] = x - screenLeft;       // camera position when this stop is in place
+  // Pins
+  ORDER.forEach(function (id, i) {
+    var b = document.createElement('button');
+    b.type = 'button';
+    b.className = 'pin';
+    b.setAttribute('aria-label', 'Fix problem ' + (i + 1) + ': ' + FIXES[id].label);
+    b.innerHTML = (i + 1) + '<span class="pin-tip" aria-hidden="true">' + FIXES[id].label + '</span>';
+    b.addEventListener('click', function () { fix(id, 'pin'); });
+    blocks[id].appendChild(b);
+  });
+
+  // Design note left behind after each fix
+  function addNote(id, open) {
+    if (id === 'popup') return;
+    var f = FIXES[id], n = ORDER.indexOf(id) + 1;
+    var note = document.createElement('aside');
+    note.className = 'note';
+    note.innerHTML =
+      '<button class="note-chip" type="button" aria-expanded="false"><i>✓</i><span>' + n + ' · ' + f.chip + '</span><em>▾</em></button>' +
+      '<div class="note-body"><p><b>Problem</b>' + f.problem + '</p><p><b>Fix</b>' + f.fix + '</p><p class="why">' + f.why + '</p></div>';
+    var chip = note.querySelector('.note-chip');
+    function set(o) { note.classList.toggle('open', o); chip.setAttribute('aria-expanded', o); }
+    chip.addEventListener('click', function () {
+      var o = !note.classList.contains('open');
+      set(o);
+      if (o) track('design_note_opened', { fix: id });
     });
-    // Scroll ranges: travel to a stop (1:1 with distance), then dwell there.
-    var s = 0;
-    for (var i = 0; i < n; i++) {
-      travel[i] = i === 0 ? 0 : arrival[i] - arrival[i - 1];
-      s += travel[i];
-      dwellStart[i] = s;
-      s += dwell;
+    var host = id === 'nav' ? blocks[id] : blocks[id].querySelector('.good');
+    if (id === 'nav') host.appendChild(note); else host.insertBefore(note, host.firstChild);
+    if (open) {
+      set(true);
+      var hovering = false;
+      note.addEventListener('mouseenter', function () { hovering = true; });
+      note.addEventListener('mouseleave', function () { hovering = false; });
+      setTimeout(function close() { if (hovering) return setTimeout(close, 1500); set(false); }, 6500);
     }
-    total = s;
-    scroller.style.height = (total + vh) + 'px';
-    world.style.width = (arrival[n - 1] + vw + 400) + 'px';
-    buildScenery();
-    buildTrip();
   }
 
-  function camFromScroll(y) {
-    for (var i = 0; i < n; i++) {
-      if (y <= dwellStart[i]) {
-        var into = travel[i] - (dwellStart[i] - y);
-        return i === 0 ? 0 : arrival[i - 1] + Math.max(0, into);
-      }
-      if (y <= dwellStart[i] + dwell) return arrival[i];
+  function render(lastId) {
+    var c = count(), left = TOTAL - c, p = Math.round(left / TOTAL * 100);
+    pct.textContent = p + '%';
+    bar.style.width = Math.max(p, 0) + '%';
+    if (!left) {
+      hud.classList.add('clear');
+      msg.innerHTML = '<b>0% friction 🎉</b> That\'s what I do on real products. <a href="#process">See how I work ↓</a>';
+      fixAllBtn.hidden = true;
+      beforeBtn.hidden = false;
+    } else if (lastId) {
+      msg.innerHTML = '✓ Fixed: ' + FIXES[lastId].label.toLowerCase() + '. <b>' + left + '</b> to go.';
     }
-    return arrival[n - 1];
+    if (lastId && !reduce) { hud.classList.remove('bump'); void hud.offsetWidth; hud.classList.add('bump'); }
   }
-  function scrollForStop(i) { return dwellStart[i] + dwell * 0.25; }
 
-  /* ---------- Scenery (seeded so it is the same every visit) ---------- */
-  var seed = 7;
-  function rnd() { seed = (seed * 9301 + 49297) % 233280; return seed / 233280; }
-  function buildScenery() {
-    seed = 7;
-    var worldW = arrival[n - 1] + vw + 400;
-    // Trees and lamps along the road
-    var html = '';
-    for (var x = 40; x < worldW; x += 140 + rnd() * 220) {
-      html += rnd() < 0.62 ? '<span class="tree" style="left:' + x.toFixed(0) + 'px;transform:scale(' + (0.75 + rnd() * 0.6).toFixed(2) + ');transform-origin:bottom"></span>'
-                           : '<span class="lamp" style="left:' + x.toFixed(0) + 'px"></span>';
+  function fix(id, method, silent) {
+    if (fixed[id]) return;
+    fixed[id] = true;
+    var el = blocks[id];
+    if (id === 'popup') {
+      if (!silent && popup.classList.contains('show')) {
+        popup.classList.add('leaving');
+        setTimeout(function () { popup.classList.remove('leaving', 'show'); }, 420);
+      } else popup.classList.remove('show');
+      if (!silent && method === 'pin') toast('✓ Popup removed. ' + FIXES.popup.why);
     }
-    props.innerHTML = html;
-    layers.forEach(function (L) {
-      var speed = +L.dataset.speed, w = worldW * speed + vw + 200;
-      L.style.width = w + 'px';
-      if (L.id === 'city') {
-        var h = '';
-        for (var bx = 0; bx < w; bx += 50 + rnd() * 70) {
-          var bw = 40 + rnd() * 70, bh = 18 + rnd() * 62;
-          h += '<span class="bld" style="left:' + bx.toFixed(0) + 'px;width:' + bw.toFixed(0) + 'px;height:' + bh.toFixed(0) + '%"></span>';
-        }
-        L.innerHTML = h;
-      } else if (L.id === 'clouds') {
-        var c = '';
-        for (var cx = 60; cx < w; cx += 260 + rnd() * 380) {
-          c += '<span class="cloud" style="left:' + cx.toFixed(0) + 'px;top:' + (rnd() * 70).toFixed(0) + '%;width:' + (90 + rnd() * 110).toFixed(0) + 'px"></span>';
-        }
-        L.innerHTML = c;
-      } else {
-        var amp = L.id === 'hillsFar' ? 0.55 : 0.42, step = L.id === 'hillsFar' ? 420 : 300;
-        var d = 'M0 100 L0 ' + (100 - amp * 60).toFixed(1);
-        for (var hx = 0; hx <= w + step; hx += step) {
-          var peak = 100 - amp * (40 + rnd() * 60);
-          d += ' Q' + (hx + step / 2).toFixed(0) + ' ' + peak.toFixed(1) + ' ' + (hx + step).toFixed(0) + ' ' + (100 - amp * (30 + rnd() * 40)).toFixed(1);
-        }
-        d += ' L' + (w + step).toFixed(0) + ' 100 Z';
-        L.innerHTML = '<svg viewBox="0 0 ' + w.toFixed(0) + ' 100" preserveAspectRatio="none" style="width:' + w.toFixed(0) + 'px"><path d="' + d + '"/></svg>';
-      }
+    el.classList.add('fixed');
+    if (!silent && !reduce && id !== 'popup') {
+      el.classList.add('fixing');
+      setTimeout(function () { el.classList.remove('fixing'); }, 900);
+    }
+    addNote(id, !silent && method === 'pin');
+    observe(el);
+    save();
+    render(silent ? null : id);
+    if (!silent) track('friction_fixed', { fix: id, fixed_count: count(), method: method });
+    if (count() === TOTAL && !silent) {
+      track('friction_cleared', { method: method, seconds: Math.round((Date.now() - t0) / 1000) });
+      setTimeout(confetti, method === 'pin' ? 500 : 900);
+    }
+  }
+
+  function fixAll(method, silent) {
+    var todo = ORDER.filter(function (id) { return !fixed[id]; });
+    if (silent || reduce) { todo.forEach(function (id) { fix(id, method, silent); }); return; }
+    todo.forEach(function (id, i) { setTimeout(function () { fix(id, method); }, i * 140); });
+  }
+  $$('[data-fixall]').forEach(function (b) {
+    b.addEventListener('click', function () {
+      fixAll('fix_all');
+      if (b.classList.contains('skip-link')) { var h = $('#top'); if (h) h.focus && h.scrollIntoView(); }
     });
-  }
-
-  /* ---------- Trip bar ---------- */
-  var tripItems = [];
-  function buildTrip() {
-    tripList.innerHTML = stops.map(function (s, i) {
-      return '<li style="left:' + (scrollForStop(i) / total * 100).toFixed(2) + '%"><button type="button" data-i="' + i + '" aria-label="Ride to ' + s.dataset.label + '"><i></i><span>' + s.dataset.label + '</span></button></li>';
-    }).join('');
-    tripItems = $$('li', tripList);
-    $$('button', tripList).forEach(function (b) { b.addEventListener('click', function () { jump(+b.dataset.i, 'trip_bar'); }); });
-  }
-
-  /* ---------- Sky ---------- */
-  var SKY = [
-    [0.00, [255, 217, 194], [243, 232, 255]],   // morning
-    [0.35, [196, 181, 253], [245, 243, 255]],   // day
-    [0.68, [167, 139, 250], [253, 186, 116]],   // sunset
-    [0.88, [46, 16, 101], [109, 40, 217]],      // dusk
-    [1.00, [20, 8, 44], [46, 16, 101]]          // night
-  ];
-  function mix(a, b, t) { return a.map(function (v, k) { return Math.round(v + (b[k] - v) * t); }); }
-  function sky(p) {
-    var i = 0; while (i < SKY.length - 2 && p > SKY[i + 1][0]) i++;
-    var A = SKY[i], B = SKY[i + 1], t = Math.min(Math.max((p - A[0]) / (B[0] - A[0]), 0), 1);
-    var top = mix(A[1], B[1], t), bot = mix(A[2], B[2], t);
-    root.style.setProperty('--sky-top', 'rgb(' + top + ')');
-    root.style.setProperty('--sky-bot', 'rgb(' + bot + ')');
-    var night = Math.min(Math.max((p - 0.74) / 0.2, 0), 1);
-    root.style.setProperty('--night', night.toFixed(3));
-    var sun = $('#sun');
-    sun.style.transform = 'translateY(' + (p * 46).toFixed(1) + 'vh)';
-    sun.style.opacity = (1 - night).toFixed(2);
-  }
-
-  /* ---------- Frame loop ---------- */
-  var cam = 0, target = 0, lastCam = 0, raf = 0, facing = 1, lastPuff = 0, current = -1, viaNext = 'scroll';
-  function onScroll() { target = camFromScroll(scrollY); if (!raf) raf = requestAnimationFrame(tick); }
-  function tick(now) {
-    raf = 0;
-    cam = reduce ? target : cam + (target - cam) * 0.14;
-    if (Math.abs(target - cam) < 0.3) cam = target;
-    var v = cam - lastCam; lastCam = cam;
-    world.style.transform = 'translate3d(' + (-cam).toFixed(1) + 'px,0,0)';
-    layers.forEach(function (L) { L.style.transform = 'translate3d(' + (-cam * L.dataset.speed).toFixed(1) + 'px,0,0)'; });
-    var deg = (cam / 20) * (180 / Math.PI);
-    wheels.forEach(function (w) { w.style.transform = 'rotate(' + deg.toFixed(1) + 'deg)'; });
-    var moving = Math.abs(v) > 0.4;
-    rider.classList.toggle('moving', moving);
-    if (moving) facing = v > 0 ? 1 : -1;
-    scooty.style.transform = facing < 0 ? 'scaleX(-1)' : '';
-    if (moving && v > 0 && !reduce && now - lastPuff > 160) { lastPuff = now; puff(); }
-
-    var p = arrival[n - 1] ? cam / arrival[n - 1] : 0;
-    sky(p);
-    tripFill.style.transform = 'scaleX(' + Math.min(scrollY / total, 1).toFixed(4) + ')';
-
-    // Which stop are we at?
-    var idx = 0, best = Infinity;
-    arrival.forEach(function (a, i) { var d = Math.abs(cam - a); if (d < best) { best = d; idx = i; } });
-    stops.forEach(function (s, i) { s.classList.toggle('near', Math.abs(cam - arrival[i]) < gap * 0.42); });
-    tripItems.forEach(function (li, i) { li.classList.toggle('here', i === idx); li.classList.toggle('done', i < idx); });
-    var parked = best < 4 && !moving;
-    if (parked) {
-      if (say.dataset.i !== String(idx)) { say.textContent = stops[idx].dataset.say; say.dataset.i = idx; }
-      say.classList.add('show');
-      if (idx !== current) {
-        current = idx;
-        try { history.replaceState(null, '', idx ? '#' + stops[idx].id : location.pathname); } catch (e) {}
-        try { document.dispatchEvent(new CustomEvent('portfolio:stop', { detail: { id: stops[idx].id.replace('stop-', ''), label: stops[idx].dataset.label, index: idx, via: viaNext } })); } catch (e) {}
-        viaNext = 'scroll';
-      }
-    } else if (best > 40) say.classList.remove('show');
-
-    if (cam !== target) raf = requestAnimationFrame(tick);
-    else if (moving) raf = requestAnimationFrame(tick);
-  }
-  function puff() {
-    var e = document.createElement('span'); e.className = 'puff';
-    $('#exhaust').appendChild(e); setTimeout(function () { e.remove(); }, 900);
-  }
-
-  /* ---------- Jumping ---------- */
-  function jump(i, via) {
-    i = Math.max(0, Math.min(n - 1, i));
-    viaNext = via || 'button';
-    scrollTo({ top: scrollForStop(i), behavior: reduce ? 'auto' : 'smooth' });
-  }
-  function nearestIndex() {
-    var idx = 0, best = Infinity;
-    arrival.forEach(function (a, i) { var d = Math.abs(target - a); if (d < best) { best = d; idx = i; } });
-    return { i: idx, at: best < 4 };
-  }
-  addEventListener('keydown', function (e) {
-    if (e.metaKey || e.ctrlKey || e.altKey || e.target.closest('input, textarea')) return;
-    var k = nearestIndex();
-    if (e.key === 'ArrowRight' || e.key === 'PageDown') { e.preventDefault(); jump(k.at || target < arrival[k.i] ? k.i + (k.at ? 1 : 0) : k.i + 1, 'keyboard'); }
-    else if (e.key === 'ArrowLeft' || e.key === 'PageUp') { e.preventDefault(); jump(k.at || target > arrival[k.i] ? k.i - (k.at ? 1 : 0) : k.i - 1, 'keyboard'); }
-    else if (e.key === 'Home') { e.preventDefault(); jump(0, 'keyboard'); }
-    else if (e.key === 'End') { e.preventDefault(); jump(n - 1, 'keyboard'); }
-  });
-  $$('[data-jump]').forEach(function (a) {
-    a.addEventListener('click', function (e) { e.preventDefault(); jump(a.dataset.jump === 'last' ? n - 1 : +a.dataset.jump, 'button'); });
-  });
-  // Tabbing into a board rides to it.
-  world.addEventListener('focusin', function (e) {
-    var s = e.target.closest('.stop'); if (!s) return;
-    scene.scrollLeft = 0; world.parentNode.scrollLeft = 0;
-    var i = stops.indexOf(s); if (Math.abs(target - arrival[i]) > 4) jump(i, 'keyboard');
   });
 
-  /* ---------- Copy email ---------- */
-  var toast = $('#toast'), tT = 0;
+  // Before / after comparison once everything is fixed
+  beforeBtn.addEventListener('click', function () {
+    var on = document.body.classList.toggle('before');
+    beforeBtn.setAttribute('aria-pressed', on);
+    beforeBtn.textContent = on ? 'Show after' : 'Show before';
+    if (on) popup.classList.add('show'); else popup.classList.remove('show');
+    track('before_after_toggled', { to: on ? 'before' : 'after' });
+  });
+
+  // The popup ambushes after the first fix, or after a few seconds.
+  var popTimer = setTimeout(showPopup, 7000);
+  function showPopup() {
+    clearTimeout(popTimer);
+    if (!fixed.popup) popup.classList.add('show');
+  }
+  document.addEventListener('click', function (e) {
+    if (e.target.closest('.pin') && !fixed.popup && count() >= 1) setTimeout(showPopup, 1100);
+  });
+
+  // Toast + copy email
+  var toastEl = $('#toast'), toastT;
+  function toast(t) {
+    toastEl.textContent = t;
+    toastEl.classList.add('show');
+    clearTimeout(toastT);
+    toastT = setTimeout(function () { toastEl.classList.remove('show'); }, 2600);
+  }
   $$('[data-copy]').forEach(function (b) {
     b.addEventListener('click', function () {
-      var done = function () { toast.textContent = 'Email copied — talk soon! ✉️'; toast.classList.add('show'); clearTimeout(tT); tT = setTimeout(function () { toast.classList.remove('show'); }, 2200); };
-      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(b.dataset.copy).then(done, done); else done();
+      var v = b.dataset.copy;
+      (navigator.clipboard ? navigator.clipboard.writeText(v) : Promise.reject()).then(function () { toast('Email copied ✓'); }, function () { toast(v); });
     });
   });
 
-  /* ---------- Boot ---------- */
-  if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
-  layout();
-  addEventListener('scroll', onScroll, { passive: true });
-  var rT = 0;
-  addEventListener('resize', function () {
-    clearTimeout(rT);
-    rT = setTimeout(function () { var k = current < 0 ? 0 : current; layout(); scrollTo(0, scrollForStop(k)); target = cam = lastCam = camFromScroll(scrollY); onScroll(); }, 150);
-  });
-  var hash = location.hash.slice(1), start = 0;
-  if (hash === 'work') hash = 'stop-work';
-  stops.forEach(function (s, i) { if (s.id === hash || s.id === 'stop-' + hash) start = i; });
-  scrollTo(0, start ? scrollForStop(start) : 0);
-  target = cam = lastCam = camFromScroll(scrollY);
-  viaNext = start ? 'link' : 'landing';
-  onScroll();
-  setTimeout(onScroll, 60);
+  // Confetti
+  function confetti() {
+    if (reduce) return;
+    var box = document.createElement('div');
+    box.className = 'confetti';
+    var colors = ['#7c3aed', '#a78bfa', '#facc15', '#22c55e', '#38bdf8', '#f97316'];
+    for (var i = 0; i < 90; i++) {
+      var p = document.createElement('i');
+      p.style.left = Math.random() * 100 + '%';
+      p.style.background = colors[i % colors.length];
+      p.style.animationDuration = 1.8 + Math.random() * 1.6 + 's';
+      p.style.animationDelay = Math.random() * .5 + 's';
+      p.style.transform = 'rotate(' + Math.random() * 360 + 'deg)';
+      box.appendChild(p);
+    }
+    document.body.appendChild(box);
+    setTimeout(function () { box.remove(); }, 4500);
+  }
+
+  // Gentle reveal for clean content
+  var io = 'IntersectionObserver' in window ? new IntersectionObserver(function (es) {
+    es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: .1 }) : null;
+  function observe(root) {
+    var items = $$('.roles li, .cs, .proc li, .tools, .wins li, .stats li', root);
+    items.forEach(function (el) {
+      if (!io || el.classList.contains('in')) return;
+      el.classList.add('rv');
+      io.observe(el);
+    });
+  }
+  $$('.plain').forEach(observe);
+
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Restore: returning visitors, deep links and ?fixed skip the game.
+  var saved = [];
+  try { saved = JSON.parse(sessionStorage.getItem('v3fixed') || '[]'); } catch (e) {}
+  var deep = /^#(work|process|experience|contact)$/.test(location.hash) || /[?&]fixed=1/.test(location.search);
+  if (deep) fixAll('deep_link', true);
+  else saved.forEach(function (id) { if (FIXES[id]) fix(id, 'restore', true); });
+  if (count()) {
+    render(null);
+    if (count() < TOTAL) msg.innerHTML = 'Welcome back. <b>' + (TOTAL - count()) + '</b> problems left to fix.';
+  }
+  if (deep && location.hash) {
+    var target = document.getElementById(location.hash.slice(1));
+    if (target) requestAnimationFrame(function () { target.scrollIntoView(); });
+  }
 })();
