@@ -27,7 +27,8 @@
 
   var page = /\/work\/([\w-]+)\.html/.exec(location.pathname);
   var pageType = page ? 'case_study' : 'portfolio';
-  posthog.register({ site_section: pageType, case_study: page ? page[1] : undefined });
+  var version = /\/v2\//.test(location.pathname) ? 'v2' : (page ? undefined : 'flight');
+  posthog.register({ site_section: pageType, case_study: page ? page[1] : undefined, portfolio_version: version });
 
   function capture(name, props, leaving) { try { posthog.capture(name, props || {}, leaving ? { transport: 'sendBeacon' } : undefined); } catch (e) {} }
   window.track = capture;
