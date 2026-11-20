@@ -10,6 +10,21 @@
   });
   document.getElementById('year').textContent = new Date().getFullYear();
 
+  // Visitors who came from the v2 portfolio go back there, not to the flight.
+  var fromV2 = /\/v2\//.test(document.referrer);
+  try {
+    if (fromV2) sessionStorage.setItem('portfolio', 'v2');
+    else if (document.referrer && !/\/work\//.test(document.referrer)) sessionStorage.setItem('portfolio', 'flight');
+    fromV2 = sessionStorage.getItem('portfolio') === 'v2';
+  } catch (e) {}
+  if (fromV2) {
+    $$('a[href^="../index.html"]').forEach(function (a) {
+      a.setAttribute('href', '../v2/#work');
+      var label = a.querySelector('span');
+      if (label && /flight/i.test(label.textContent)) label.textContent = 'Back to portfolio';
+    });
+  }
+
   // Screenshot slots: show the image once it exists at its path, otherwise keep the placeholder.
   $$('.shot[data-img]').forEach(function (fig) {
     var img = fig.querySelector('img');
