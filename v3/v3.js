@@ -15,12 +15,12 @@
     function act(via) {
       if (h.dataset.open) open(h.dataset.open, via, h);
       else if (h.dataset.act === 'plant') waterPlant();
-      else if (h.dataset.act === 'lamp') toggleNight();
-      else if (h.dataset.act === 'proto') protoSays(h);
+      else if (h.dataset.act === 'lamp') lampClicked();
+      else if (h.dataset.act === 'proto') protoMenu();
     }
     h.addEventListener('click', function () { act('object'); });
     h.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); act('object'); } });
-    h.addEventListener('mouseenter', function () { showTip(h); });
+    h.addEventListener('mouseenter', function () { if (!bubble.classList.contains('show')) showTip(h); });
     h.addEventListener('focus', function () { showTip(h); });
     h.addEventListener('mouseleave', hideTip);
     h.addEventListener('blur', hideTip);
@@ -49,36 +49,113 @@
     track('plant_watered', { level: water });
   }
 
-  // ---------- Lamp: lights on / off ----------
-  function setNight(on) {
+  // ---------- Lights: the room starts dark, lit only by the desk lamp ----------
+  function isDark() { return root.hasAttribute('data-night'); }
+  function setNight(on, save) {
     if (on) root.setAttribute('data-night', ''); else root.removeAttribute('data-night');
     var meta = $('meta[name="theme-color"]');
     if (meta) meta.setAttribute('content', on ? '#241b33' : '#9e8fae');
+    if (save) { try { localStorage.setItem('deskNight', on ? '1' : '0'); } catch (e) {} track('theme_toggled', { to: on ? 'night' : 'day' }); }
   }
-  function toggleNight() {
-    var on = !root.hasAttribute('data-night');
-    setNight(on);
-    try { localStorage.setItem('deskNight', on ? '1' : '0'); } catch (e) {}
-    toast(on ? '🌙 Lights off. Late-night design mode' : '☀️ Lights on');
-    track('theme_toggled', { to: on ? 'night' : 'day' });
-  }
-  try { if (localStorage.getItem('deskNight') === '1') setNight(true); } catch (e) {}
+  try { if (localStorage.getItem('deskNight') === '0') setNight(false); } catch (e) {}
 
-  // ---------- Proto: eyes follow the cursor, blinks, gives tips ----------
-  var eyes = $('#eyes'), bubble = $('#bubble'), tipN = 0;
-  var EYE = { x: 1826, y: 1186 }; // between the eyes, in scene coordinates (2720 x 1680)
+  // ---------- Proto: Sneha's AI assistant ----------
+  var eyes = $('#eyes'), bubble = $('#bubble'), protoEl = $('.hs[data-act="proto"]'), bubbleT;
+  var EYE = { x: 1826, y: 1186 }; // between Proto's eyes, in scene coordinates (2720 x 1680)
+
+  // Speech bubble: text plus optional buttons [{label, yes, fn}]
+  function say(html, actions, ms) {
+    clearTimeout(bubbleT);
+    hideTip();
+    bubble.innerHTML = '<span class="who">🤖 Proto</span>' + html + (actions && actions.length ? '<div class="acts"></div>' : '');
+    (actions || []).forEach(function (a) {
+      var btn = document.createElement('button');
+      btn.type = 'button';
+      btn.textContent = a.label;
+      if (a.yes) btn.className = 'yes';
+      btn.addEventListener('click', function () { hush(); a.fn(); });
+      $('.acts', bubble).appendChild(btn);
+    });
+    placeBubble();
+    bubble.classList.add('show');
+    if (ms) bubbleT = setTimeout(hush, ms);
+  }
+  function hush() { clearTimeout(bubbleT); bubble.classList.remove('show'); }
+  function placeBubble() {
+    var r = protoEl.getBoundingClientRect(), bw = bubble.offsetWidth || 260, bh = bubble.offsetHeight || 80;
+    var visible = r.right > 0 && r.left < innerWidth && r.bottom > 60 && r.top < innerHeight;
+    if (visible) {
+      bubble.style.left = Math.max(12, Math.min(r.left + r.width * .35 - bw, innerWidth - bw - 12)) + 'px';
+      bubble.style.top = Math.max(70, r.top - bh + 10) + 'px';
+    } else {
+      bubble.style.left = Math.max(12, (innerWidth - bw) / 2) + 'px';
+      bubble.style.top = (innerHeight - bh - 24) + 'px';
+    }
+  }
+  addEventListener('resize', function () { if (bubble.classList.contains('show')) placeBubble(); });
+  if (pan) pan.addEventListener('scroll', function () { if (bubble.classList.contains('show')) placeBubble(); }, { passive: true });
+
+  function lightsOn(via) {
+    setNight(false, true);
+    say('Ahh, much better ☀️ Click anything on the desk to explore.', null, 3500);
+    track('lights_answer', { answer: 'yes', via: via });
+  }
+  function lightsOff(via) {
+    setNight(true, true);
+    say('Lights off 🌙 Late-night design mode.', null, 3000);
+    track('lights_answer', { answer: 'off', via: via });
+  }
+  var asked = false;
+  function askLights(via) {
+    if (!isDark()) return;
+    asked = true;
+    say('It\'s a bit dark in here. Should I turn on the lights?', [
+      { label: 'Yes, please', yes: true, fn: function () { lightsOn(via); } },
+      { label: 'Not now', fn: function () { track('lights_answer', { answer: 'no', via: via }); } }
+    ]);
+  }
+  function protoMenu() {
+    var light = isDark()
+      ? { label: '💡 Turn on the lights', yes: true, fn: function () { lightsOn('menu'); } }
+      : { label: '🌙 Turn off the lights', fn: function () { lightsOff('menu'); } };
+    say('Hi, I\'m Proto, Sneha\'s AI assistant 👋 How can I help?', [
+      light,
+      { label: '💻 Show her work', fn: function () { open('work', 'proto'); } },
+      { label: '☕ Contact Sneha', fn: function () { open('contact', 'proto'); } }
+    ]);
+    track('proto_clicked', {});
+  }
+  // The lamp asks Proto to handle the lights, too.
+  function lampClicked() { if (isDark()) askLights('lamp'); else protoMenu(); }
+
+  // Greet every visitor, then (on touch screens, which have no cursor) offer the lights.
+  setTimeout(function () {
+    if (current) return;
+    say('Hi! 👋 I\'m Proto, Sneha\'s AI assistant. Welcome to her desk.', null, 4200);
+    if (!matchMedia('(hover: hover)').matches) setTimeout(function () { if (!asked && !current) askLights('auto'); }, 4600);
+  }, 900);
+
+  // Moving the cursor into the dark part of the room makes Proto offer the lights.
+  var greetedAt = Date.now();
+  stage.addEventListener('pointermove', function (e) {
+    if (asked || !isDark() || current || e.pointerType !== 'mouse' || Date.now() - greetedAt < 2500) return;
+    var r = stage.getBoundingClientRect(), k = r.width / 2720;
+    var x = (e.clientX - r.left) / k, y = (e.clientY - r.top) / k;
+    var nearLamp = Math.hypot(x - 380, (y - 1050) * .8) < 520;
+    if (!nearLamp) askLights('dark_area');
+  });
+
+  // Eyes follow the cursor and blink; on touch screens Proto glances around.
   function look(dx, dy) { if (eyes) eyes.setAttribute('transform', 'translate(' + dx.toFixed(1) + ' ' + dy.toFixed(1) + ')'); }
   function lookAt(px, py) {
     var r = stage.getBoundingClientRect();
     if (!r.width) return;
-    var k = r.width / 2720;
-    var ex = r.left + EYE.x * k, ey = r.top + EYE.y * k;
+    var k = r.width / 2720, ex = r.left + EYE.x * k, ey = r.top + EYE.y * k;
     var dx = px - ex, dy = py - ey, d = Math.hypot(dx, dy) || 1, m = Math.min(1, d / 260);
     look(dx / d * 10 * m, dy / d * 5.5 * m);
   }
   var lastMove = 0;
   addEventListener('pointermove', function (e) { if (e.pointerType === 'mouse') { lastMove = Date.now(); lookAt(e.clientX, e.clientY); } }, { passive: true });
-  // On touch screens (or when the mouse is still) Proto glances around on his own.
   setInterval(function () {
     if (Date.now() - lastMove < 2500) return;
     look((Math.random() * 2 - 1) * 10, (Math.random() * 2 - 1) * 5);
@@ -89,23 +166,6 @@
       blink();
     }, 2500 + Math.random() * 3500);
   })();
-  var TIPS = [
-    'Hi, I\'m Proto 👋 The laptop has Sneha\'s best work.',
-    'Click the lamp to switch the lights off 🌙',
-    'The phone and the mug both reach Sneha ☕',
-    'Those books are how she works 📚',
-    'The pinboard has her whole journey 📌'
-  ];
-  function protoSays(h) {
-    var r = h.getBoundingClientRect();
-    bubble.textContent = TIPS[tipN++ % TIPS.length];
-    bubble.style.left = Math.max(12, Math.min(r.left - 200, innerWidth - 256)) + 'px';
-    bubble.style.top = Math.max(70, r.top - 70) + 'px';
-    bubble.classList.add('show');
-    clearTimeout(protoSays.t);
-    protoSays.t = setTimeout(function () { bubble.classList.remove('show'); }, 3600);
-    track('proto_clicked', { tip: tipN });
-  }
 
   // ---------- Open / close sheets ----------
   var overlay = $('#overlay'), current = null, lastFocus = null, explored = false;
@@ -124,6 +184,7 @@
     $$('[data-sheet]').forEach(function (s) { s.hidden = true; });
     lastFocus = lastFocus || document.activeElement;
     hideTip();
+    hush();
     if (!explored) { explored = true; stage.classList.add('explored'); }
     var wasOpen = !!current;
     current = id;
