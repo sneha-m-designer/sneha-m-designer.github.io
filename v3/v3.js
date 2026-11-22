@@ -15,6 +15,8 @@
     function act(via) {
       if (h.dataset.open) open(h.dataset.open, via, h);
       else if (h.dataset.act === 'plant') waterPlant();
+      else if (h.dataset.act === 'lamp') toggleNight();
+      else if (h.dataset.act === 'proto') protoSays(h);
     }
     h.addEventListener('click', function () { act('object'); });
     h.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); act('object'); } });
@@ -45,6 +47,64 @@
     toast(GROWTH[water % GROWTH.length]);
     water++;
     track('plant_watered', { level: water });
+  }
+
+  // ---------- Lamp: lights on / off ----------
+  function setNight(on) {
+    if (on) root.setAttribute('data-night', ''); else root.removeAttribute('data-night');
+    var meta = $('meta[name="theme-color"]');
+    if (meta) meta.setAttribute('content', on ? '#241b33' : '#9e8fae');
+  }
+  function toggleNight() {
+    var on = !root.hasAttribute('data-night');
+    setNight(on);
+    try { localStorage.setItem('deskNight', on ? '1' : '0'); } catch (e) {}
+    toast(on ? '🌙 Lights off. Late-night design mode' : '☀️ Lights on');
+    track('theme_toggled', { to: on ? 'night' : 'day' });
+  }
+  try { if (localStorage.getItem('deskNight') === '1') setNight(true); } catch (e) {}
+
+  // ---------- Proto: eyes follow the cursor, blinks, gives tips ----------
+  var eyes = $('#eyes'), bubble = $('#bubble'), tipN = 0;
+  var EYE = { x: 1826, y: 1186 }; // between the eyes, in scene coordinates (2720 x 1680)
+  function look(dx, dy) { if (eyes) eyes.setAttribute('transform', 'translate(' + dx.toFixed(1) + ' ' + dy.toFixed(1) + ')'); }
+  function lookAt(px, py) {
+    var r = stage.getBoundingClientRect();
+    if (!r.width) return;
+    var k = r.width / 2720;
+    var ex = r.left + EYE.x * k, ey = r.top + EYE.y * k;
+    var dx = px - ex, dy = py - ey, d = Math.hypot(dx, dy) || 1, m = Math.min(1, d / 260);
+    look(dx / d * 10 * m, dy / d * 5.5 * m);
+  }
+  var lastMove = 0;
+  addEventListener('pointermove', function (e) { if (e.pointerType === 'mouse') { lastMove = Date.now(); lookAt(e.clientX, e.clientY); } }, { passive: true });
+  // On touch screens (or when the mouse is still) Proto glances around on his own.
+  setInterval(function () {
+    if (Date.now() - lastMove < 2500) return;
+    look((Math.random() * 2 - 1) * 10, (Math.random() * 2 - 1) * 5);
+  }, 2200);
+  (function blink() {
+    setTimeout(function () {
+      if (eyes && !reduce) { eyes.classList.add('blink'); setTimeout(function () { eyes.classList.remove('blink'); }, 140); }
+      blink();
+    }, 2500 + Math.random() * 3500);
+  })();
+  var TIPS = [
+    'Hi, I\'m Proto 👋 The laptop has Sneha\'s best work.',
+    'Click the lamp to switch the lights off 🌙',
+    'The phone and the mug both reach Sneha ☕',
+    'Those books are how she works 📚',
+    'The pinboard has her whole journey 📌'
+  ];
+  function protoSays(h) {
+    var r = h.getBoundingClientRect();
+    bubble.textContent = TIPS[tipN++ % TIPS.length];
+    bubble.style.left = Math.max(12, Math.min(r.left - 200, innerWidth - 256)) + 'px';
+    bubble.style.top = Math.max(70, r.top - 70) + 'px';
+    bubble.classList.add('show');
+    clearTimeout(protoSays.t);
+    protoSays.t = setTimeout(function () { bubble.classList.remove('show'); }, 3600);
+    track('proto_clicked', { tip: tipN });
   }
 
   // ---------- Open / close sheets ----------
@@ -119,7 +179,7 @@
   // ---------- Phones: start the pan on the laptop ----------
   var swipe = $('#swipe');
   function centerPan() {
-    if (pan.scrollWidth > pan.clientWidth + 4) pan.scrollLeft = (pan.scrollWidth - pan.clientWidth) * .5;
+    if (pan.scrollWidth > pan.clientWidth + 4) pan.scrollLeft = (pan.scrollWidth - pan.clientWidth) * .42;
   }
   centerPan();
   addEventListener('load', centerPan);
