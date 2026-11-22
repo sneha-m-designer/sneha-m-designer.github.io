@@ -67,7 +67,8 @@
   function say(html, actions, ms) {
     clearTimeout(bubbleT);
     hideTip();
-    bubble.innerHTML = '<span class="who">🤖 Proto</span>' + html + (actions && actions.length ? '<div class="acts"></div>' : '');
+    bubble.innerHTML = '<button class="bx" type="button" aria-label="Close">✕</button><span class="who">🤖 Proto</span>' + html + (actions && actions.length ? '<div class="acts"></div>' : '');
+    $('.bx', bubble).addEventListener('click', hush);
     (actions || []).forEach(function (a) {
       var btn = document.createElement('button');
       btn.type = 'button';
@@ -83,16 +84,30 @@
   function hush() { clearTimeout(bubbleT); bubble.classList.remove('show'); }
   function placeBubble() {
     var r = protoEl.getBoundingClientRect(), bw = bubble.offsetWidth || 260, bh = bubble.offsetHeight || 80;
-    var visible = r.right > 0 && r.left < innerWidth && r.bottom > 60 && r.top < innerHeight;
-    if (visible) {
-      bubble.style.left = Math.max(12, Math.min(r.left + r.width * .35 - bw, innerWidth - bw - 12)) + 'px';
-      bubble.style.top = Math.max(70, r.top - bh + 10) + 'px';
+    var visible = r.left > 0 && r.right < innerWidth && r.bottom > 60 && r.top < innerHeight;
+    if (innerWidth <= 760 || matchMedia('(max-aspect-ratio: 1/1)').matches) {
+      // Phones: float over the wall near the top, so the laptop stays visible.
+      var st = stage.getBoundingClientRect();
+      bubble.classList.remove('flip');
+      bubble.style.left = Math.max(12, (innerWidth - bw) / 2) + 'px';
+      bubble.style.top = Math.max(130, st.top + 12) + 'px';
+    } else if (visible) {
+      // Sit to the right of Proto so the laptop stays visible; flip left only if there's no room.
+      var right = r.right - r.width * .2, left = right + bw > innerWidth - 12 ? r.left + r.width * .2 - bw : right;
+      bubble.classList.toggle('flip', left < right);
+      bubble.style.left = Math.max(12, Math.min(left, innerWidth - bw - 12)) + 'px';
+      bubble.style.top = Math.max(70, r.top - bh + r.height * .25) + 'px';
     } else {
       bubble.style.left = Math.max(12, (innerWidth - bw) / 2) + 'px';
       bubble.style.top = (innerHeight - bh - 24) + 'px';
     }
   }
   addEventListener('resize', function () { if (bubble.classList.contains('show')) placeBubble(); });
+  // Clicking anywhere outside the bubble (except Proto or the lamp) closes it.
+  document.addEventListener('click', function (e) {
+    if (bubble.classList.contains('show') && !e.target.closest('#bubble, .hs[data-act="proto"], .hs[data-act="lamp"]')) hush();
+  });
+  addEventListener('keydown', function (e) { if (e.key === 'Escape') hush(); });
   if (pan) pan.addEventListener('scroll', function () { if (bubble.classList.contains('show')) placeBubble(); }, { passive: true });
 
   function lightsOn(via) {
