@@ -27,7 +27,7 @@
 
   var page = /\/work\/([\w-]+)\.html/.exec(location.pathname);
   var pageType = page ? 'case_study' : 'portfolio';
-  var version = (/\/(v\d+)\//.exec(location.pathname) || [])[1] || (page ? undefined : 'flight');
+  var version = page ? undefined : /\/flight\//.test(location.pathname) ? 'flight' : (/\/(v\d+)\//.exec(location.pathname) || [])[1] || 'desk';
   posthog.register({ site_section: pageType, case_study: page ? page[1] : undefined, portfolio_version: version });
 
   function capture(name, props, leaving) { try { posthog.capture(name, props || {}, leaving ? { transport: 'sendBeacon' } : undefined); } catch (e) {} }
@@ -60,7 +60,7 @@
     for (var host in SOCIAL) {
       if (href.indexOf(host) > -1) return capture('contact_clicked', { method: SOCIAL[host], placement: a.closest('.socials') ? 'contact' : pageType });
     }
-    if (a.classList.contains('back') || /index\.html\?stop=/.test(href)) return capture('back_to_flight', { from: page ? page[1] : pageType }, true);
+    if (a.classList.contains('back') || /\?stop=/.test(href)) return capture('back_to_portfolio', { from: page ? page[1] : pageType }, true);
     if (a.id === 'themeBtn') return capture('theme_toggled', { to: document.documentElement.dataset.theme === 'light' ? 'dark' : 'light' });
   }, true);
 

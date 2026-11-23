@@ -10,18 +10,20 @@
   });
   document.getElementById('year').textContent = new Date().getFullYear();
 
-  // Visitors who came from v2 or v3 go back there, not to the flight.
-  var from = (/\/(v\d+)\//.exec(document.referrer) || [])[1] || '';
+  // Back link: return visitors to the portfolio version they came from (the desk is the default).
+  var ref = document.referrer || '';
+  var from = /\/flight\//.test(ref) ? 'flight' : /\/v2\//.test(ref) ? 'v2' : '';
   try {
     if (from) sessionStorage.setItem('portfolio', from);
-    else if (document.referrer && !/\/work\//.test(document.referrer)) sessionStorage.setItem('portfolio', 'flight');
-    from = /^v\d+$/.test(sessionStorage.getItem('portfolio') || '') ? sessionStorage.getItem('portfolio') : '';
+    else if (ref && !/\/work\//.test(ref)) sessionStorage.setItem('portfolio', 'desk');
+    from = sessionStorage.getItem('portfolio') || '';
   } catch (e) {}
-  if (from) {
-    $$('a[href^="../index.html"]').forEach(function (a) {
-      a.setAttribute('href', '../' + from + '/#work');
+  var BACK = { flight: ['../flight/?stop=projects', 'Back to the flight'], v2: ['../v2/#work', 'Back to portfolio'] };
+  if (BACK[from]) {
+    $$('a.back').forEach(function (a) {
+      a.setAttribute('href', BACK[from][0]);
       var label = a.querySelector('span');
-      if (label && /flight/i.test(label.textContent)) label.textContent = 'Back to portfolio';
+      if (label) label.textContent = BACK[from][1];
     });
   }
 
