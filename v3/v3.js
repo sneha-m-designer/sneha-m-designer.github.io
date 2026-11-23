@@ -141,7 +141,14 @@
     track('proto_clicked', {});
   }
   // The lamp asks Proto to handle the lights, too.
-  function lampClicked() { if (isDark()) askLights('lamp'); else protoMenu(); }
+  // Clicking the lamp only ever asks about the lights.
+  function lampClicked() {
+    if (isDark()) { askLights('lamp'); return; }
+    say('Should I turn off the lights?', [
+      { label: 'Yes, turn off', yes: true, fn: function () { lightsOff('lamp'); } },
+      { label: 'No, keep them on', fn: function () { track('lights_answer', { answer: 'keep_on', via: 'lamp' }); } }
+    ]);
+  }
 
   // Greet every visitor, then (on touch screens, which have no cursor) offer the lights.
   setTimeout(function () {
