@@ -55,9 +55,10 @@
     if (on) root.setAttribute('data-night', ''); else root.removeAttribute('data-night');
     var meta = $('meta[name="theme-color"]');
     if (meta) meta.setAttribute('content', on ? '#241b33' : '#9e8fae');
-    if (save) { try { localStorage.setItem('deskNight', on ? '1' : '0'); } catch (e) {} track('theme_toggled', { to: on ? 'night' : 'day' }); }
+    if (save) track('theme_toggled', { to: on ? 'night' : 'day' });
   }
-  try { if (localStorage.getItem('deskNight') === '0') setNight(false); } catch (e) {}
+  // Every visit starts with the room lights off; only the visitor turns them on.
+  try { localStorage.removeItem('deskNight'); } catch (e) {}
 
   // ---------- Proto: Sneha's AI assistant ----------
   var eyes = $('#eyes'), bubble = $('#bubble'), protoEl = $('.hs[data-act="proto"]'), bubbleT;
