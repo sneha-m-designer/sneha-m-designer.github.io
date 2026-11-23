@@ -276,7 +276,9 @@
   });
 
   // Deep links (#work etc.), e.g. returning from a case study.
-  var h = location.hash.slice(1);
+  var STOPS = { projects: 'work', experience: 'experience', about: 'about', contact: 'contact', achievements: 'wins', certifications: 'wins', toolkit: 'tools' };
+  var stopQ = (/[?&]stop=([\w-]+)/.exec(location.search) || [])[1];
+  var h = STOPS[stopQ] || location.hash.slice(1);
   if (LABELS[h]) {
     var prev = reduce; reduce = true;
     open(h, 'hash');
