@@ -15,7 +15,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Caveat:wght@500;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="v3/v3.css?v=19" />
+  <link rel="stylesheet" href="v3/v3.css?v=21" />
   <script src="assets/js/analytics.js"></script>
 </head>
 <body>
@@ -178,8 +178,8 @@
   <div class="overlay" id="overlay" hidden>
     <div class="backdrop" data-close></div>
 
-    <section class="sheet laptop" id="sheet-work" data-sheet="work" role="dialog" aria-modal="true" aria-labelledby="work-h" hidden>
-      <div class="chrome"><i></i><i></i><i></i><span>sneha-m.com/work</span><button class="x" type="button" data-close aria-label="Close">✕</button></div>
+    <section class="sheet" id="sheet-work" data-sheet="work" role="dialog" aria-modal="true" aria-labelledby="work-h" hidden>
+      <button class="x" type="button" data-close aria-label="Close">✕</button>
       <div class="sheet-body">
         <p class="kicker">Recent work</p>
         <h2 id="work-h">Case studies with <span class="ink">measurable results</span></h2>
@@ -216,10 +216,10 @@
       </div>
     </section>
 
-    <section class="sheet notebook" id="sheet-process" data-sheet="process" role="dialog" aria-modal="true" aria-labelledby="proc-h" hidden>
+    <section class="sheet" id="sheet-process" data-sheet="process" role="dialog" aria-modal="true" aria-labelledby="proc-h" hidden>
       <button class="x" type="button" data-close aria-label="Close">✕</button>
       <div class="sheet-body">
-        <p class="scribble-kicker">How I work</p>
+        <p class="kicker">How I work</p>
         <h2 id="proc-h">Find the friction. Fix it. <span class="ink">Prove it.</span></h2>
         <ol class="steps">
           <li><b>Discover</b>Research and data to find the real pain points</li>
@@ -232,10 +232,10 @@
       </div>
     </section>
 
-    <section class="sheet board" id="sheet-experience" data-sheet="experience" role="dialog" aria-modal="true" aria-labelledby="exp-h" hidden>
+    <section class="sheet" id="sheet-experience" data-sheet="experience" role="dialog" aria-modal="true" aria-labelledby="exp-h" hidden>
       <button class="x" type="button" data-close aria-label="Close">✕</button>
       <div class="sheet-body">
-        <p class="scribble-kicker">My journey</p>
+        <p class="kicker">Experience</p>
         <h2 id="exp-h">From cybersecurity to <span class="ink">AI products</span></h2>
         <ol class="pins">
           <li class="now"><span class="when">Oct 2024 – Present</span><b>Product Designer</b><em>Two Minute Reports | GoX.ai · Chennai</em><p>Leading design from research to delivery across Make Passport Photo, Illustrations AI (shipped in 5 months), AI Report Creator and Two Minute Reports.</p></li>
@@ -247,12 +247,12 @@
       </div>
     </section>
 
-    <section class="sheet polaroid" id="sheet-about" data-sheet="about" role="dialog" aria-modal="true" aria-labelledby="about-h" hidden>
+    <section class="sheet" id="sheet-about" data-sheet="about" role="dialog" aria-modal="true" aria-labelledby="about-h" hidden>
       <button class="x" type="button" data-close aria-label="Close">✕</button>
       <div class="sheet-body about-grid">
         <figure class="photo"><img src="https://framerusercontent.com/images/PUOseOOuIhQYyte1bZlqY66GBYo.png" alt="Portrait of Sneha M" width="220" height="220" /><figcaption>me, in Chennai ☀️</figcaption></figure>
         <div>
-          <p class="scribble-kicker">About me · Product Designer, Chennai</p>
+          <p class="kicker">About me</p>
           <h2 id="about-h">Great products come from truly understanding <span class="ink">the people who use them.</span></h2>
           <p>After a B.E. in Computer Science and a stint in cybersecurity at HCL, I began my design career in UX research. Wanting to solve the problems I uncovered led me into product design.</p>
           <p>Today I design end to end for AI-powered B2B SaaS and B2C products, and I measure what changes.</p>
@@ -261,10 +261,10 @@
       </div>
     </section>
 
-    <section class="sheet shelf" id="sheet-wins" data-sheet="wins" role="dialog" aria-modal="true" aria-labelledby="wins-h" hidden>
+    <section class="sheet" id="sheet-wins" data-sheet="wins" role="dialog" aria-modal="true" aria-labelledby="wins-h" hidden>
       <button class="x" type="button" data-close aria-label="Close">✕</button>
       <div class="sheet-body">
-        <p class="scribble-kicker">The shelf</p>
+        <p class="kicker">Wins &amp; certificates</p>
         <h2 id="wins-h">Wins and <span class="ink">certificates</span></h2>
         <h3 class="sub-h">🏆 Awards</h3>
         <ul class="trophies">
@@ -286,10 +286,10 @@
       </div>
     </section>
 
-    <section class="sheet cup" id="sheet-tools" data-sheet="tools" role="dialog" aria-modal="true" aria-labelledby="tools-h" hidden>
+    <section class="sheet" id="sheet-tools" data-sheet="tools" role="dialog" aria-modal="true" aria-labelledby="tools-h" hidden>
       <button class="x" type="button" data-close aria-label="Close">✕</button>
       <div class="sheet-body">
-        <p class="scribble-kicker">In my pen cup</p>
+        <p class="kicker">Skills &amp; tools</p>
         <h2 id="tools-h">Skills &amp; <span class="ink">tools</span></h2>
         <h3 class="sub-h">🔍 Research</h3>
         <ul class="chips soft"><li>User research</li><li>Interviews</li><li>Competitor analysis</li><li>Heuristic evaluation</li><li>Usability testing</li><li>Behaviour analysis</li><li>Product analytics</li><li>Experimentation</li></ul>
@@ -302,10 +302,10 @@
       </div>
     </section>
 
-    <section class="sheet mug" id="sheet-contact" data-sheet="contact" role="dialog" aria-modal="true" aria-labelledby="contact-h" hidden>
+    <section class="sheet" id="sheet-contact" data-sheet="contact" role="dialog" aria-modal="true" aria-labelledby="contact-h" hidden>
       <button class="x" type="button" data-close aria-label="Close">✕</button>
       <div class="sheet-body">
-        <p class="scribble-kicker">Let's grab a coffee ☕</p>
+        <p class="kicker">Contact</p>
         <h2 id="contact-h">Let's build something <span class="ink">meaningful.</span></h2>
         <p>If you enjoy building products that solve real problems and put users at the centre, I'd love to hear from you.</p>
         <div class="contact-row">
