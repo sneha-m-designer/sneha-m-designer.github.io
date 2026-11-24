@@ -159,14 +159,21 @@
   }, 900);
 
   // Moving the cursor into the dark part of the room makes Proto offer the lights.
-  var greetedAt = Date.now();
+  // Hovering in the dark part of the room for 2 seconds makes Proto offer the lights.
+  var darkTimer = null;
+  function cancelDark() { clearTimeout(darkTimer); darkTimer = null; }
   stage.addEventListener('pointermove', function (e) {
-    if (asked || !isDark() || current || e.pointerType !== 'mouse' || Date.now() - greetedAt < 2500) return;
+    if (asked || !isDark() || current || e.pointerType !== 'mouse') { cancelDark(); return; }
     var r = stage.getBoundingClientRect(), k = r.width / 2720;
     var x = (e.clientX - r.left) / k, y = (e.clientY - r.top) / k;
     var nearLamp = Math.hypot(x - 380, (y - 1050) * .8) < 520;
-    if (!nearLamp) askLights('dark_area');
+    if (nearLamp) { cancelDark(); return; }
+    if (!darkTimer) darkTimer = setTimeout(function () {
+      darkTimer = null;
+      if (!asked && isDark() && !current) askLights('dark_area');
+    }, 2000);
   });
+  stage.addEventListener('pointerleave', cancelDark);
 
   // Eyes follow the cursor and blink; on touch screens Proto glances around.
   function look(dx, dy) { if (eyes) eyes.setAttribute('transform', 'translate(' + dx.toFixed(1) + ' ' + dy.toFixed(1) + ')'); }
