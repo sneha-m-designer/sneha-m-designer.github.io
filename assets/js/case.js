@@ -18,7 +18,7 @@
     else if (ref && !/\/work\//.test(ref)) sessionStorage.setItem('portfolio', 'desk');
     from = sessionStorage.getItem('portfolio') || '';
   } catch (e) {}
-  var BACK = { flight: ['../flight/?stop=projects', 'Back to the flight'], v2: ['../v2/#work', 'Back to portfolio'] };
+  var BACK = { flight: ['/flight/?stop=projects', 'Back to the flight'], v2: ['/v2/#work', 'Back to portfolio'] };
   if (BACK[from]) {
     $$('a.back').forEach(function (a) {
       a.setAttribute('href', BACK[from][0]);
