@@ -221,6 +221,8 @@ a.cs:hover, .trophies a:hover { border-color: var(--brand-2); transform: transla
 .cs-m b { display: block; color: var(--brand); font-size: 16px; font-weight: 800; }
 .go { display: inline-block; margin-top: 10px; font-size: 14px; font-weight: 700; color: var(--brand); }
 .cs-art { height: 132px; border-radius: 12px; display: flex; flex-direction: column; justify-content: center; gap: 7px; padding: 14px; overflow: hidden; }
+.a0 { padding: 0; background: #f6f3ff; }
+.a0 img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
 .a1 { background: #e9f9f1; }
 .mp { display: flex; align-items: center; gap: 8px; background: #fff; border: 1.5px solid #d6e9df; border-radius: 9px; padding: 6px 9px; font-size: 11px; }
 .mp i { width: 11px; height: 11px; border-radius: 50%; border: 2px solid #12b26b; }
