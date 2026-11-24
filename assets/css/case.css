@@ -826,3 +826,40 @@ h2 s { color: var(--muted); text-decoration-color: #9d8ec4; text-decoration-thic
 .callouts .cmp p { color: var(--muted); }
 .callouts .cmp a { color: var(--accent-ink); }
 @media (max-width: 760px) { .pair, .groups { grid-template-columns: 1fr; } }
+
+
+/* ---------- Illustrations AI: parts, swatches, landing ---------- */
+.parts { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; margin-top: 16px; }
+.parts a { display: grid; gap: 2px; padding: 16px; border-radius: 16px; background: var(--soft); border: 1px solid var(--line); text-decoration: none; color: var(--ink); transition: border-color .2s, transform .2s; }
+.parts a:hover { border-color: var(--accent); transform: translateY(-2px); }
+.parts span { font-size: 12px; font-weight: 800; color: var(--accent-ink); }
+.parts b { font-size: 17px; }
+.parts small { color: var(--muted); font-size: 13px; }
+.part-intro { padding-top: 96px; }
+.part-intro .kicker { font-size: 14px; }
+.swatches { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; margin: 6px 0 22px; }
+.swatches div { display: grid; gap: 2px; padding: 12px; border-radius: 16px; background: var(--panel); border: 1px solid var(--line); }
+.swatches i { display: block; height: 64px; border-radius: 10px; margin-bottom: 8px; border: 1px solid rgba(0,0,0,.08); }
+.swatches small { color: var(--muted); font-size: 13px; }
+.lead em { color: var(--ink); font-style: normal; font-weight: 700; }
+.landing { display: grid; grid-template-columns: minmax(0, 1fr) 460px; gap: 28px; align-items: start; }
+.sections-list { display: grid; gap: 10px; counter-reset: sec; }
+.sections-list li { position: relative; display: grid; gap: 2px; padding: 14px 16px 14px 54px; border-radius: 16px; background: var(--soft); border: 1px solid var(--line); counter-increment: sec; }
+.sections-list li::before { content: counter(sec); position: absolute; left: 14px; top: 14px; width: 28px; height: 28px; border-radius: 50%; display: grid; place-items: center; font-size: 13px; font-weight: 900; color: #fff; background: #f86000; }
+.sections-list span { color: var(--muted); font-size: 15px; }
+.page-scroll { position: sticky; top: 84px; max-height: 76vh; overflow-y: auto; overscroll-behavior: contain; }
+.page-scroll img { width: 100%; image-rendering: auto; }
+.phones { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 12px; align-items: start; }
+.phones figure { margin: 0; display: grid; gap: 8px; }
+.phones img { width: 100%; border-radius: 14px; border: 1px solid var(--line); background: #fff; box-shadow: 0 14px 30px rgba(10, 0, 40, .25); }
+.phones figcaption { text-align: center; font-size: 13px; color: var(--muted); }
+.soon { padding: 28px; border-radius: 22px; border: 2px dashed var(--line); text-align: center; }
+.soon b { font-size: 20px; }
+.soon p { color: var(--muted); }
+@media (max-width: 860px) {
+  .parts, .swatches { grid-template-columns: 1fr 1fr; }
+  .landing { grid-template-columns: 1fr; }
+  .page-scroll { position: relative; top: auto; max-height: 70vh; }
+  .phones { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+.impact-stat b { white-space: nowrap; }
